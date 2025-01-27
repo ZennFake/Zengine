@@ -67,7 +67,7 @@ func initiateInputs(conducter):
 	self.inputOffset = 150
 	self.pressedKeys = []
 	
-func _process(delta):
+func _process(_delta):
 	
 	for i in range(4):
 		if Input.is_action_just_pressed(str(i)):
