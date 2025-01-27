@@ -65,6 +65,8 @@ func _process(dt):
 
 ## // OBJECT FUNCTIONS // ##
 
+func handlePause(paused):
+	self.songRunning = not paused
 
 ## Gets the lane of the note with the given note data
 func GetLane(noteData):

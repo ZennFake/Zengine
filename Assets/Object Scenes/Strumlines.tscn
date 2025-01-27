@@ -328,6 +328,7 @@ animation = &"0"
 
 [node name="Bar" type="TextureRect" parent="1"]
 visible = false
+layout_mode = 0
 offset_left = 51.655
 offset_top = 269.0
 offset_right = 101.655
@@ -388,6 +389,7 @@ frame_progress = 0.788078
 
 [node name="Bar" type="TextureRect" parent="2"]
 visible = false
+layout_mode = 0
 offset_left = 51.655
 offset_top = 269.0
 offset_right = 101.655
@@ -446,6 +448,7 @@ animation = &"0"
 
 [node name="Bar" type="TextureRect" parent="3"]
 visible = false
+layout_mode = 0
 offset_left = 51.655
 offset_top = 269.0
 offset_right = 101.655

@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://blt5pbwjnsdek"]
+[gd_scene load_steps=9 format=3 uid="uid://blt5pbwjnsdek"]
 
 [ext_resource type="PackedScene" uid="uid://cufhq8047j0km" path="res://Assets/Object Scenes/Strumlines.tscn" id="1_0tyb3"]
-[ext_resource type="Script" path="res://Scripts/chartHandler.gd" id="2_fi7ky"]
-[ext_resource type="Script" path="res://Scripts/conductor.gd" id="3_88kwb"]
-[ext_resource type="Script" path="res://Scripts/inputHandler.gd" id="3_dmqqq"]
-[ext_resource type="Script" path="res://Scripts/start.gd" id="4_un24f"]
+[ext_resource type="Script" path="res://Scripts/PlayState/PlayStateSignals.gd" id="2_86oxx"]
+[ext_resource type="Script" path="res://Scripts/PlayState/chartHandler.gd" id="2_fi7ky"]
+[ext_resource type="Script" path="res://Scripts/PlayState/conductor.gd" id="3_88kwb"]
+[ext_resource type="Script" path="res://Scripts/PlayState/inputHandler.gd" id="3_dmqqq"]
+[ext_resource type="Script" path="res://Scripts/PlayState/start.gd" id="4_un24f"]
 [ext_resource type="Script" path="res://Scripts/util.gd" id="5_h38qx"]
+[ext_resource type="Script" path="res://Scripts/PlayState/pauseHandler.gd" id="5_rclir"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -18,12 +20,16 @@ position = Vector2(1155.59, 1)
 [node name="Scripts" type="Node" parent="."]
 
 [node name="PlayState" type="Node" parent="Scripts"]
+script = ExtResource("2_86oxx")
 
 [node name="ChartHandler" type="Node" parent="Scripts/PlayState"]
 script = ExtResource("2_fi7ky")
 
 [node name="InputHandler" type="Node" parent="Scripts/PlayState"]
 script = ExtResource("3_dmqqq")
+
+[node name="PauseHandler" type="Node" parent="Scripts/PlayState"]
+script = ExtResource("5_rclir")
 
 [node name="Conductor" type="Node" parent="Scripts"]
 script = ExtResource("3_88kwb")
@@ -34,6 +40,9 @@ script = ExtResource("4_un24f")
 [node name="Util" type="Node" parent="Scripts"]
 script = ExtResource("5_h38qx")
 
+[connection signal="Pause" from="Scripts/PlayState" to="Scripts/PlayState/ChartHandler" method="handlePause"]
+[connection signal="Pause" from="Scripts/PlayState" to="Scripts/PlayState/InputHandler" method="pause"]
+[connection signal="Pause" from="Scripts/PlayState" to="Scripts/Conductor" method="pauseMusic"]
 [connection signal="chartRequest" from="Scripts/PlayState/ChartHandler" to="Scripts/PlayState/ChartHandler" method="initiateChart"]
 [connection signal="cleanupNoteRequest" from="Scripts/PlayState/ChartHandler" to="Scripts/PlayState/ChartHandler" method="cleanupNote"]
 [connection signal="songBegan" from="Scripts/PlayState/ChartHandler" to="Scripts/PlayState/ChartHandler" method="_on_song_began"]

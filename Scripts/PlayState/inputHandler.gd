@@ -25,6 +25,7 @@ BarAsset : Frame
 var inputOffset : float
 var conducterObj
 var player : int
+var playing : bool
 
 var pressedKeys : Array
 
@@ -66,18 +67,25 @@ func initiateInputs(conducter):
 	self.player = conducterObj.player
 	self.inputOffset = 150
 	self.pressedKeys = []
+	self.playing = true
 	
 func _process(_delta):
 	
 	for i in range(4):
-		if Input.is_action_just_pressed(str(i)):
-			inputBegan(i)
-			
-	for i in range(4):
 		if Input.is_action_just_released(str(i)):
 			inputEnded(i)
+	
+	if not self.playing:
+		return
+	
+	for i in range(4):
+		if Input.is_action_just_pressed(str(i)):
+			inputBegan(i)
 
 ## // OBJECT FUNCTIONS // ##
+
+func pause(paused):
+	self.playing = not paused 
 
 func inputBegan(inputLane):
 	

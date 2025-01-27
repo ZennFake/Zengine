@@ -65,7 +65,13 @@ func loadMusic():
 		add_child(songObject)
 		
 		self.songTracks[trackName] = songObject
+
+func pauseMusic(paused):
+	for trackName in self.songTracks:
+		var songObject : AudioStreamPlayer2D = self.songTracks[trackName]
 		
+		songObject.stream_paused = paused
+
 # Runs all music and starts running the chart 
 func songStarted():
 	
