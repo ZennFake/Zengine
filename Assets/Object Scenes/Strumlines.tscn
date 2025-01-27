@@ -1,26 +1,26 @@
 [gd_scene load_steps=44 format=3 uid="uid://cufhq8047j0km"]
 
 [ext_resource type="Texture2D" uid="uid://dru0topbugrof" path="res://Assets/Temp Assets/OUw2Vg.png" id="1_jrmmc"]
-[ext_resource type="Texture2D" uid="uid://dypssw11g0oby" path="res://Assets/User Interface/Play/left.png" id="2_0ov5n"]
-[ext_resource type="Texture2D" uid="uid://c5v1oiykvf4ox" path="res://Assets/User Interface/Play/left press0001.png" id="3_qg07b"]
+[ext_resource type="Texture2D" uid="uid://cs02m6qsax8cg" path="res://Assets/User Interface/Play/left/left.png" id="2_0ov5n"]
+[ext_resource type="Texture2D" uid="uid://b20njfdx3vobf" path="res://Assets/User Interface/Play/left/left press0001.png" id="3_qg07b"]
 [ext_resource type="Texture2D" uid="uid://b88lcy8to0qpe" path="res://Assets/User Interface/Play/left/left confirm0001.png" id="4_wjfyo"]
 [ext_resource type="Texture2D" uid="uid://26mx21ns2nin" path="res://Assets/User Interface/Play/left/left confirm0002.png" id="5_pttgo"]
-[ext_resource type="Texture2D" uid="uid://5yu81hwk7pnj" path="res://Assets/User Interface/Play/purple.png" id="6_0iqpg"]
+[ext_resource type="Texture2D" uid="uid://gecoasvf0qc3" path="res://Assets/User Interface/Play/left/purple.png" id="6_0iqpg"]
 [ext_resource type="Texture2D" uid="uid://c4jpmfm5ltjn2" path="res://Assets/User Interface/Play/left/left confirm0003.png" id="6_8bkeb"]
-[ext_resource type="Texture2D" uid="uid://c0undcbo8r3sp" path="res://Assets/User Interface/Play/down.png" id="6_q3w0v"]
-[ext_resource type="Texture2D" uid="uid://diha6akqfjoir" path="res://Assets/User Interface/Play/blue.png" id="7_1ggeq"]
+[ext_resource type="Texture2D" uid="uid://b1s26pmnlmjdy" path="res://Assets/User Interface/Play/down/down.png" id="6_q3w0v"]
+[ext_resource type="Texture2D" uid="uid://cu2dxm7u6115b" path="res://Assets/User Interface/Play/down/blue.png" id="7_1ggeq"]
 [ext_resource type="Texture2D" uid="uid://fq5y0ea5lcqn" path="res://Assets/User Interface/Play/left/left confirm0004.png" id="7_kaswf"]
-[ext_resource type="Texture2D" uid="uid://cjfe4x0eqa70i" path="res://Assets/User Interface/Play/down press0001.png" id="7_pj2qm"]
-[ext_resource type="Texture2D" uid="uid://ddjnl1gbw0272" path="res://Assets/User Interface/Play/green.png" id="8_81yuq"]
-[ext_resource type="Texture2D" uid="uid://bw85l8wb5s7lj" path="res://Assets/User Interface/Play/red.png" id="9_bpp35"]
-[ext_resource type="Texture2D" uid="uid://bd2kbfxka5xlj" path="res://Assets/User Interface/Play/up.png" id="10_8fyr2"]
-[ext_resource type="Texture2D" uid="uid://jhbk8w5ene2r" path="res://Assets/User Interface/Play/up press0001.png" id="11_12cu8"]
+[ext_resource type="Texture2D" uid="uid://dq5wuplwrylii" path="res://Assets/User Interface/Play/down/down press0001.png" id="7_pj2qm"]
+[ext_resource type="Texture2D" uid="uid://dwyxu3cugjusv" path="res://Assets/User Interface/Play/up/green.png" id="8_81yuq"]
+[ext_resource type="Texture2D" uid="uid://wfa8ijg86aka" path="res://Assets/User Interface/Play/right/red.png" id="9_bpp35"]
+[ext_resource type="Texture2D" uid="uid://cfcfi215wgjl4" path="res://Assets/User Interface/Play/up/up.png" id="10_8fyr2"]
+[ext_resource type="Texture2D" uid="uid://51pbykd1iwhu" path="res://Assets/User Interface/Play/up/up press0001.png" id="11_12cu8"]
 [ext_resource type="Texture2D" uid="uid://l6mmdqcmocnh" path="res://Assets/User Interface/Play/left/purple hold piece.png" id="12_cte3s"]
 [ext_resource type="Texture2D" uid="uid://bbvv4f2k8bd83" path="res://Assets/User Interface/Play/left/pruple end hold.png" id="13_qtwjq"]
-[ext_resource type="Texture2D" uid="uid://byqpyil1fpsi8" path="res://Assets/User Interface/Play/right.png" id="14_2pxen"]
+[ext_resource type="Texture2D" uid="uid://cn13rrcpb773m" path="res://Assets/User Interface/Play/right/right.png" id="14_2pxen"]
 [ext_resource type="Texture2D" uid="uid://jam15bunvd6l" path="res://Assets/User Interface/Play/down/down confirm0001.png" id="14_p42ba"]
 [ext_resource type="Texture2D" uid="uid://cv3apteigjenp" path="res://Assets/User Interface/Play/down/down confirm0002.png" id="15_mrnrs"]
-[ext_resource type="Texture2D" uid="uid://cqiru8h2ylcq" path="res://Assets/User Interface/Play/right press0001.png" id="15_rlnnd"]
+[ext_resource type="Texture2D" uid="uid://tefy5t7qpmko" path="res://Assets/User Interface/Play/right/right press0001.png" id="15_rlnnd"]
 [ext_resource type="Texture2D" uid="uid://u4tlf1bb70v7" path="res://Assets/User Interface/Play/down/down confirm0003.png" id="16_wsa0v"]
 [ext_resource type="Texture2D" uid="uid://nrakbtvrs82p" path="res://Assets/User Interface/Play/down/down confirm0004.png" id="17_y4g35"]
 [ext_resource type="Texture2D" uid="uid://82ayvje475ed" path="res://Assets/User Interface/Play/up/up confirm0001.png" id="20_uvj4n"]
@@ -236,7 +236,7 @@ offset_right = 170.0
 offset_bottom = 1080.0
 
 [node name="Key" type="AnimatedSprite2D" parent="0"]
-z_index = 2
+z_index = 3
 position = Vector2(84, 152)
 scale = Vector2(1.06494, 1.06493)
 sprite_frames = SubResource("SpriteFrames_6e5kw")
@@ -260,7 +260,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_d7fa8")
 
 [node name="BarHolder" type="Panel" parent="0"]
 self_modulate = Color(1, 1, 1, 0)
-z_index = 3
+z_index = 2
 clip_contents = true
 layout_mode = 0
 offset_top = 143.42
@@ -296,7 +296,7 @@ offset_bottom = 1080.0
 
 [node name="NoteHolder" type="Panel" parent="1"]
 self_modulate = Color(1, 1, 1, 0)
-z_index = 3
+z_index = 4
 layout_mode = 0
 offset_right = 170.0
 offset_bottom = 1081.0
@@ -313,7 +313,7 @@ offset_bottom = 1224.42
 theme_override_styles/panel = SubResource("StyleBoxFlat_d7fa8")
 
 [node name="Key" type="AnimatedSprite2D" parent="1"]
-z_index = 2
+z_index = 3
 position = Vector2(83, 146)
 scale = Vector2(1.06494, 1.06493)
 sprite_frames = SubResource("SpriteFrames_bceaq")
@@ -372,7 +372,7 @@ offset_bottom = 1224.42
 theme_override_styles/panel = SubResource("StyleBoxFlat_d7fa8")
 
 [node name="Key" type="AnimatedSprite2D" parent="2"]
-z_index = 2
+z_index = 3
 position = Vector2(83, 146)
 scale = Vector2(1.06494, 1.06493)
 sprite_frames = SubResource("SpriteFrames_jmj3y")
@@ -433,7 +433,7 @@ offset_bottom = 1224.42
 theme_override_styles/panel = SubResource("StyleBoxFlat_d7fa8")
 
 [node name="Key" type="AnimatedSprite2D" parent="3"]
-z_index = 2
+z_index = 3
 position = Vector2(83, 146)
 scale = Vector2(1.06494, 1.06493)
 sprite_frames = SubResource("SpriteFrames_sbqki")
