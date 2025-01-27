@@ -243,6 +243,7 @@ sprite_frames = SubResource("SpriteFrames_6e5kw")
 animation = &"Idle"
 
 [node name="NoteBase" type="AnimatedSprite2D" parent="0"]
+visible = false
 z_index = 1
 position = Vector2(84, 152)
 scale = Vector2(1.06494, 1.06493)

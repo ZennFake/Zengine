@@ -112,7 +112,7 @@ func inputBegan(inputLane):
 	
 func inputEnded(inputLane):
 	
-	if self.pressedKeys.find(inputLane) != null: # Key is pressed
+	if self.pressedKeys.find(inputLane) != -1: # Key is pressed
 		
 		self.pressedKeys.remove_at(self.pressedKeys.find(inputLane))
 		
