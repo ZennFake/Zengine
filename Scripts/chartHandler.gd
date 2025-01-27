@@ -116,7 +116,12 @@ func cleanupNote(noteAsset, pressed = false):
 		self.assetsToMove.remove_at(self.assetsToMove.find(noteAsset))
 		
 	if noteAsset.BarAsset != null:
-		print("todo")
+		if pressed:
+			noteAsset.Asset.visible = false
+			noteAsset.BarAsset.reparent(noteAsset.BarAsset.get_parent().get_parent().get_node("BarHolder"))
+		else:
+			noteAsset.Asset.queue_free()
+			noteAsset.BarAsset.queue_free()
 	else:
 		noteAsset.Asset.queue_free()
 
@@ -143,6 +148,26 @@ func updateChart(dt : float):
 	for note in self.assetsToMove:
 		
 		note.Asset.position = Vector2(84, self.getNoteY(note.Data.t) * 1080)
+		
+		if note.Data.l > 0: #Bar note
+			if not note.BarAsset: # Create a bar for the note
+				note.BarAsset = note.Asset.get_parent().get_parent().get_node("Bar").duplicate() # Get the lane the note is in and copy its bar asset
+				
+				note.Asset.get_parent().add_child(note.BarAsset)
+				note.BarAsset.visible = true
+				
+			note.BarAsset.position = Vector2(51.655, note.Asset.position.y)
+			
+			if note.BarAsset.get_parent().name == "BarHolder": # Is Pressed
+				note.Asset.position.y += 143.42 # Account for clip offset
+			
+			note.BarAsset.size = Vector2(55, (self.getNoteY(note.Data.t + note.Data.l)  * 1080) - note.Asset.position.y)
+			note.BarAsset.get_node("BarEnding").position = Vector2(1, note.BarAsset.size.y)
+			
+			if note.BarAsset.get_node("BarEnding").position.y / 1080 < -0.1:
+				self.cleanupNote(note)
+			
+			continue
 		
 		if note.Asset.position.y / 1080 < -0.1:
 			self.cleanupNote(note)

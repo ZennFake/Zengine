@@ -143,6 +143,7 @@ func checkHit(lane):
 		
 		if result != null:
 			
-			notes.remove_at(notes.find(closestNote))
+			if closestNote.Data.l == 0:
+				notes.remove_at(notes.find(closestNote))
 			self.chartHandler.emit_signal("cleanupNoteRequest", closestNote, true)
 			return true
