@@ -1,0 +1,7 @@
+{
+	"Song Name": "GameBreaker",
+	"Chart Data": "res://Songs/Breaker_Bundle/Gamebreaker/Chart.json",
+	"Audio Tracks": {
+		"Inst": "res://Songs/Breaker_Bundle/Gamebreaker/Inst.ogg"
+	}
+}

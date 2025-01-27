@@ -1,0 +1,8 @@
+{
+	"Song Name": "Burger King Disaster",
+	"Chart Data": "res://Songs/BKDisaster/BKDisaster/Chart.json",
+	"Audio Tracks": {
+		"Inst": "res://Songs/BKDisaster/BKDisaster/Inst.ogg",
+		"Voices": "res://Songs/BKDisaster/BKDisaster/Voices.ogg"
+	}
+}

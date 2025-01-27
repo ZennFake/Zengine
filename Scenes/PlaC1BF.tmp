@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://blt5pbwjnsdek"]
+
+[ext_resource type="PackedScene" uid="uid://cufhq8047j0km" path="res://Assets/Object Scenes/Strumlines.tscn" id="1_0tyb3"]
+[ext_resource type="Script" path="res://Scenes/chartHandler.gd" id="2_fi7ky"]
+[ext_resource type="Script" path="res://Scenes/conductor.gd" id="3_88kwb"]
+[ext_resource type="Script" path="res://Scenes/inputHandler.gd" id="3_dmqqq"]
+[ext_resource type="Script" path="res://Scenes/start.gd" id="4_un24f"]
+[ext_resource type="Script" path="res://Scenes/util.gd" id="5_h38qx"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="EnemyLanes" parent="." instance=ExtResource("1_0tyb3")]
+position = Vector2(93.715, 1)
+
+[node name="PlayerLanes" parent="." instance=ExtResource("1_0tyb3")]
+position = Vector2(1155.59, 1)
+
+[node name="Scripts" type="Node" parent="."]
+
+[node name="PlayState" type="Node" parent="Scripts"]
+
+[node name="ChartHandler" type="Node" parent="Scripts/PlayState"]
+script = ExtResource("2_fi7ky")
+
+[node name="InputHandler" type="Node" parent="Scripts/PlayState"]
+script = ExtResource("3_dmqqq")
+
+[node name="Conductor" type="Node" parent="Scripts"]
+script = ExtResource("3_88kwb")
+
+[node name="Start" type="Node" parent="Scripts"]
+script = ExtResource("4_un24f")
+
+[node name="Util" type="Node" parent="Scripts"]
+script = ExtResource("5_h38qx")
+
+[connection signal="chartRequest" from="Scripts/PlayState/ChartHandler" to="Scripts/PlayState/ChartHandler" method="initiateChart"]
+[connection signal="songBegan" from="Scripts/PlayState/ChartHandler" to="Scripts/PlayState/ChartHandler" method="_on_song_began"]
+[connection signal="songBegan" from="Scripts/PlayState/InputHandler" to="Scripts/PlayState/InputHandler" method="initiateInputs"]
+[connection signal="songBegan" from="Scripts/Conductor" to="Scripts/Conductor" method="songStarted"]
+[connection signal="songRequested" from="Scripts/Conductor" to="Scripts/Conductor" method="_on_song_requested"]
