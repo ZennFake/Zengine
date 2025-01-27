@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv2rlfel4rd03"
-path="res://.godot/imported/left confirm0001.png-2b57536b4c4367b08486a84d448682b3.ctex"
+uid="uid://bulfxv6as58a"
+path="res://.godot/imported/blue hold piece.png-6b9cc231302ac77b2cf2b1b53d89ed66.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/User Interface/Play/left confirm0001.png"
-dest_files=["res://.godot/imported/left confirm0001.png-2b57536b4c4367b08486a84d448682b3.ctex"]
+source_file="res://Assets/User Interface/Play/down/blue hold piece.png"
+dest_files=["res://.godot/imported/blue hold piece.png-6b9cc231302ac77b2cf2b1b53d89ed66.ctex"]
 
 [params]
 
