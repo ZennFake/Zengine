@@ -14,6 +14,9 @@ var songData : Dictionary
 var chartData : Dictionary
 var player : int
 var songPlaying : bool
+var meta : Dictionary
+var timeline : Array
+var bpm : int
 
 var songTracks : Dictionary
 
@@ -41,14 +44,22 @@ func _on_song_requested(SongInfo):
 	# Setup data
 	
 	self.songData = util.readJson(self.songDataPath)
-	print(self.songData["Chart Data"])
+	
 	
 	self.chartData = util.readJson(self.songData["Chart Data"])
+	self.meta = self.chartData["meta"]
+	self.timeline = self.meta["timeline"]
+	
+	self.bpm = 0
 	
 	self.loadMusic()
 	chartHandler.emit_signal("chartRequest", self)
 	
 	self.emit_signal("songBegan")
+	
+	await get_tree().create_timer(1).timeout
+	
+	print(self.bpm)
 	
 	await self.songTracks.values()[0].finished
 	
@@ -60,6 +71,13 @@ func _on_song_requested(SongInfo):
 func _process(delta: float):
 	if self.songPlaying:
 		timebarHandler.emit_signal("updateTime", self.songTracks.values()[0].get_playback_position(), self.songTracks.values()[0].stream.get_length())
+		
+		for time in self.timeline:
+			if time["t"] < self.chartHandler["currentSongPosition"]:
+				self.bpm = time["bpm"]
+				
+				time["t"] = 100000000000000
+			
 
 # Runs through the song data and loads them as an AudioStream
 func loadMusic():
