@@ -7,6 +7,7 @@ extends Node
 
 ## // FUNCTIONS // ##
 
+# Reads the given json and returns it as a dictionary
 static func readJson(jsonFile : String):
 	var file = jsonFile
 	var json_as_text = FileAccess.get_file_as_string(file)

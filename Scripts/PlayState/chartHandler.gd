@@ -39,6 +39,7 @@ var currentSongPosition
 
 ## // FUNCTIONS // ##
 
+# Sets up song variables and runs the chart
 func initiateChart(conducter):
 	
 	# Init Vars
@@ -55,10 +56,12 @@ func initiateChart(conducter):
 	self.currentSongPosition = 0
 	
 	return self
-	
+
+# Start the song
 func _on_song_began():
 	self.songRunning = true
-	
+
+# Updates the chart every frame
 func _process(dt):
 	if self.songRunning:
 		self.updateChart(dt)
@@ -112,7 +115,8 @@ func noteMade(noteData):
 		Asset = noteBase,
 		BarAsset = null
 	})
-	
+
+# Removes the note from the screen and moves bars to the bar frame
 func cleanupNote(noteAsset, pressed = false):
 	if not pressed:
 		self.assetsToMove.remove_at(self.assetsToMove.find(noteAsset))

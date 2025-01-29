@@ -69,6 +69,7 @@ func initiateInputs(conducter):
 	self.pressedKeys = []
 	self.playing = true
 	
+# Checks if any actions are pressed every frame
 func _process(_delta):
 	
 	for i in range(4):
@@ -84,9 +85,11 @@ func _process(_delta):
 
 ## // OBJECT FUNCTIONS // ##
 
+# Pauses the song
 func pause(paused):
 	self.playing = not paused 
 
+# Checks to see if a note is valid in the givin lane and handles pressing
 func inputBegan(inputLane):
 	
 	self.pressedKeys.append(inputLane)
@@ -110,6 +113,7 @@ func inputBegan(inputLane):
 	else:
 		key.play("Press")
 	
+# Unpresses the key and updates the animation
 func inputEnded(inputLane):
 	
 	if self.pressedKeys.find(inputLane) != -1: # Key is pressed
@@ -125,7 +129,8 @@ func inputEnded(inputLane):
 		var key : AnimatedSprite2D = lane.get_node("Key")
 	
 		key.play("Idle")
-		
+
+# Checks if any notes are able to be pressed
 func checkHit(lane):
 	
 	if self.player == 1:

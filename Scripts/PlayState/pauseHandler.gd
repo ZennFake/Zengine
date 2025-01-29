@@ -16,6 +16,7 @@ var currentLoading : Node2D
 
 ## // FUNCTIONS // ##
 
+# Loads the pause screen into the scene
 func loadPauseScreen():
 	var path = "res://Scenes/States/Paused.tscn"
 	var packed : PackedScene = load(path)
@@ -25,6 +26,7 @@ func loadPauseScreen():
 	scene.get_node("PauseAnimation").play("Paused")
 	currentLoading = scene
 
+# Checks if pause was pressed
 func _process(_delta):
 	if Input.is_action_just_pressed("Pause"):
 		paused = not paused

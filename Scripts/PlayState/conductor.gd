@@ -56,6 +56,7 @@ func _on_song_requested(SongInfo):
 	
 ## // OBJECT FUNCTION // ##
 
+# Updates the time of the timebar every frame
 func _process(delta: float):
 	if self.songPlaying:
 		timebarHandler.emit_signal("updateTime", self.songTracks.values()[0].get_playback_position(), self.songTracks.values()[0].stream.get_length())
@@ -76,6 +77,7 @@ func loadMusic():
 		
 		self.songTracks[trackName] = songObject
 
+# Pauses the song stream
 func pauseMusic(paused):
 	for trackName in self.songTracks:
 		var songObject : AudioStreamPlayer2D = self.songTracks[trackName]
