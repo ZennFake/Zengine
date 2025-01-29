@@ -1,44 +1,44 @@
 [gd_scene load_steps=9 format=3 uid="uid://blt5pbwjnsdek"]
 
-[ext_resource type="PackedScene" uid="uid://cufhq8047j0km" path="res://Assets/Object Scenes/Strumlines.tscn" id="1_0tyb3"]
-[ext_resource type="Script" path="res://Scripts/PlayState/PlayStateSignals.gd" id="2_86oxx"]
-[ext_resource type="Script" path="res://Scripts/PlayState/chartHandler.gd" id="2_fi7ky"]
-[ext_resource type="Script" path="res://Scripts/PlayState/conductor.gd" id="3_88kwb"]
-[ext_resource type="Script" path="res://Scripts/PlayState/inputHandler.gd" id="3_dmqqq"]
-[ext_resource type="Script" path="res://Scripts/PlayState/start.gd" id="4_un24f"]
-[ext_resource type="Script" path="res://Scripts/util.gd" id="5_h38qx"]
-[ext_resource type="Script" path="res://Scripts/PlayState/pauseHandler.gd" id="5_rclir"]
+[ext_resource type="PackedScene" uid="uid://cufhq8047j0km" path="res://Assets/Object Scenes/Strumlines.tscn" id="1_2kif4"]
+[ext_resource type="Script" path="res://Scripts/PlayState/PlayStateSignals.gd" id="2_4l2q2"]
+[ext_resource type="Script" path="res://Scripts/PlayState/chartHandler.gd" id="3_1ijkg"]
+[ext_resource type="Script" path="res://Scripts/PlayState/inputHandler.gd" id="4_5xmji"]
+[ext_resource type="Script" path="res://Scripts/PlayState/pauseHandler.gd" id="5_p1gj3"]
+[ext_resource type="Script" path="res://Scripts/PlayState/conductor.gd" id="6_3sxgv"]
+[ext_resource type="Script" path="res://Scripts/PlayState/start.gd" id="7_muios"]
+[ext_resource type="Script" path="res://Scripts/util.gd" id="8_ydm25"]
 
 [node name="MainScene" type="Node2D"]
 
-[node name="EnemyLanes" parent="." instance=ExtResource("1_0tyb3")]
+[node name="EnemyLanes" parent="." instance=ExtResource("1_2kif4")]
 position = Vector2(93.715, 1)
 
-[node name="PlayerLanes" parent="." instance=ExtResource("1_0tyb3")]
+[node name="PlayerLanes" parent="." instance=ExtResource("1_2kif4")]
 position = Vector2(1155.59, 1)
 
 [node name="Scripts" type="Node" parent="."]
 
 [node name="PlayState" type="Node" parent="Scripts"]
-script = ExtResource("2_86oxx")
+script = ExtResource("2_4l2q2")
 
 [node name="ChartHandler" type="Node" parent="Scripts/PlayState"]
-script = ExtResource("2_fi7ky")
+script = ExtResource("3_1ijkg")
 
 [node name="InputHandler" type="Node" parent="Scripts/PlayState"]
-script = ExtResource("3_dmqqq")
+script = ExtResource("4_5xmji")
 
 [node name="PauseHandler" type="Node" parent="Scripts/PlayState"]
-script = ExtResource("5_rclir")
+script = ExtResource("5_p1gj3")
 
 [node name="Conductor" type="Node" parent="Scripts"]
-script = ExtResource("3_88kwb")
+script = ExtResource("6_3sxgv")
 
 [node name="Start" type="Node" parent="Scripts"]
-script = ExtResource("4_un24f")
+script = ExtResource("7_muios")
 
 [node name="Util" type="Node" parent="Scripts"]
-script = ExtResource("5_h38qx")
+script = ExtResource("8_ydm25")
 
 [connection signal="Pause" from="Scripts/PlayState" to="Scripts/PlayState/ChartHandler" method="handlePause"]
 [connection signal="Pause" from="Scripts/PlayState" to="Scripts/PlayState/InputHandler" method="pause"]

@@ -1,0 +1,158 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt5mi5c0rescn"]
+
+[ext_resource type="Script" path="res://Scripts/TempStart/testStart.gd" id="1_qptx2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xhd5k"]
+font_size = 38
+
+[node name="TempStart" type="Node2D"]
+script = ExtResource("1_qptx2")
+
+[node name="LeftSideToggle" type="Panel" parent="."]
+offset_left = 17.0
+offset_top = 21.0
+offset_right = 314.0
+offset_bottom = 108.0
+
+[node name="Label" type="Label" parent="LeftSideToggle"]
+offset_left = 13.0
+offset_top = 17.0
+offset_right = 294.0
+offset_bottom = 70.0
+text = "Left Side"
+label_settings = SubResource("LabelSettings_xhd5k")
+
+[node name="CheckBox" type="CheckBox" parent="LeftSideToggle"]
+offset_left = 206.0
+offset_top = -1.0
+offset_right = 230.0
+offset_bottom = 23.0
+scale = Vector2(3.66, 3.66)
+
+[node name="Week" type="Panel" parent="."]
+offset_left = 17.0
+offset_top = 118.0
+offset_right = 641.0
+offset_bottom = 282.0
+
+[node name="Label" type="Label" parent="Week"]
+offset_left = 13.0
+offset_top = 17.0
+offset_right = 294.0
+offset_bottom = 70.0
+text = "Week / Mod"
+label_settings = SubResource("LabelSettings_xhd5k")
+
+[node name="LineEdit" type="LineEdit" parent="Week"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 70.0
+offset_right = 611.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 51
+placeholder_text = "Breaker_Bundle"
+
+[node name="Song" type="Panel" parent="."]
+offset_left = 17.0
+offset_top = 291.0
+offset_right = 641.0
+offset_bottom = 455.0
+
+[node name="Label" type="Label" parent="Song"]
+offset_left = 13.0
+offset_top = 17.0
+offset_right = 294.0
+offset_bottom = 70.0
+text = "Song"
+label_settings = SubResource("LabelSettings_xhd5k")
+
+[node name="LineEdit" type="LineEdit" parent="Song"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 70.0
+offset_right = 610.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 51
+placeholder_text = "Gamebreaker"
+
+[node name="Keybinds" type="Panel" parent="."]
+offset_left = 17.0
+offset_top = 463.0
+offset_right = 384.0
+offset_bottom = 627.0
+
+[node name="Label" type="Label" parent="Keybinds"]
+offset_left = 13.0
+offset_top = 17.0
+offset_right = 294.0
+offset_bottom = 70.0
+text = "Keybinds"
+label_settings = SubResource("LabelSettings_xhd5k")
+
+[node name="0" type="Button" parent="Keybinds"]
+offset_left = 13.0
+offset_top = 74.0
+offset_right = 94.0
+offset_bottom = 154.0
+theme_override_font_sizes/font_size = 51
+text = "A"
+clip_text = true
+
+[node name="1" type="Button" parent="Keybinds"]
+offset_left = 101.46
+offset_top = 74.0
+offset_right = 182.46
+offset_bottom = 154.0
+theme_override_font_sizes/font_size = 51
+text = "S"
+clip_text = true
+
+[node name="2" type="Button" parent="Keybinds"]
+offset_left = 188.825
+offset_top = 74.0
+offset_right = 269.825
+offset_bottom = 154.0
+theme_override_font_sizes/font_size = 51
+text = "K
+"
+clip_text = true
+
+[node name="3" type="Button" parent="Keybinds"]
+offset_left = 276.275
+offset_top = 74.0
+offset_right = 357.275
+offset_bottom = 154.0
+theme_override_font_sizes/font_size = 51
+text = "L
+"
+clip_text = true
+
+[node name="Start" type="Panel" parent="."]
+offset_left = 17.0
+offset_top = 635.4
+offset_right = 427.0
+offset_bottom = 799.4
+
+[node name="Start" type="Label" parent="Start"]
+offset_left = 13.0
+offset_top = 17.0
+offset_right = 294.0
+offset_bottom = 70.0
+text = "Start"
+label_settings = SubResource("LabelSettings_xhd5k")
+
+[node name="Button" type="Button" parent="Start"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 74.0
+offset_right = 401.0
+offset_bottom = 154.0
+theme_override_font_sizes/font_size = 51
+text = "Start"
+alignment = 0
+
+[connection signal="pressed" from="Keybinds/0" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Keybinds/1" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Keybinds/2" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Keybinds/3" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Start/Button" to="." method="StartPressed"]

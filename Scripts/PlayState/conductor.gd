@@ -25,14 +25,14 @@ var songTracks : Dictionary
 ## // FUNCTIONS // ##
 
 # Finds the song in the songs folder and loads the chart and songs
-func _on_song_requested(Week, Song):
+func _on_song_requested(SongInfo):
 	
 	print("Song request created, initiating conductor")
 	
 	# Init Vars
 	
-	self.songDataPath = "res://Songs/" + Week + "/" + Song + "/Song.json"
-	self.player = 2
+	self.songDataPath = "res://Songs/" + SongInfo["Week"] + "/" + SongInfo["Song"] + "/Song.json"
+	self.player = SongInfo["Player"]
 	
 	# Setup data
 	
