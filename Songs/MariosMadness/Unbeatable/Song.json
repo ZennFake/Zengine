@@ -1,0 +1,7 @@
+{
+	"Song Name": "Unbeatable",
+	"Chart Data": "res://Songs/MariosMadness/Unbeatable/Chart.json",
+	"Audio Tracks": {
+		"Inst": "res://Songs/MariosMadness/Unbeatable/Inst.mp3"
+	}
+}
