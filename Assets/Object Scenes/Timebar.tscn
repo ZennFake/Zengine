@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsuei2c586evd"]
+
+[ext_resource type="Script" path="res://Scripts/PlayState/Timebargd.gd" id="1_8lpch"]
+[ext_resource type="Shader" path="res://Shaders/Playstate/Timebar.gdshader" id="1_pg3ej"]
+[ext_resource type="FontFile" uid="uid://bvi5a5anqvl7c" path="res://Assets/Fonts/pixel-latin.ttf" id="2_2vhxb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nn3ie"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(1, 1, 1, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rxlwt"]
+bg_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oioe5"]
+shader = ExtResource("1_pg3ej")
+
+[sub_resource type="LabelSettings" id="LabelSettings_xh276"]
+font = ExtResource("2_2vhxb")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7meb"]
+bg_color = Color(1, 1, 1, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Timebar" type="Node2D"]
+script = ExtResource("1_8lpch")
+
+[node name="TimebarMain" type="Panel" parent="."]
+offset_right = 571.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nn3ie")
+
+[node name="Timebar" type="Panel" parent="TimebarMain"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 569.0
+offset_bottom = 42.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rxlwt")
+
+[node name="Label" type="Label" parent="TimebarMain/Timebar"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_oioe5")
+clip_contents = true
+layout_mode = 0
+offset_right = 567.0
+offset_bottom = 40.0
+text = "0:00/10:00"
+label_settings = SubResource("LabelSettings_xh276")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Inner" type="Panel" parent="TimebarMain/Timebar"]
+offset_left = -1.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = 41.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d7meb")
+
+[connection signal="updateTime" from="." to="." method="newTime"]

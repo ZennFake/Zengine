@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://blt5pbwjnsdek"]
+[gd_scene load_steps=11 format=3 uid="uid://blt5pbwjnsdek"]
 
 [ext_resource type="PackedScene" uid="uid://cufhq8047j0km" path="res://Assets/Object Scenes/Strumlines.tscn" id="1_2kif4"]
 [ext_resource type="Script" path="res://Scripts/PlayState/PlayStateSignals.gd" id="2_4l2q2"]
@@ -8,6 +8,10 @@
 [ext_resource type="Script" path="res://Scripts/PlayState/conductor.gd" id="6_3sxgv"]
 [ext_resource type="Script" path="res://Scripts/PlayState/start.gd" id="7_muios"]
 [ext_resource type="Script" path="res://Scripts/util.gd" id="8_ydm25"]
+[ext_resource type="PackedScene" uid="uid://dsuei2c586evd" path="res://Assets/Object Scenes/Timebar.tscn" id="9_wducd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjdjc"]
+bg_color = Color(0.0640862, 0.0650654, 0.100761, 1)
 
 [node name="MainScene" type="Node2D"]
 
@@ -39,6 +43,18 @@ script = ExtResource("7_muios")
 
 [node name="Util" type="Node" parent="Scripts"]
 script = ExtResource("8_ydm25")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -3
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 1924.0
+offset_bottom = 1084.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wjdjc")
+
+[node name="Timebar" parent="." instance=ExtResource("9_wducd")]
+z_index = 3
+position = Vector2(678, 14)
 
 [connection signal="Pause" from="Scripts/PlayState" to="Scripts/PlayState/ChartHandler" method="handlePause"]
 [connection signal="Pause" from="Scripts/PlayState" to="Scripts/PlayState/InputHandler" method="pause"]

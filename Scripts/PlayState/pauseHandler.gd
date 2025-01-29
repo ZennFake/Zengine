@@ -17,7 +17,7 @@ var currentLoading : Node2D
 ## // FUNCTIONS // ##
 
 func loadPauseScreen():
-	var path = "res://Scenes/Paused.tscn"
+	var path = "res://Scenes/States/Paused.tscn"
 	var packed : PackedScene = load(path)
 	var scene = packed.instantiate()
 	

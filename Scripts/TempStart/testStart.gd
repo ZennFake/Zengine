@@ -29,6 +29,13 @@ func StartPressed():
 		songData["Player"] = 1
 	
 	scene.get_node("Scripts").get_node("Conductor").emit_signal("songRequested", songData)
+	
+	await scene.get_node("Scripts").get_node("Conductor").songEnded
+	
+	scene.queue_free()
+	
+	for asset in $".".get_children():
+		asset.show()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEvent and event.is_released():

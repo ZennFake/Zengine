@@ -5,6 +5,7 @@ extends Node
 
 signal songRequested
 signal songBegan
+signal songEnded
 
 ## // VARIABLES // ##
 
@@ -12,6 +13,7 @@ var songDataPath : String
 var songData : Dictionary
 var chartData : Dictionary
 var player : int
+var songPlaying : bool
 
 var songTracks : Dictionary
 
@@ -21,6 +23,7 @@ var songTracks : Dictionary
 @onready var util = get_parent().get_node("Util")
 @onready var chartHandler = playState.get_node("ChartHandler")
 @onready var inputHandler = playState.get_node("InputHandler")
+@onready var timebarHandler = get_parent().get_parent().get_node("Timebar")
 
 ## // FUNCTIONS // ##
 
@@ -33,6 +36,7 @@ func _on_song_requested(SongInfo):
 	
 	self.songDataPath = "res://Songs/" + SongInfo["Week"] + "/" + SongInfo["Song"] + "/Song.json"
 	self.player = SongInfo["Player"]
+	self.songPlaying = true
 	
 	# Setup data
 	
@@ -46,9 +50,15 @@ func _on_song_requested(SongInfo):
 	
 	self.emit_signal("songBegan")
 	
+	await self.songTracks.values()[0].finished
 	
+	$".".emit_signal("songEnded")
 	
 ## // OBJECT FUNCTION // ##
+
+func _process(delta: float):
+	if self.songPlaying:
+		timebarHandler.emit_signal("updateTime", self.songTracks.values()[0].get_playback_position(), self.songTracks.values()[0].stream.get_length())
 
 # Runs through the song data and loads them as an AudioStream
 func loadMusic():
