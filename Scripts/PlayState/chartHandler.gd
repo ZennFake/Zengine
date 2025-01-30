@@ -116,6 +116,52 @@ func noteMade(noteData):
 		BarAsset = null
 	})
 
+# Checks if a note is valid and on screen
+func checkIfNoteIsValid(noteAssetObject):
+	if not is_instance_valid(noteAssetObject.Asset):
+		if not is_instance_valid(noteAssetObject.BarAsset):
+			return false
+		else:
+			return false
+	else:
+		return true
+
+# Removes an enemy note when it hits the key.
+func handleEnemyNote(noteAssetObject : Dictionary):
+	
+	# Get the notes lane
+	var keyLanes : Node2D = Root.get_node("PlayerLanes")
+	
+	if self.conducterObj.player == 2:
+		keyLanes = Root.get_node("EnemyLanes")
+	
+	if not keyLanes:
+		print("LANE NOT FOUND FOR KEY")
+		return
+		
+	var laneInput = noteAssetObject.Data.d
+	
+	if self.conducterObj.player == 2:
+		laneInput -= 4
+	
+	# Get the lanes key for animation
+	var lane : Panel = keyLanes.get_node(str(laneInput))
+	var key : AnimatedSprite2D = lane.get_node("Key")
+	
+	# Play a hit
+	key.play("PressHit")
+	
+	# Cleanup and unpressing
+	if noteAssetObject.Data.l == 0: # Normal note
+		self.assetsToMove.remove_at(self.assetsToMove.find(noteAssetObject))
+		cleanupNote(noteAssetObject, true)
+		await get_tree().create_timer(0.1).timeout # wait 0.1 seconds to clean animation
+		key.play("Idle")
+	else: # Bar note
+		cleanupNote(noteAssetObject, true)
+		await get_tree().create_timer(noteAssetObject.Data.l / 1000).timeout # wait the length of the note seconds to clean animation
+		key.play("Idle")
+
 # Removes the note from the screen and moves bars to the bar frame
 func cleanupNote(noteAsset, pressed = false):
 	if not pressed:
@@ -155,6 +201,19 @@ func updateChart(dt : float):
 		
 		note.Asset.position = Vector2(84, self.getNoteY(note.Data.t) * 1080)
 		
+		# Check for enemy notes
+		
+		if note.Data.d > 3 and self.conducterObj.player == 2 or note.Data.d <= 3 and self.conducterObj.player == 1: # In enemy lane
+			if note.Data.t <= self.currentSongPosition and checkIfNoteIsValid(note):
+				if note.Data.l > 0:
+					if note.Asset.visible != false: # Long note isnt pressed
+						handleEnemyNote(note)
+				else:
+					handleEnemyNote(note)
+				
+			
+		# Go back to note handling
+		
 		if note.Data.l > 0: #Bar note
 			if not note.BarAsset: # Create a bar for the note
 				note.BarAsset = note.Asset.get_parent().get_parent().get_node("Bar").duplicate() # Get the lane the note is in and copy its bar asset
@@ -181,4 +240,4 @@ func updateChart(dt : float):
 
 # Calculates the notes Y position
 func getNoteY(timePosition):
-	return (self.pMS * (self.currentSongPosition - timePosition - self.visualOffset) * self.data.scrollSpeed * -1 + -28.6) / 1080
+	return (self.pMS * (self.currentSongPosition - timePosition - self.visualOffset) * self.data.scrollSpeed * -1 + 130) / 1080
