@@ -17,6 +17,10 @@ var songPlaying : bool
 var meta : Dictionary
 var timeline : Array
 var bpm : int
+var beat : int
+var msPerBeat : float
+var deltaSinceLastBeat : float
+var majorBeatTime : int
 
 var songTracks : Dictionary
 
@@ -26,6 +30,8 @@ var songTracks : Dictionary
 @onready var util = get_parent().get_node("Util")
 @onready var chartHandler = playState.get_node("ChartHandler")
 @onready var inputHandler = playState.get_node("InputHandler")
+@onready var stageHandler = playState.get_node("StageHandler")
+
 @onready var timebarHandler = get_parent().get_parent().get_node("Timebar")
 
 ## // FUNCTIONS // ##
@@ -51,15 +57,15 @@ func _on_song_requested(SongInfo):
 	self.timeline = self.meta["timeline"]
 	
 	self.bpm = 0
+	self.msPerBeat = 0
+	self.deltaSinceLastBeat = 0
+	self.majorBeatTime = 4
+	self.beat = 0
 	
 	self.loadMusic()
 	chartHandler.emit_signal("chartRequest", self)
 	
 	self.emit_signal("songBegan")
-	
-	await get_tree().create_timer(1).timeout
-	
-	print(self.bpm)
 	
 	await self.songTracks.values()[0].finished
 	
@@ -72,12 +78,21 @@ func _process(delta: float):
 	if self.songPlaying:
 		timebarHandler.emit_signal("updateTime", self.songTracks.values()[0].get_playback_position(), self.songTracks.values()[0].stream.get_length())
 		
+		# Check for timeline events
 		for time in self.timeline:
 			if time["t"] < self.chartHandler["currentSongPosition"]:
-				self.bpm = time["bpm"]
+				self.bpm = time["bpm"] # Set values for the timeline event
+				self.msPerBeat = (60 / time["bpm"]) * 1000
 				
-				time["t"] = 100000000000000
+				self.timeline.erase(time)
+				break # We can skip because we have the one for the current timestamp
+				
+		self.deltaSinceLastBeat += delta * 1000
+		if self.deltaSinceLastBeat >= self.msPerBeat:
+			self.deltaSinceLastBeat = 0
+			self.beat += 1
 			
+			self.playState.emit_signal("Beat", int(self.beat) % self.majorBeatTime == 0, self.beat)
 
 # Runs through the song data and loads them as an AudioStream
 func loadMusic():
@@ -97,6 +112,7 @@ func loadMusic():
 
 # Pauses the song stream
 func pauseMusic(paused):
+	self.songPlaying = not paused
 	for trackName in self.songTracks:
 		var songObject : AudioStreamPlayer2D = self.songTracks[trackName]
 		

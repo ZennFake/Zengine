@@ -181,4 +181,4 @@ func updateChart(dt : float):
 
 # Calculates the notes Y position
 func getNoteY(timePosition):
-	return (self.pMS * (self.currentSongPosition - timePosition - self.visualOffset) * self.data.scrollSpeed * -1) / 1080	
+	return (self.pMS * (self.currentSongPosition - timePosition - self.visualOffset) * self.data.scrollSpeed * -1 + -28.6) / 1080

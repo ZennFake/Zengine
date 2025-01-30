@@ -65,7 +65,7 @@ func initiateInputs(conducter):
 	# Init Vars
 	self.conducterObj = conducter
 	self.player = conducterObj.player
-	self.inputOffset = 150
+	self.inputOffset = 0
 	self.pressedKeys = []
 	self.playing = true
 	

@@ -14995,5 +14995,22 @@
             "p": []
         }
     ],
-    "generatedBy": "Friday Night Funkin' - v0.5.3"
+    "meta": {
+		"timeline": [
+			{
+			  "t": 0,
+			  "b": 0,
+			  "bpm": 145,
+			  "n": 4,
+			  "d": 4,
+			  "bt": [
+				4,
+				4,
+				4,
+				4
+			  ]
+			}
+		]
+	},
+	"generatedBy": "Friday Night Funkin' - v0.5.3"
 }

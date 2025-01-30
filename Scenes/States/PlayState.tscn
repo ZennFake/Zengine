@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://blt5pbwjnsdek"]
+[gd_scene load_steps=16 format=3 uid="uid://blt5pbwjnsdek"]
 
 [ext_resource type="PackedScene" uid="uid://cufhq8047j0km" path="res://Assets/Object Scenes/Strumlines.tscn" id="1_2kif4"]
 [ext_resource type="Script" path="res://Scripts/PlayState/PlayStateSignals.gd" id="2_4l2q2"]
@@ -6,12 +6,101 @@
 [ext_resource type="Script" path="res://Scripts/PlayState/inputHandler.gd" id="4_5xmji"]
 [ext_resource type="Script" path="res://Scripts/PlayState/pauseHandler.gd" id="5_p1gj3"]
 [ext_resource type="Script" path="res://Scripts/PlayState/conductor.gd" id="6_3sxgv"]
+[ext_resource type="Script" path="res://Scripts/PlayState/stageHandler.gd" id="6_mghwf"]
 [ext_resource type="Script" path="res://Scripts/PlayState/start.gd" id="7_muios"]
 [ext_resource type="Script" path="res://Scripts/util.gd" id="8_ydm25"]
 [ext_resource type="PackedScene" uid="uid://dsuei2c586evd" path="res://Assets/Object Scenes/Timebar.tscn" id="9_wducd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjdjc"]
 bg_color = Color(0.0640862, 0.0650654, 0.100761, 1)
+
+[sub_resource type="Animation" id="Animation_kyj06"]
+resource_name = "BumpBasic"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.34151, 1),
+"update": 0,
+"values": [Vector2(-16.74, -8.37), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.34151, 1),
+"update": 0,
+"values": [Vector2(1.018, 1.018), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l5dxx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_m2bqu"]
+resource_name = "BumpIntense"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.34151, 1),
+"update": 0,
+"values": [Vector2(-28.698, -14.348), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.34151, 1),
+"update": 0,
+"values": [Vector2(1.03, 1.03), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_11lrw"]
+_data = {
+"BumpBasic": SubResource("Animation_kyj06"),
+"BumpIntense": SubResource("Animation_m2bqu"),
+"RESET": SubResource("Animation_l5dxx")
+}
 
 [node name="MainScene" type="Node2D"]
 
@@ -35,6 +124,9 @@ script = ExtResource("4_5xmji")
 [node name="PauseHandler" type="Node" parent="Scripts/PlayState"]
 script = ExtResource("5_p1gj3")
 
+[node name="StageHandler" type="Node" parent="Scripts/PlayState"]
+script = ExtResource("6_mghwf")
+
 [node name="Conductor" type="Node" parent="Scripts"]
 script = ExtResource("6_3sxgv")
 
@@ -56,6 +148,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wjdjc")
 z_index = 3
 position = Vector2(678, 14)
 
+[node name="BumpAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_11lrw")
+}
+
+[connection signal="Beat" from="Scripts/PlayState" to="Scripts/PlayState/StageHandler" method="beatChanged"]
 [connection signal="Pause" from="Scripts/PlayState" to="Scripts/PlayState/ChartHandler" method="handlePause"]
 [connection signal="Pause" from="Scripts/PlayState" to="Scripts/PlayState/InputHandler" method="pause"]
 [connection signal="Pause" from="Scripts/PlayState" to="Scripts/Conductor" method="pauseMusic"]
@@ -63,5 +161,6 @@ position = Vector2(678, 14)
 [connection signal="cleanupNoteRequest" from="Scripts/PlayState/ChartHandler" to="Scripts/PlayState/ChartHandler" method="cleanupNote"]
 [connection signal="songBegan" from="Scripts/PlayState/ChartHandler" to="Scripts/PlayState/ChartHandler" method="_on_song_began"]
 [connection signal="songBegan" from="Scripts/PlayState/InputHandler" to="Scripts/PlayState/InputHandler" method="initiateInputs"]
+[connection signal="start" from="Scripts/PlayState/StageHandler" to="Scripts/PlayState/StageHandler" method="startSong"]
 [connection signal="songBegan" from="Scripts/Conductor" to="Scripts/Conductor" method="songStarted"]
 [connection signal="songRequested" from="Scripts/Conductor" to="Scripts/Conductor" method="_on_song_requested"]
