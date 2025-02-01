@@ -1,62 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://drvlfp24yywk"]
+[gd_scene load_steps=2 format=3 uid="uid://drvlfp24yywk"]
 
-[ext_resource type="Texture2D" uid="uid://r8cub754wkln" path="res://Assets/User Interface/Play/Scores/bad.png" id="1_xb5nv"]
-[ext_resource type="Texture2D" uid="uid://cdbwi6wwgpd5j" path="res://Assets/User Interface/Play/Scores/good.png" id="2_iglui"]
-[ext_resource type="Texture2D" uid="uid://b7smh1ck63k6h" path="res://Assets/User Interface/Play/Scores/shit.png" id="3_rn0l5"]
-[ext_resource type="Texture2D" uid="uid://bngy7ltpch6kn" path="res://Assets/User Interface/Play/Scores/sick.png" id="4_mu1wg"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_m4xvs"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_xb5nv")
-}],
-"loop": true,
-"name": &"Bad",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_iglui")
-}],
-"loop": true,
-"name": &"Good",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_rn0l5")
-}],
-"loop": true,
-"name": &"Shit",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_mu1wg")
-}],
-"loop": true,
-"name": &"Sick",
-"speed": 5.0
-}]
+[ext_resource type="Script" path="res://Scripts/PlayState/scoreUiHandler.gd" id="1_ibtkb"]
 
 [node name="Score" type="Node2D"]
+script = ExtResource("1_ibtkb")
 
 [node name="Spawn" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 offset_right = 353.0
 offset_bottom = 362.0
 
-[node name="BaseRank" type="AnimatedSprite2D" parent="Spawn"]
-visible = false
-position = Vector2(178, 100)
-sprite_frames = SubResource("SpriteFrames_m4xvs")
-animation = &"Sick"
-
-[node name="RankSpawn" type="Panel" parent="Spawn"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 156.0
-offset_top = 79.0
-offset_right = 196.0
-offset_bottom = 119.0
+[connection signal="newScore" from="." to="." method="scoreNew"]
