@@ -4,14 +4,15 @@ extends Node
 
 ## // SIGNALS // ##
 
-signal start
-
 ## // TYPES // ##
 
 ## // VARIABLES // ##
 
-@onready var stage = get_parent().get_parent().get_parent()
+@onready var root = get_parent().get_parent().get_parent()
+
 var conductor
+var metaData
+var stage
 
 ## // FUNCTIONS // ##
 
@@ -19,12 +20,27 @@ var conductor
 func startSong(conductorObject):
 	# Init vars
 	self.conductor = conductorObject
+	self.metaData = self.conductor["meta"]
+	
+	var stageString : String = self.metaData["stage"]
+	
+	var stageWeek = stageString.split("/")
+	var stagePath = "res://Assets/Object Scenes/Stages/" + stageWeek[0] + "/" + stageWeek[1] + ".tscn"
+	
+	var packedStageScene : PackedScene = load(stagePath)
+	
+	self.stage = packedStageScene.instantiate()
+	
+	root.add_child(self.stage)
+	
+	
+	
 	
 func beatChanged(beatMajor, beat):
-	self.stage.get_node("BumpAnimator").stop()
+	self.root.get_node("BumpAnimator").stop()
 	if beatMajor:
-		self.stage.get_node("BumpAnimator").play("BumpIntense")
+		self.root.get_node("BumpAnimator").play("BumpIntense")
 	else:
-		self.stage.get_node("BumpAnimator").play("BumpBasic")
+		self.root.get_node("BumpAnimator").play("BumpBasic")
 
 ## // OBJECT FUNCTIONS // ##

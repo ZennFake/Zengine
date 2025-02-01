@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://db1t3iu16acd8"]
+
+[ext_resource type="Texture2D" uid="uid://dru0topbugrof" path="res://Assets/Temp Assets/OUw2Vg.png" id="1_u7cif"]
+[ext_resource type="Texture2D" uid="uid://c3j3yo7d0smyv" path="res://Assets/Object Scenes/Stages/Tutorial/Assets/Images/stagefront.png" id="2_mdnif"]
+[ext_resource type="Texture2D" uid="uid://chqp48cus6rtm" path="res://Assets/Object Scenes/Stages/Tutorial/Assets/Images/stageback.png" id="3_yrlxy"]
+[ext_resource type="Texture2D" uid="uid://h7degvm7btxt" path="res://Assets/Object Scenes/Stages/Tutorial/Assets/Images/stagecurtains.png" id="4_br3u1"]
+
+[node name="Stage" type="Node2D"]
+
+[node name="StageAssets" type="Node2D" parent="."]
+
+[node name="OUw2Vg" type="Sprite2D" parent="StageAssets"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.419608)
+z_index = 8
+position = Vector2(961.75, 541.75)
+scale = Vector2(2.01525, 2.01955)
+texture = ExtResource("1_u7cif")
+offset = Vector2(86.845, -4.77)
+
+[node name="Front" type="Parallax2D" parent="StageAssets"]
+
+[node name="Stagefront" type="Sprite2D" parent="StageAssets/Front"]
+position = Vector2(1016.75, 1084)
+scale = Vector2(1.58262, 1.58262)
+texture = ExtResource("2_mdnif")
+
+[node name="Stageback" type="Sprite2D" parent="StageAssets/Front"]
+z_index = -1
+position = Vector2(918.749, 439)
+scale = Vector2(1.35286, 1.35286)
+texture = ExtResource("3_yrlxy")
+
+[node name="Back" type="Parallax2D" parent="StageAssets"]
+scroll_scale = Vector2(0.685, 0.685)
+
+[node name="Stagecurtains" type="Sprite2D" parent="StageAssets/Back"]
+z_index = 1
+position = Vector2(993, 250)
+scale = Vector2(1.09714, 1.09714)
+texture = ExtResource("4_br3u1")
+
+[node name="StageCamera" type="Camera2D" parent="."]
+position = Vector2(956, 542)
+
+[node name="Spawns" type="Node2D" parent="."]
+
+[node name="p2" type="Node2D" parent="Spawns"]
+position = Vector2(1276, 678)
+
+[node name="gf" type="Node2D" parent="Spawns"]
+position = Vector2(924, 453)
+
+[node name="p1" type="Node2D" parent="Spawns"]
+position = Vector2(161, 678)

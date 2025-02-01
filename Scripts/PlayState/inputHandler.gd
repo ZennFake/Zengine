@@ -3,8 +3,6 @@ extends Node
 
 ## // SIGNALS // ##
 
-signal songBegan
-
 ## // TYPES // ##
 
 """

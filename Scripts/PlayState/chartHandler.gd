@@ -3,8 +3,6 @@ extends Node
 
 ## // SIGNALS // ##
 
-signal chartRequest
-signal songBegan
 signal cleanupNoteRequest
 
 ## // TYPES // ##
@@ -55,10 +53,9 @@ func initiateChart(conducter):
 	self.assetsToMove = []
 	self.currentSongPosition = 0
 	
-	return self
 
 # Start the song
-func _on_song_began():
+func songBegan(_s):
 	self.songRunning = true
 
 # Updates the chart every frame

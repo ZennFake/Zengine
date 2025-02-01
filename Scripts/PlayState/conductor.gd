@@ -45,16 +45,14 @@ func _on_song_requested(SongInfo):
 	
 	self.songDataPath = "res://Songs/" + SongInfo["Week"] + "/" + SongInfo["Song"] + "/Song.json"
 	self.player = SongInfo["Player"]
-	self.songPlaying = true
 	
 	# Setup data
 	
 	self.songData = util.readJson(self.songDataPath)
-	
+	self.meta = self.songData["meta"]
+	self.timeline = self.meta["timeline"]
 	
 	self.chartData = util.readJson(self.songData["Chart Data"])
-	self.meta = self.chartData["meta"]
-	self.timeline = self.meta["timeline"]
 	
 	self.bpm = 0
 	self.msPerBeat = 0
@@ -63,7 +61,9 @@ func _on_song_requested(SongInfo):
 	self.beat = 0
 	
 	self.loadMusic()
-	chartHandler.emit_signal("chartRequest", self)
+	playState.emit_signal("Initiate", self)
+	
+	#await self.stageHandler.loaded
 	
 	self.emit_signal("songBegan")
 	
@@ -72,6 +72,8 @@ func _on_song_requested(SongInfo):
 	$".".emit_signal("songEnded")
 	
 ## // OBJECT FUNCTION // ##
+
+	
 
 # Updates the time of the timebar every frame
 func _process(delta: float):
@@ -130,5 +132,6 @@ func songStarted():
 		songObject.play()
 	
 	# Initiate play state modules
-	chartHandler.emit_signal("songBegan")
-	inputHandler.emit_signal("songBegan", self)
+	playState.emit_signal("Start", self)
+	
+	self.songPlaying = true

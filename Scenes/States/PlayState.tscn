@@ -160,13 +160,13 @@ libraries = {
 position = Vector2(899, 309)
 
 [connection signal="Beat" from="Scripts/PlayState" to="Scripts/PlayState/StageHandler" method="beatChanged"]
+[connection signal="Initiate" from="Scripts/PlayState" to="Scripts/PlayState/ChartHandler" method="initiateChart"]
 [connection signal="Pause" from="Scripts/PlayState" to="Scripts/PlayState/ChartHandler" method="handlePause"]
 [connection signal="Pause" from="Scripts/PlayState" to="Scripts/PlayState/InputHandler" method="pause"]
 [connection signal="Pause" from="Scripts/PlayState" to="Scripts/Conductor" method="pauseMusic"]
-[connection signal="chartRequest" from="Scripts/PlayState/ChartHandler" to="Scripts/PlayState/ChartHandler" method="initiateChart"]
+[connection signal="Start" from="Scripts/PlayState" to="Scripts/PlayState/ChartHandler" method="songBegan"]
+[connection signal="Start" from="Scripts/PlayState" to="Scripts/PlayState/InputHandler" method="initiateInputs"]
+[connection signal="Start" from="Scripts/PlayState" to="Scripts/PlayState/StageHandler" method="startSong"]
 [connection signal="cleanupNoteRequest" from="Scripts/PlayState/ChartHandler" to="Scripts/PlayState/ChartHandler" method="cleanupNote"]
-[connection signal="songBegan" from="Scripts/PlayState/ChartHandler" to="Scripts/PlayState/ChartHandler" method="_on_song_began"]
-[connection signal="songBegan" from="Scripts/PlayState/InputHandler" to="Scripts/PlayState/InputHandler" method="initiateInputs"]
-[connection signal="start" from="Scripts/PlayState/StageHandler" to="Scripts/PlayState/StageHandler" method="startSong"]
 [connection signal="songBegan" from="Scripts/Conductor" to="Scripts/Conductor" method="songStarted"]
 [connection signal="songRequested" from="Scripts/Conductor" to="Scripts/Conductor" method="_on_song_requested"]

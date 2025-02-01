@@ -4,5 +4,15 @@
 	"Audio Tracks": {
 		"Inst": "res://Songs/BKDisaster/BKDisaster/Inst.ogg",
 		"Voices": "res://Songs/BKDisaster/BKDisaster/Voices.ogg"
-	}
+	},
+	"meta": {
+		"p1": "Boyfriend",
+		"stage": "Tutorial/Stage",
+		"timeline": [
+		  {
+			  "t": 0,
+			  "bpm": 122
+		  }
+		],
+	},
 }
