@@ -40,9 +40,6 @@ position = Vector2(993, 250)
 scale = Vector2(1.09714, 1.09714)
 texture = ExtResource("4_br3u1")
 
-[node name="StageCamera" type="Camera2D" parent="."]
-position = Vector2(956, 542)
-
 [node name="Spawns" type="Node2D" parent="."]
 
 [node name="p2" type="Node2D" parent="Spawns"]

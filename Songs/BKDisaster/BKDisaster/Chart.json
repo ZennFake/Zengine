@@ -5042,13 +5042,5 @@
         "k": "normal"
       }
   ],
-  "meta": {
-	  "timeline": [
-		  {
-			  "t": 0,
-			  "bpm": 122
-		  }
-	  ],
-  },
   "generatedBy": "Friday Night Funkin' - v0.3.2"
 }

@@ -44,6 +44,7 @@ var rankPoints = [ # 4 - Sick 3 - Good 2 - Ok, 1 - Horrible
 var rankOffset = 0
 
 @onready var Root = get_parent().get_parent().get_parent()
+@onready var UI = Root.get_node("UILock").get_node("UI")
 @onready var chartHandler = get_parent().get_node("ChartHandler")
 
 ## // FUNCTIONS // ##
@@ -94,10 +95,10 @@ func inputBegan(inputLane):
 	
 	var hit = checkHit(inputLane)
 	
-	var keyLanes : Node2D = Root.get_node("PlayerLanes")
+	var keyLanes : Node2D = UI.get_node("PlayerLanes")
 	
 	if self.player == 1:
-		keyLanes = Root.get_node("EnemyLanes")
+		keyLanes = UI.get_node("EnemyLanes")
 	
 	if not keyLanes:
 		print("LANE NOT FOUND FOR KEY")
@@ -118,7 +119,7 @@ func inputEnded(inputLane):
 		
 		self.pressedKeys.remove_at(self.pressedKeys.find(inputLane))
 		
-		var keyLanes : Node2D = Root.get_node("PlayerLanes")
+		var keyLanes : Node2D = UI.get_node("PlayerLanes")
 	
 		if self.player == 1:
 			keyLanes = Root.get_node("EnemyLanes")
@@ -157,5 +158,5 @@ func checkHit(lane):
 			if closestNote.Data.l == 0:
 				notes.remove_at(notes.find(closestNote))
 			self.chartHandler.emit_signal("cleanupNoteRequest", closestNote, true)
-			Root.get_node("Score").emit_signal("newScore", result)
+			UI.get_node("Score").emit_signal("newScore", result)
 			return true

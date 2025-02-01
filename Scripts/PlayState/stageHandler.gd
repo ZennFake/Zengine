@@ -9,6 +9,7 @@ extends Node
 ## // VARIABLES // ##
 
 @onready var root = get_parent().get_parent().get_parent()
+@onready var UI = root.get_node("UILock").get_node("UI")
 
 var conductor
 var metaData
@@ -37,10 +38,10 @@ func startSong(conductorObject):
 	
 	
 func beatChanged(beatMajor, beat):
-	self.root.get_node("BumpAnimator").stop()
+	self.UI.get_node("BumpAnimator").stop()
 	if beatMajor:
-		self.root.get_node("BumpAnimator").play("BumpIntense")
+		self.UI.get_node("BumpAnimator").play("BumpIntense")
 	else:
-		self.root.get_node("BumpAnimator").play("BumpBasic")
+		self.UI.get_node("BumpAnimator").play("BumpBasic")
 
 ## // OBJECT FUNCTIONS // ##

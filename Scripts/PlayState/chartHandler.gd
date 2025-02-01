@@ -34,6 +34,7 @@ var songRunning : bool
 var currentSongPosition
 
 @onready var Root = get_parent().get_parent().get_parent()
+@onready var UI = Root.get_node("UILock").get_node("UI")
 
 ## // FUNCTIONS // ##
 
@@ -71,12 +72,12 @@ func handlePause(paused):
 ## Gets the lane of the note with the given note data
 func GetLane(noteData):
 	
-	var lane = Root.get_node("PlayerLanes").has_node(str(noteData.d))
+	var lane = UI.get_node("PlayerLanes").has_node(str(noteData.d))
 	
 	if not lane:
-		lane = Root.get_node("EnemyLanes").get_node(str(noteData.d - 4))
+		lane = UI.get_node("EnemyLanes").get_node(str(noteData.d - 4))
 	else:
-		lane = Root.get_node("PlayerLanes").get_node(str(noteData.d))
+		lane = UI.get_node("PlayerLanes").get_node(str(noteData.d))
 		
 	return lane
 	
@@ -127,10 +128,10 @@ func checkIfNoteIsValid(noteAssetObject):
 func handleEnemyNote(noteAssetObject : Dictionary):
 	
 	# Get the notes lane
-	var keyLanes : Node2D = Root.get_node("PlayerLanes")
+	var keyLanes : Node2D = UI.get_node("PlayerLanes")
 	
 	if self.conducterObj.player == 2:
-		keyLanes = Root.get_node("EnemyLanes")
+		keyLanes = UI.get_node("EnemyLanes")
 	
 	if not keyLanes:
 		print("LANE NOT FOUND FOR KEY")
@@ -226,7 +227,7 @@ func updateChart(dt : float):
 			note.BarAsset.size = Vector2(55, (self.getNoteY(note.Data.t + note.Data.l)  * 1080) - note.Asset.position.y)
 			note.BarAsset.get_node("BarEnding").position = Vector2(1, note.BarAsset.size.y)
 			
-			if note.BarAsset.get_node("BarEnding").position.y / 1080 < -0.1:
+			if self.getNoteY(note.Data.t + note.Data.l) < -0.1:
 				self.cleanupNote(note)
 			
 			continue

@@ -20,7 +20,7 @@ resource_name = "BumpBasic"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("UILock/UI:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -32,7 +32,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
+tracks/1/path = NodePath("UILock/UI:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -47,7 +47,7 @@ resource_name = "BumpIntense"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("UILock/UI:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -59,7 +59,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
+tracks/1/path = NodePath("UILock/UI:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -74,7 +74,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("UILock/UI:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -86,7 +86,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
+tracks/1/path = NodePath("UILock/UI:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -104,14 +104,8 @@ _data = {
 }
 
 [node name="MainScene" type="Node2D"]
-
-[node name="EnemyLanes" parent="." instance=ExtResource("1_2kif4")]
-z_index = 1
-position = Vector2(93.715, 1)
-
-[node name="PlayerLanes" parent="." instance=ExtResource("1_2kif4")]
-z_index = 1
-position = Vector2(1155.59, 1)
+position = Vector2(-28.698, -14.348)
+scale = Vector2(1.03, 1.03)
 
 [node name="Scripts" type="Node" parent="."]
 
@@ -139,7 +133,26 @@ script = ExtResource("7_muios")
 [node name="Util" type="Node" parent="Scripts"]
 script = ExtResource("8_ydm25")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(27.8621, 13.9301)
+offset = Vector2(960, 540)
+
+[node name="UILock" type="CanvasGroup" parent="."]
+position = Vector2(28.205, 14.94)
+scale = Vector2(0.97, 0.97)
+
+[node name="UI" type="CanvasGroup" parent="UILock"]
+self_modulate = Color(1, 1, 1, 0)
+
+[node name="EnemyLanes" parent="UILock/UI" instance=ExtResource("1_2kif4")]
+z_index = 1
+position = Vector2(93.715, 1)
+
+[node name="PlayerLanes" parent="UILock/UI" instance=ExtResource("1_2kif4")]
+z_index = 1
+position = Vector2(1155.59, 1)
+
+[node name="Panel" type="Panel" parent="UILock/UI"]
 z_index = -3
 offset_left = -3.0
 offset_top = -3.0
@@ -147,16 +160,17 @@ offset_right = 1924.0
 offset_bottom = 1084.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_wjdjc")
 
-[node name="Timebar" parent="." instance=ExtResource("9_wducd")]
+[node name="Timebar" parent="UILock/UI" instance=ExtResource("9_wducd")]
 z_index = 3
 position = Vector2(678, 14)
 
-[node name="BumpAnimator" type="AnimationPlayer" parent="."]
+[node name="BumpAnimator" type="AnimationPlayer" parent="UILock/UI"]
+root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_11lrw")
 }
 
-[node name="Score" parent="." instance=ExtResource("11_5dg4a")]
+[node name="Score" parent="UILock/UI" instance=ExtResource("11_5dg4a")]
 position = Vector2(899, 309)
 
 [connection signal="Beat" from="Scripts/PlayState" to="Scripts/PlayState/StageHandler" method="beatChanged"]

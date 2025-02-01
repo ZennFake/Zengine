@@ -26,13 +26,14 @@ var songTracks : Dictionary
 
 ## // SCRIPTS // ##
 @onready var playState = get_parent().get_node("PlayState")
+@onready var UI = get_parent().get_parent().get_node("UILock").get_node("UI")
 
 @onready var util = get_parent().get_node("Util")
 @onready var chartHandler = playState.get_node("ChartHandler")
 @onready var inputHandler = playState.get_node("InputHandler")
 @onready var stageHandler = playState.get_node("StageHandler")
 
-@onready var timebarHandler = get_parent().get_parent().get_node("Timebar")
+@onready var timebarHandler = UI.get_node("Timebar")
 
 ## // FUNCTIONS // ##
 
