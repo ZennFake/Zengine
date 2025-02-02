@@ -1,6 +1,5 @@
-[gd_scene load_steps=17 format=3 uid="uid://blt5pbwjnsdek"]
+[gd_scene load_steps=10 format=3 uid="uid://blt5pbwjnsdek"]
 
-[ext_resource type="PackedScene" uid="uid://cufhq8047j0km" path="res://Assets/Object Scenes/Strumlines.tscn" id="1_2kif4"]
 [ext_resource type="Script" path="res://Scripts/PlayState/PlayStateSignals.gd" id="2_4l2q2"]
 [ext_resource type="Script" path="res://Scripts/PlayState/chartHandler.gd" id="3_1ijkg"]
 [ext_resource type="Script" path="res://Scripts/PlayState/inputHandler.gd" id="4_5xmji"]
@@ -9,99 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/PlayState/stageHandler.gd" id="6_mghwf"]
 [ext_resource type="Script" path="res://Scripts/PlayState/start.gd" id="7_muios"]
 [ext_resource type="Script" path="res://Scripts/util.gd" id="8_ydm25"]
-[ext_resource type="PackedScene" uid="uid://dsuei2c586evd" path="res://Assets/Object Scenes/Timebar.tscn" id="9_wducd"]
-[ext_resource type="PackedScene" uid="uid://drvlfp24yywk" path="res://Assets/Object Scenes/Score.tscn" id="11_5dg4a"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjdjc"]
-bg_color = Color(0.0640862, 0.0650654, 0.100761, 1)
-
-[sub_resource type="Animation" id="Animation_kyj06"]
-resource_name = "BumpBasic"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UILock/UI:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.34151, 1),
-"update": 0,
-"values": [Vector2(-16.74, -8.37), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UILock/UI:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.34151, 1),
-"update": 0,
-"values": [Vector2(1.018, 1.018), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_m2bqu"]
-resource_name = "BumpIntense"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UILock/UI:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.34151, 1),
-"update": 0,
-"values": [Vector2(-28.698, -14.348), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UILock/UI:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.34151, 1),
-"update": 0,
-"values": [Vector2(1.03, 1.03), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_l5dxx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UILock/UI:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UILock/UI:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_11lrw"]
-_data = {
-"BumpBasic": SubResource("Animation_kyj06"),
-"BumpIntense": SubResource("Animation_m2bqu"),
-"RESET": SubResource("Animation_l5dxx")
-}
+[ext_resource type="PackedScene" uid="uid://bjq3edcpdjqpw" path="res://Assets/Object Scenes/playstateUI.tscn" id="9_1dueu"]
 
 [node name="MainScene" type="Node2D"]
 position = Vector2(-28.698, -14.348)
@@ -137,41 +44,7 @@ script = ExtResource("8_ydm25")
 position = Vector2(27.8621, 13.9301)
 offset = Vector2(960, 540)
 
-[node name="UILock" type="CanvasGroup" parent="."]
-position = Vector2(28.205, 14.94)
-scale = Vector2(0.97, 0.97)
-
-[node name="UI" type="CanvasGroup" parent="UILock"]
-self_modulate = Color(1, 1, 1, 0)
-
-[node name="EnemyLanes" parent="UILock/UI" instance=ExtResource("1_2kif4")]
-z_index = 1
-position = Vector2(93.715, 1)
-
-[node name="PlayerLanes" parent="UILock/UI" instance=ExtResource("1_2kif4")]
-z_index = 1
-position = Vector2(1155.59, 1)
-
-[node name="Panel" type="Panel" parent="UILock/UI"]
-z_index = -3
-offset_left = -3.0
-offset_top = -3.0
-offset_right = 1924.0
-offset_bottom = 1084.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_wjdjc")
-
-[node name="Timebar" parent="UILock/UI" instance=ExtResource("9_wducd")]
-z_index = 3
-position = Vector2(678, 14)
-
-[node name="BumpAnimator" type="AnimationPlayer" parent="UILock/UI"]
-root_node = NodePath("../../..")
-libraries = {
-"": SubResource("AnimationLibrary_11lrw")
-}
-
-[node name="Score" parent="UILock/UI" instance=ExtResource("11_5dg4a")]
-position = Vector2(899, 309)
+[node name="UILock" parent="." instance=ExtResource("9_1dueu")]
 
 [connection signal="Beat" from="Scripts/PlayState" to="Scripts/PlayState/StageHandler" method="beatChanged"]
 [connection signal="Initiate" from="Scripts/PlayState" to="Scripts/PlayState/ChartHandler" method="initiateChart"]

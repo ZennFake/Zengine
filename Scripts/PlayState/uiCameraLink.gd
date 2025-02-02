@@ -1,6 +1,6 @@
 ## // SPRITE // ##
 
-extends CanvasGroup
+extends Panel
 
 ## // SIGNALS // ##
 
@@ -8,12 +8,12 @@ extends CanvasGroup
 
 ## // VARIABLES // ##
 
+@onready var camera : Camera2D = get_parent().get_node("Camera2D")
+
 ## // FUNCTIONS // ##
 
 func _process(delta):
-	$".".position = get_parent().get_node("Camera2D").offset - Vector2(960, 540)
-	var x = (get_parent().get_node("Camera2D").zoom).x - 1
-	var y = (get_parent().get_node("Camera2D").zoom).y - 1
-	$".".scale = Vector2(0.97 - x, 0.97 - y)
+	$".".position = camera.offset
+	$".".scale = Vector2(1, 1) - (Vector2((camera.zoom.x - 1) / 2, (camera.zoom.y - 1) / 2))
 	
 ## // OBJECT FUNCTIONS // ##
