@@ -6,6 +6,7 @@ extends Node
 
 signal noteHitSignal
 signal noteEndedSignal
+signal focusCamSignal
 
 ## // TYPES // ##
 
@@ -118,6 +119,21 @@ func noteEnded(player, Direction):
 	characterList[string]["keysPressing"].remove_at(characterList[string]["keysPressing"].find(Direction))
 	if len(characterList[string]["keysPressing"]) == 0:
 		characterList[string]["notePressing"] = false
+		
+
+func FocusCamera(v):
+	v = v["char"]
+	var characterString = "p"
+	if v == 0:
+		characterString += "2"
+	else:
+		characterString += "1"
+	var characterAsset = characterList[characterString]["sprite"]
 	
+	var cameraTween = get_tree().create_tween()
+	cameraTween.set_ease(Tween.EASE_OUT)
+	cameraTween.set_trans(Tween.TRANS_EXPO)
+	cameraTween.tween_property(Camera, "offset", characterAsset.position - Vector2(0, 300), 2)
+	cameraTween.play()
 
 ## // OBJECT FUNCTIONS // ##

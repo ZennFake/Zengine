@@ -256,6 +256,17 @@ func updateChart(dt : float):
 		if note.Asset.position.y / 1080 < -0.1:
 			self.cleanupNote(note)
 		
+		# Update events
+		
+		for event in self.conducterObj.events:
+			if event.t <= currentSongPosition:
+				# Remove event and fire event handler
+				self.conducterObj.events.remove_at(self.conducterObj.events.find(event))
+				
+				# TODO: MAKE AN EVENT MANAGER
+				
+				if event.e == "FocusCamera":
+					stageHandler.emit_signal("focusCamSignal", event.v)
 
 # Calculates the notes Y position
 func getNoteY(timePosition):

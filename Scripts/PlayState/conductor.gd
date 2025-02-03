@@ -23,6 +23,7 @@ var deltaSinceLastBeat : float
 var majorBeatTime : int
 
 var songTracks : Dictionary
+var events : Array
 
 ## // SCRIPTS // ##
 @onready var playState = get_parent().get_node("PlayState")
@@ -54,6 +55,7 @@ func _on_song_requested(SongInfo):
 	self.timeline = self.meta["timeline"]
 	
 	self.chartData = util.readJson(self.songData["Chart Data"])
+	self.events = self.chartData["events"] 
 	
 	self.bpm = 0
 	self.msPerBeat = 0
