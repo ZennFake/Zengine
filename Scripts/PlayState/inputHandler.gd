@@ -41,11 +41,23 @@ var rankPoints = [ # 4 - Sick 3 - Good 2 - Ok, 1 - Horrible
 	9
 ]
 
+var laneToDir = [
+	"Left",
+	"Down",
+	"Up",
+	"Right",
+	"Left",
+	"Down",
+	"Up",
+	"Right"
+]
+
 var rankOffset = 0
 
 @onready var Root = get_parent().get_parent().get_parent()
 @onready var UI = Root.get_node("UILock").get_node("UI")
 @onready var chartHandler = get_parent().get_node("ChartHandler")
+@onready var stageHandler = get_parent().get_node("StageHandler")
 
 ## // FUNCTIONS // ##
 
@@ -109,8 +121,10 @@ func inputBegan(inputLane):
 	
 	if hit:
 		key.play("PressHit")
+		stageHandler.emit_signal("noteHitSignal", laneToDir[inputLane])
 	else:
 		key.play("Press")
+		stageHandler.emit_signal("noteHitSignal", laneToDir[inputLane])
 	
 # Unpresses the key and updates the animation
 func inputEnded(inputLane):
@@ -128,6 +142,8 @@ func inputEnded(inputLane):
 		var key : AnimatedSprite2D = lane.get_node("Key")
 	
 		key.play("Idle")
+		
+		stageHandler.emit_signal("noteEndedSignal", laneToDir[inputLane])
 
 # Checks if any notes are able to be pressed
 func checkHit(lane):
@@ -159,4 +175,7 @@ func checkHit(lane):
 				notes.remove_at(notes.find(closestNote))
 			self.chartHandler.emit_signal("cleanupNoteRequest", closestNote, true)
 			UI.get_node("Score").emit_signal("newScore", result)
-			return true
+			
+			return [true, closestNote]
+			
+	

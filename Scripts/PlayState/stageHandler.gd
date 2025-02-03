@@ -4,6 +4,9 @@ extends Node
 
 ## // SIGNALS // ##
 
+signal noteHitSignal
+signal noteEndedSignal
+
 ## // TYPES // ##
 
 ## // VARIABLES // ##
@@ -33,7 +36,11 @@ func createPlayer(playerString, characterName):
 	if playerString == "p2":
 		character.get_node("Sprite").flip_h = not character.get_node("Sprite").flip_h
 	
-	self.characterList[playerString] = character
+	self.characterList[playerString] = {
+		notePressing = false,
+		keysPressing = [],
+		sprite = character
+	}
 	
 
 # Starts the stage manager
@@ -79,8 +86,36 @@ func beatChanged(beatMajor, beat):
 	# Character Bot
 	
 	for playerString in characterList:
-		var character = characterList[playerString]
+		if characterList[playerString]["notePressing"]:
+			continue
+		var character = characterList[playerString]["sprite"]
 		character.get_node("Sprite").stop()
 		character.get_node("Sprite").play("Idle")
+
+func noteHit(Direction):
+	
+	var string = "p" + str(self.conductor.player)
+	
+	if not characterList.has(string):
+		print("CHARACTER NOT FOUND")
+		return
+	
+	characterList[string]["sprite"].get_node("Sprite").stop()
+	characterList[string]["sprite"].get_node("Sprite").play(Direction)
+	characterList[string]["notePressing"] = true
+	characterList[string]["keysPressing"].append(Direction)
+
+func noteEnded(Direction):
+	
+	var string = "p" + str(self.conductor.player)
+	
+	if not characterList.has(string):
+		print("CHARACTER NOT FOUND")
+		return
+		
+	characterList[string]["keysPressing"].remove_at(characterList[string]["keysPressing"].find(Direction))
+	if len(characterList[string]["keysPressing"]) == 0:
+		characterList[string]["notePressing"] = false
+	
 
 ## // OBJECT FUNCTIONS // ##
