@@ -64,8 +64,10 @@ func startSong(conductorObject):
 	
 	if self.metaData.has("p1"):
 		createPlayer("p1", self.metaData["p1"])
-		
-	createPlayer("p2", self.metaData["p2"])
+	
+	
+	if self.metaData.has("p2"):
+		createPlayer("p2", self.metaData["p2"])
 	
 	
 func beatChanged(beatMajor, beat):
