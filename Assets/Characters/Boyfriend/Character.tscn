@@ -1,0 +1,96 @@
+[gd_scene load_steps=15 format=3 uid="uid://tu5l850xknmb"]
+
+[ext_resource type="Texture2D" uid="uid://b0tk0mkswmp2b" path="res://Assets/Characters/Boyfriend/ImageAssets/BoyFriend_Assets-BF NOTE DOWN0000-0.png" id="1_ulgr0"]
+[ext_resource type="Texture2D" uid="uid://civqrh6i65i15" path="res://Assets/Characters/Boyfriend/ImageAssets/BoyFriend_Assets-BF NOTE DOWN0002-2.png" id="2_ojl23"]
+[ext_resource type="Texture2D" uid="uid://bm68l33cwp01a" path="res://Assets/Characters/Boyfriend/ImageAssets/BoyFriend_Assets-BF idle dance0000-122.png" id="3_233dj"]
+[ext_resource type="Texture2D" uid="uid://bpf8mlefel4s6" path="res://Assets/Characters/Boyfriend/ImageAssets/BoyFriend_Assets-BF idle dance0002-124.png" id="4_han8o"]
+[ext_resource type="Texture2D" uid="uid://bsex13g7xkvxe" path="res://Assets/Characters/Boyfriend/ImageAssets/BoyFriend_Assets-BF idle dance0004-126.png" id="5_3f8ms"]
+[ext_resource type="Texture2D" uid="uid://dirmr7c70vp4v" path="res://Assets/Characters/Boyfriend/ImageAssets/BoyFriend_Assets-BF idle dance0006-128.png" id="6_k7fo6"]
+[ext_resource type="Texture2D" uid="uid://3rlcd0dh314" path="res://Assets/Characters/Boyfriend/ImageAssets/BoyFriend_Assets-BF idle dance0008-130.png" id="7_huy2n"]
+[ext_resource type="Texture2D" uid="uid://bvqy4h4vbuc3e" path="res://Assets/Characters/Boyfriend/ImageAssets/BoyFriend_Assets-BF NOTE LEFT0000-30.png" id="8_lno6f"]
+[ext_resource type="Texture2D" uid="uid://bbf06iejmq4s2" path="res://Assets/Characters/Boyfriend/ImageAssets/BoyFriend_Assets-BF NOTE LEFT0002-32.png" id="9_ltjsi"]
+[ext_resource type="Texture2D" uid="uid://bx5p3lnxaihop" path="res://Assets/Characters/Boyfriend/ImageAssets/BoyFriend_Assets-BF NOTE RIGHT0000-45.png" id="10_4ay1y"]
+[ext_resource type="Texture2D" uid="uid://bmi4bc4qef4lf" path="res://Assets/Characters/Boyfriend/ImageAssets/BoyFriend_Assets-BF NOTE RIGHT0002-47.png" id="11_bv568"]
+[ext_resource type="Texture2D" uid="uid://3md34w7o87fj" path="res://Assets/Characters/Boyfriend/ImageAssets/BoyFriend_Assets-BF NOTE UP0000-107.png" id="12_crv8i"]
+[ext_resource type="Texture2D" uid="uid://br1nwob4c5gw5" path="res://Assets/Characters/Boyfriend/ImageAssets/BoyFriend_Assets-BF NOTE UP0002-109.png" id="13_hl6jr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ee2vr"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("1_ulgr0")
+}, {
+"duration": 28.0,
+"texture": ExtResource("2_ojl23")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("3_233dj")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_han8o")
+}, {
+"duration": 2.0,
+"texture": ExtResource("5_3f8ms")
+}, {
+"duration": 2.0,
+"texture": ExtResource("6_k7fo6")
+}, {
+"duration": 6.0,
+"texture": ExtResource("7_huy2n")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("8_lno6f")
+}, {
+"duration": 13.0,
+"texture": ExtResource("9_ltjsi")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("10_4ay1y")
+}, {
+"duration": 60.0,
+"texture": ExtResource("11_bv568")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("12_crv8i")
+}, {
+"duration": 13.0,
+"texture": ExtResource("13_hl6jr")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 24.0
+}]
+
+[node name="Character" type="Node2D"]
+z_index = 3
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(199, 183)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_ee2vr")
+animation = &"Right"
+frame = 1
+frame_progress = 0.839363
+centered = false
+flip_h = true
+flip_v = true

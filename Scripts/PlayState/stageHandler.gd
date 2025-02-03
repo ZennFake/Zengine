@@ -17,6 +17,19 @@ var stage
 
 ## // FUNCTIONS // ##
 
+func createPlayer(playerString, characterName):
+	var spawn = self.stage.get_node("Spawns").get_node(playerString)
+	var characterPathString = "res://Assets/Characters/" + characterName + "/Character.tscn"
+	print("res://Assets/Characters/" + characterName + "/Character.tscn")
+	
+	characterPathString = load(characterPathString)
+	var character = characterPathString.instantiate()
+	
+	spawn.add_child(character)
+	character.position = spawn.position
+	
+	
+
 # Starts the stage manager
 func startSong(conductorObject):
 	# Init vars
@@ -34,7 +47,7 @@ func startSong(conductorObject):
 	
 	root.add_child(self.stage)
 	
-	
+	createPlayer("p2", self.metaData["p2"])
 	
 	
 func beatChanged(beatMajor, beat):

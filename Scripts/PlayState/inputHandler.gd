@@ -122,7 +122,7 @@ func inputEnded(inputLane):
 		var keyLanes : Node2D = UI.get_node("PlayerLanes")
 	
 		if self.player == 1:
-			keyLanes = Root.get_node("EnemyLanes")
+			keyLanes = UI.get_node("EnemyLanes")
 			
 		var lane : Panel = keyLanes.get_node(str(inputLane))
 		var key : AnimatedSprite2D = lane.get_node("Key")
