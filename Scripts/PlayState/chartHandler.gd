@@ -33,8 +33,20 @@ var songRunning : bool
 
 var currentSongPosition
 
+var laneToDir = [
+	"Left",
+	"Down",
+	"Up",
+	"Right",
+	"Left",
+	"Down",
+	"Up",
+	"Right"
+]
+
 @onready var Root = get_parent().get_parent().get_parent()
 @onready var UI = Root.get_node("UILock").get_node("UI")
+@onready var stageHandler = get_parent().get_node("StageHandler")
 
 ## // FUNCTIONS // ##
 
@@ -138,8 +150,11 @@ func handleEnemyNote(noteAssetObject : Dictionary):
 		return
 		
 	var laneInput = noteAssetObject.Data.d
+	var player = 2
+	
 	
 	if self.conducterObj.player == 2:
+		player = 1
 		laneInput -= 4
 	
 	# Get the lanes key for animation
@@ -151,13 +166,19 @@ func handleEnemyNote(noteAssetObject : Dictionary):
 	
 	# Cleanup and unpressing
 	if noteAssetObject.Data.l == 0: # Normal note
+		var dir = laneToDir[noteAssetObject.Data.d]
+		stageHandler.emit_signal("noteHitSignal", player, dir)
 		self.assetsToMove.remove_at(self.assetsToMove.find(noteAssetObject))
 		cleanupNote(noteAssetObject, true)
 		await get_tree().create_timer(0.1).timeout # wait 0.1 seconds to clean animation
+		stageHandler.emit_signal("noteEndedSignal", player, dir)
 		key.play("Idle")
 	else: # Bar note
+		var dir = laneToDir[noteAssetObject.Data.d]
 		cleanupNote(noteAssetObject, true)
+		stageHandler.emit_signal("noteHitSignal", player, dir)
 		await get_tree().create_timer(noteAssetObject.Data.l / 1000).timeout # wait the length of the note seconds to clean animation
+		stageHandler.emit_signal("noteEndedSignal", player, dir)
 		key.play("Idle")
 
 # Removes the note from the screen and moves bars to the bar frame

@@ -121,10 +121,10 @@ func inputBegan(inputLane):
 	
 	if hit:
 		key.play("PressHit")
-		stageHandler.emit_signal("noteHitSignal", laneToDir[inputLane])
+		stageHandler.emit_signal("noteHitSignal", self.conducterObj.player, laneToDir[inputLane])
 	else:
 		key.play("Press")
-		stageHandler.emit_signal("noteHitSignal", laneToDir[inputLane])
+		stageHandler.emit_signal("noteHitSignal", self.conducterObj.player,  laneToDir[inputLane])
 	
 # Unpresses the key and updates the animation
 func inputEnded(inputLane):
@@ -143,7 +143,7 @@ func inputEnded(inputLane):
 	
 		key.play("Idle")
 		
-		stageHandler.emit_signal("noteEndedSignal", laneToDir[inputLane])
+		stageHandler.emit_signal("noteEndedSignal", self.conducterObj.player,  laneToDir[inputLane])
 
 # Checks if any notes are able to be pressed
 func checkHit(lane):

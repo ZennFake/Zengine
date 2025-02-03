@@ -92,9 +92,9 @@ func beatChanged(beatMajor, beat):
 		character.get_node("Sprite").stop()
 		character.get_node("Sprite").play("Idle")
 
-func noteHit(Direction):
+func noteHit(player, Direction):
 	
-	var string = "p" + str(self.conductor.player)
+	var string = "p" + str(player)
 	
 	if not characterList.has(string):
 		print("CHARACTER NOT FOUND")
@@ -105,9 +105,9 @@ func noteHit(Direction):
 	characterList[string]["notePressing"] = true
 	characterList[string]["keysPressing"].append(Direction)
 
-func noteEnded(Direction):
+func noteEnded(player, Direction):
 	
-	var string = "p" + str(self.conductor.player)
+	var string = "p" + str(player)
 	
 	if not characterList.has(string):
 		print("CHARACTER NOT FOUND")
