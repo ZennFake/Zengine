@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chqp48cus6rtm"
-path="res://.godot/imported/stageback.png-69ac7f882fa60bed17d9621fe926345d.ctex"
+uid="uid://h7degvm7btxt"
+path="res://.godot/imported/stagecurtains.png-75e5709074a78b775fedff4b0691895b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Object Scenes/Stages/Tutorial/Assets/Images/stageback.png"
-dest_files=["res://.godot/imported/stageback.png-69ac7f882fa60bed17d9621fe926345d.ctex"]
+source_file="res://Assets/Stages/Tutorial/Assets/Images/stagecurtains.png"
+dest_files=["res://.godot/imported/stagecurtains.png-75e5709074a78b775fedff4b0691895b.ctex"]
 
 [params]
 

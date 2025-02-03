@@ -82,15 +82,15 @@ animations = [{
 }]
 
 [node name="Character" type="Node2D"]
+top_level = true
 z_index = 3
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(199, 183)
+position = Vector2(215, 26)
 rotation = 3.14159
+scale = Vector2(1.095, 1.095)
 sprite_frames = SubResource("SpriteFrames_ee2vr")
-animation = &"Right"
-frame = 1
-frame_progress = 0.839363
+animation = &"Idle"
 centered = false
 flip_h = true
 flip_v = true

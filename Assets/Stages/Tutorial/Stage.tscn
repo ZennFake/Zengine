@@ -1,11 +1,22 @@
 [gd_scene load_steps=5 format=3 uid="uid://db1t3iu16acd8"]
 
 [ext_resource type="Texture2D" uid="uid://dru0topbugrof" path="res://Assets/Temp Assets/OUw2Vg.png" id="1_u7cif"]
-[ext_resource type="Texture2D" uid="uid://c3j3yo7d0smyv" path="res://Assets/Object Scenes/Stages/Tutorial/Assets/Images/stagefront.png" id="2_mdnif"]
-[ext_resource type="Texture2D" uid="uid://chqp48cus6rtm" path="res://Assets/Object Scenes/Stages/Tutorial/Assets/Images/stageback.png" id="3_yrlxy"]
-[ext_resource type="Texture2D" uid="uid://h7degvm7btxt" path="res://Assets/Object Scenes/Stages/Tutorial/Assets/Images/stagecurtains.png" id="4_br3u1"]
+[ext_resource type="Texture2D" uid="uid://c3j3yo7d0smyv" path="res://Assets/Stages/Tutorial/Assets/Images/stagefront.png" id="2_mdnif"]
+[ext_resource type="Texture2D" uid="uid://chqp48cus6rtm" path="res://Assets/Stages/Tutorial/Assets/Images/stageback.png" id="3_yrlxy"]
+[ext_resource type="Texture2D" uid="uid://h7degvm7btxt" path="res://Assets/Stages/Tutorial/Assets/Images/stagecurtains.png" id="4_br3u1"]
 
 [node name="Stage" type="Node2D"]
+
+[node name="Spawns" type="Node2D" parent="."]
+
+[node name="p2" type="Node2D" parent="Spawns"]
+position = Vector2(1777.67, 889.285)
+
+[node name="gf" type="Node2D" parent="Spawns"]
+position = Vector2(924, 453)
+
+[node name="p1" type="Node2D" parent="Spawns"]
+position = Vector2(161, 678)
 
 [node name="StageAssets" type="Node2D" parent="."]
 
@@ -39,14 +50,3 @@ z_index = 1
 position = Vector2(993, 250)
 scale = Vector2(1.09714, 1.09714)
 texture = ExtResource("4_br3u1")
-
-[node name="Spawns" type="Node2D" parent="."]
-
-[node name="p2" type="Node2D" parent="Spawns"]
-position = Vector2(1276, 678)
-
-[node name="gf" type="Node2D" parent="Spawns"]
-position = Vector2(924, 453)
-
-[node name="p1" type="Node2D" parent="Spawns"]
-position = Vector2(161, 678)

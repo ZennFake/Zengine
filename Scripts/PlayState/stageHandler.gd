@@ -39,7 +39,7 @@ func startSong(conductorObject):
 	var stageString : String = self.metaData["stage"]
 	
 	var stageWeek = stageString.split("/")
-	var stagePath = "res://Assets/Object Scenes/Stages/" + stageWeek[0] + "/" + stageWeek[1] + ".tscn"
+	var stagePath = "res://Assets/Stages/" + stageWeek[0] + "/" + stageWeek[1] + ".tscn"
 	
 	var packedStageScene : PackedScene = load(stagePath)
 	
