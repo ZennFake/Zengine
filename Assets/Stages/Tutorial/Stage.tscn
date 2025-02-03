@@ -16,7 +16,7 @@ position = Vector2(1777.67, 889.285)
 position = Vector2(924, 453)
 
 [node name="p1" type="Node2D" parent="Spawns"]
-position = Vector2(161, 678)
+position = Vector2(161, 889.285)
 
 [node name="StageAssets" type="Node2D" parent="."]
 
