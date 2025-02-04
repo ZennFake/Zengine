@@ -12,7 +12,7 @@ signal songBegan
 @onready var PlayStateParent = get_parent()
 
 var paused = false
-var currentLoading : Node2D
+var currentLoading : CanvasLayer
 
 ## // FUNCTIONS // ##
 

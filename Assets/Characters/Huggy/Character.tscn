@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://tu5l850xknmb"]
+
+[ext_resource type="Texture2D" uid="uid://cybry4qcf4f0j" path="res://Assets/Characters/Huggy/ImageAssets/down.png" id="1_5koqo"]
+[ext_resource type="Texture2D" uid="uid://cx8nd1hrowoq3" path="res://Assets/Characters/Huggy/ImageAssets/idle.png" id="2_7jpxr"]
+[ext_resource type="Texture2D" uid="uid://c3q376o5c0u2" path="res://Assets/Characters/Huggy/ImageAssets/left.png" id="3_h47fo"]
+[ext_resource type="Texture2D" uid="uid://bbufu10km8fhw" path="res://Assets/Characters/Huggy/ImageAssets/up.png" id="4_b1wfv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ee2vr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5koqo")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7jpxr")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_h47fo")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_h47fo")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_b1wfv")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 24.0
+}]
+
+[node name="Character" type="Node2D"]
+top_level = true
+z_index = 3
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(400, 22)
+rotation = 3.14159
+scale = Vector2(1.095, 1.095)
+sprite_frames = SubResource("SpriteFrames_ee2vr")
+animation = &"Idle"
+centered = false
+flip_v = true

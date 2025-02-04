@@ -111,6 +111,8 @@ func loadMusic():
 		var songObject = AudioStreamPlayer2D.new()
 		
 		songObject.stream = songData
+		songObject.panning_strength = 0
+		songObject.max_distance = 999999
 		add_child(songObject)
 		
 		self.songTracks[trackName] = songObject

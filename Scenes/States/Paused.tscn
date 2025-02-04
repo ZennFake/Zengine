@@ -114,7 +114,7 @@ _data = {
 "RESET": SubResource("Animation_77o72")
 }
 
-[node name="Paused" type="Node2D"]
+[node name="Paused" type="CanvasLayer"]
 
 [node name="Panel" type="Panel" parent="."]
 z_index = 5
