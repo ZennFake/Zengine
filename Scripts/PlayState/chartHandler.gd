@@ -66,6 +66,8 @@ func initiateChart(conducter):
 		self.noteData = self.data["notes"]
 		self.scrollSpeed = self.data["scrollSpeed"]
 		
+		print(self.scrollSpeed)
+		
 	self.pMS = 0.45
 	self.inputOffset = 25
 	self.visualOffset = 20
@@ -85,6 +87,7 @@ func _process(dt):
 
 ## // OBJECT FUNCTIONS // ##
 
+# Toggles songrunning
 func handlePause(paused):
 	self.songRunning = not paused
 

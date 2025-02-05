@@ -21,9 +21,12 @@ func loadPauseScreen():
 	var path = "res://Scenes/States/Paused.tscn"
 	var packed : PackedScene = load(path)
 	var scene = packed.instantiate()
-	
+	scene.visible = false
 	PlayStateParent.get_parent().get_parent().add_child(scene)
-	scene.get_node("PauseAnimation").play("Paused")
+	
+	var animator : AnimationPlayer = scene.get_node("PauseAnimation")
+	
+	animator.play("Paused")
 	currentLoading = scene
 
 # Checks if pause was pressed

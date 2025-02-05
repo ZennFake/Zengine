@@ -31,6 +31,7 @@ var baseZoom = Vector2.ONE
 
 ## // FUNCTIONS // ##
 
+# Creates a player asset and places them on the node based on the stage.
 func createPlayer(playerString, characterName):
 	var spawn = self.stage.get_node("Spawns").get_node(playerString)
 	var characterPathString = "res://Assets/Characters/" + characterName + "/Character.tscn"
@@ -79,7 +80,7 @@ func startSong(conductorObject):
 		createPlayer("p2", self.metaData["p2"])
 	
 	
-@warning_ignore("unused_parameter")
+# Resets character idles and makes the screen bump
 func beatChanged(beatMajor, beat):
 	# UI Beat
 	self.UI.get_node("BumpAnimator").stop()
@@ -106,6 +107,7 @@ func beatChanged(beatMajor, beat):
 		character.get_node("Sprite").stop()
 		character.get_node("Sprite").play("Idle")
 
+# Makes the player animate based off of the direction hit
 func noteHit(player, Direction):
 	
 	var string = "p" + str(player)
@@ -120,6 +122,7 @@ func noteHit(player, Direction):
 	characterList[string]["notePressing"] = true
 	characterList[string]["keysPressing"].append(Direction)
 
+# Stops the animation
 func noteEnded(player, Direction):
 	
 	var string = "p" + str(player)
@@ -132,6 +135,7 @@ func noteEnded(player, Direction):
 		characterList[string]["notePressing"] = false
 		
 
+# Focuses the camera based off of the event value
 func FocusCamera(v):
 	v = v["char"]
 	var characterString = "p"
@@ -151,6 +155,7 @@ func FocusCamera(v):
 	cameraTween.tween_property(Camera, "offset", characterAsset.position - Vector2(0, 300), 2)
 	cameraTween.play()
 
+# Zooms the camera in based off of the event
 func ZoomCamera(v):
 	var newZoom = v["zoom"]
 	var speed = v["duration"]
@@ -161,7 +166,8 @@ func ZoomCamera(v):
 	cameraTween.set_trans(Tween.TRANS_ELASTIC)
 	cameraTween.tween_property(self, "baseZoom", Vector2(newZoom, newZoom), speed)
 	cameraTween.play()
-	
+
+# Updates the camera zoom with the new variables for the zoom.
 func _process(delta: float) -> void:
 	Camera.zoom = baseZoom + bumpZoom
 

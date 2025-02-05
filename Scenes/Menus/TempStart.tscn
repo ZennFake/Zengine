@@ -67,6 +67,78 @@ text = "Friday Night Funkin"
 placeholder_text = "Breaker_Bundle"
 metadata/_edit_use_anchors_ = true
 
+[node name="WeekPicker" type="Panel" parent="."]
+offset_left = 1289.0
+offset_top = 20.0
+offset_right = 1913.0
+offset_bottom = 436.475
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="WeekPicker"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 17.0
+offset_right = 294.0
+offset_bottom = 70.0
+text = "Week Selection"
+label_settings = SubResource("LabelSettings_xhd5k")
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="WeekPicker"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 69.0
+offset_right = 625.0
+offset_bottom = 416.0
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WeekPicker/ScrollContainer"]
+layout_mode = 2
+
+[node name="WeekBase" type="Button" parent="WeekPicker/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 51
+text = "Friday Night Funkin"
+alignment = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="SongSelection" type="Panel" parent="."]
+offset_left = 1289.0
+offset_top = 443.895
+offset_right = 1913.0
+offset_bottom = 860.37
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="SongSelection"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 17.0
+offset_right = 294.0
+offset_bottom = 70.0
+text = "Song Selection"
+label_settings = SubResource("LabelSettings_xhd5k")
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SongSelection"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 69.0
+offset_right = 625.0
+offset_bottom = 416.0
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SongSelection/ScrollContainer"]
+layout_mode = 2
+
+[node name="WeekBase" type="Button" parent="SongSelection/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 51
+text = "Friday Night Funkin"
+alignment = 0
+metadata/_edit_use_anchors_ = true
+
 [node name="Song" type="Panel" parent="."]
 offset_left = 17.0
 offset_top = 291.0

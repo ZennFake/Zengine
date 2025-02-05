@@ -99,6 +99,9 @@ func _process(_delta):
 # Pauses the song
 func pause(paused):
 	self.playing = not paused 
+	if pause:
+		for i in range(4):
+			inputEnded(i)
 
 # Checks to see if a note is valid in the givin lane and handles pressing
 func inputBegan(inputLane):

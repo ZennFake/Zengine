@@ -6,6 +6,10 @@ var currentButton : Button
 var currentDifficulty = "hard"
 
 func _ready() -> void:
+	var list = DirAccess.get_directories_at("res://Songs/")
+	for folder in list:
+		makeWeekButton(folder)
+	
 	keybindButtonSetup($"Keybinds/0")
 	keybindButtonSetup($"Keybinds/1")
 	keybindButtonSetup($"Keybinds/2")
@@ -15,6 +19,37 @@ func _ready() -> void:
 	
 	$Week/LineEdit.connect("text_changed", checkIfValid)
 	$Song/LineEdit.connect("text_changed", checkIfValid)
+
+func makeWeekButton(week):
+	var clone = $WeekPicker/ScrollContainer/VBoxContainer/WeekBase.duplicate()
+	clone.name = "WeekButtonClone"
+	clone.text = week
+	clone.visible = true
+	$WeekPicker/ScrollContainer/VBoxContainer.add_child(clone)
+	while $'.':
+		await clone.button_up
+		$Week/LineEdit.text = week
+		updateSongSelection(week)
+	
+func updateSongSelection(week):
+	for child in $SongSelection/ScrollContainer/VBoxContainer.get_children():
+		if child.name != "WeekBase":
+			child.queue_free()
+	
+	var list = DirAccess.get_directories_at("res://Songs/" + week)
+	for folder in list:
+		makeSongButton(folder)
+		
+func makeSongButton(song):
+	var clone = $SongSelection/ScrollContainer/VBoxContainer/WeekBase.duplicate()
+	clone.name = "WeekButtonClone"
+	clone.text = song
+	clone.visible = true
+	$SongSelection/ScrollContainer/VBoxContainer.add_child(clone)
+	while $'.':
+		await clone.button_up
+		$Song/LineEdit.text = song
+		checkIfValid(true)
 
 func StartPressed():
 	var path = "res://Scenes/States/PlayState.tscn"
