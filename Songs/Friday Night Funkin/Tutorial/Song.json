@@ -1,0 +1,24 @@
+{
+	"Song Name": "Tutorial",
+	"Chart Data": "res://Songs/Friday Night Funkin/Tutorial/Chart.json",
+	"Audio Tracks": {
+		"Inst": "res://Songs/Friday Night Funkin/Tutorial/Inst.ogg",
+		"bf": "res://Songs/Friday Night Funkin/Tutorial/Voices-bf.ogg",
+		"gf": "res://Songs/Friday Night Funkin/Tutorial/Voices-gf.ogg"
+	},
+	"meta": {
+		"p1": "Huggy",
+		"p2": "Boyfriend",
+		"stage": "Tutorial/Stage",
+		"difficulties": ["easy", "normal", "hard"],
+		"timeline": [
+			{
+			   "d": 4, 
+			   "n": 4, 
+			   "t": -1, 
+			   "bt": [4, 4, 4, 4], 
+			   "bpm": 100
+			}
+		],
+	},
+}

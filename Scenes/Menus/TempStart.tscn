@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dt5mi5c0rescn"]
+[gd_scene load_steps=5 format=3 uid="uid://dt5mi5c0rescn"]
 
 [ext_resource type="Script" path="res://Scripts/TempStart/testStart.gd" id="1_qptx2"]
+[ext_resource type="Script" path="res://Scripts/util.gd" id="2_0xmsr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xhd5k"]
 font_size = 38
+
+[sub_resource type="LabelSettings" id="LabelSettings_cch1t"]
+font_size = 46
+font_color = Color(1, 1, 1, 0.192157)
 
 [node name="TempStart" type="Node2D"]
 script = ExtResource("1_qptx2")
@@ -58,7 +63,7 @@ offset_top = 70.0
 offset_right = 611.0
 offset_bottom = 150.0
 theme_override_font_sizes/font_size = 51
-text = "BKDisaster"
+text = "Friday Night Funkin"
 placeholder_text = "Breaker_Bundle"
 metadata/_edit_use_anchors_ = true
 
@@ -86,15 +91,58 @@ offset_top = 70.0
 offset_right = 610.0
 offset_bottom = 150.0
 theme_override_font_sizes/font_size = 51
-text = "BKDisaster"
+text = "Tutorial"
 placeholder_text = "Gamebreaker"
+metadata/_edit_use_anchors_ = true
+
+[node name="Difficulty" type="Panel" parent="."]
+offset_left = 17.0
+offset_top = 461.0
+offset_right = 641.0
+offset_bottom = 625.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Difficulty"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 17.0
+offset_right = 294.0
+offset_bottom = 70.0
+text = "Difficulty"
+label_settings = SubResource("LabelSettings_xhd5k")
+metadata/_edit_use_anchors_ = true
+
+[node name="Waiting" type="Label" parent="Difficulty"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 69.0
+offset_right = 609.0
+offset_bottom = 149.0
+text = "Waiting for a valid song"
+label_settings = SubResource("LabelSettings_cch1t")
+vertical_alignment = 1
+
+[node name="Holder" type="Node2D" parent="Difficulty"]
+top_level = true
+
+[node name="Base" type="Button" parent="Difficulty/Holder"]
+visible = false
+anchors_preset = -1
+anchor_right = 0.195513
+offset_left = 30.0
+offset_top = 535.0
+offset_right = 187.09
+offset_bottom = 615.0
+theme_override_font_sizes/font_size = 51
+text = "Easy"
+clip_text = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Keybinds" type="Panel" parent="."]
 offset_left = 17.0
-offset_top = 463.0
+offset_top = 631.0
 offset_right = 384.0
-offset_bottom = 627.0
+offset_bottom = 795.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Keybinds"]
@@ -155,9 +203,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Start" type="Panel" parent="."]
 offset_left = 17.0
-offset_top = 635.4
+offset_top = 803.4
 offset_right = 427.0
-offset_bottom = 799.4
+offset_bottom = 967.4
 metadata/_edit_use_anchors_ = true
 
 [node name="Start" type="Label" parent="Start"]
@@ -181,6 +229,10 @@ text = "Start"
 alignment = 0
 metadata/_edit_use_anchors_ = true
 
+[node name="Util" type="Node" parent="."]
+script = ExtResource("2_0xmsr")
+
+[connection signal="pressed" from="Difficulty/Holder/Base" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Keybinds/0" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Keybinds/1" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Keybinds/2" to="." method="_on_button_pressed"]

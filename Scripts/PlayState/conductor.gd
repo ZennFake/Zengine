@@ -21,6 +21,7 @@ var beat : int
 var msPerBeat : float
 var deltaSinceLastBeat : float
 var majorBeatTime : int
+var songInfo
 
 var songTracks : Dictionary
 var events : Array
@@ -44,7 +45,7 @@ func _on_song_requested(SongInfo):
 	print("Song request created, initiating conductor")
 	
 	# Init Vars
-	
+	self.songInfo = SongInfo
 	self.songDataPath = "res://Songs/" + SongInfo["Week"] + "/" + SongInfo["Song"] + "/Song.json"
 	self.player = SongInfo["Player"]
 	

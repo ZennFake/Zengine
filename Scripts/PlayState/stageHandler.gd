@@ -4,9 +4,14 @@ extends Node
 
 ## // SIGNALS // ##
 
+@warning_ignore("unused_signal")
 signal noteHitSignal
+@warning_ignore("unused_signal")
 signal noteEndedSignal
+@warning_ignore("unused_signal")
 signal focusCamSignal
+@warning_ignore("unused_signal")
+signal zoomCamSignal
 
 ## // TYPES // ##
 
@@ -20,6 +25,9 @@ var conductor
 var metaData : Dictionary
 var stage
 var characterList : Dictionary
+
+var bumpZoom = Vector2.ZERO
+var baseZoom = Vector2.ONE
 
 ## // FUNCTIONS // ##
 
@@ -71,6 +79,7 @@ func startSong(conductorObject):
 		createPlayer("p2", self.metaData["p2"])
 	
 	
+@warning_ignore("unused_parameter")
 func beatChanged(beatMajor, beat):
 	# UI Beat
 	self.UI.get_node("BumpAnimator").stop()
@@ -82,8 +91,8 @@ func beatChanged(beatMajor, beat):
 	# Camera Beat
 	
 	var cameraTween = get_tree().create_tween()
-	cameraTween.tween_property(Camera, "zoom", Vector2(1.05, 1.05), 0)
-	cameraTween.tween_property(Camera, "zoom", Vector2.ONE, 1)
+	cameraTween.tween_property(self, "bumpZoom", Vector2(0.05, 0.05), 0)
+	cameraTween.tween_property(self, "bumpZoom", Vector2.ZERO, 1)
 	cameraTween.play()
 	
 	# Character Bot
@@ -113,7 +122,6 @@ func noteEnded(player, Direction):
 	var string = "p" + str(player)
 	
 	if not characterList.has(string):
-		print("CHARACTER NOT FOUND")
 		return
 		
 	characterList[string]["keysPressing"].remove_at(characterList[string]["keysPressing"].find(Direction))
@@ -128,6 +136,10 @@ func FocusCamera(v):
 		characterString += "2"
 	else:
 		characterString += "1"
+	
+	if not characterList.has(characterString):
+		return
+	
 	var characterAsset = characterList[characterString]["sprite"]
 	
 	var cameraTween = get_tree().create_tween()
@@ -135,5 +147,19 @@ func FocusCamera(v):
 	cameraTween.set_trans(Tween.TRANS_EXPO)
 	cameraTween.tween_property(Camera, "offset", characterAsset.position - Vector2(0, 300), 2)
 	cameraTween.play()
+
+func ZoomCamera(v):
+	var newZoom = v["zoom"]
+	var speed = v["duration"]
+	var ease = v["ease"]
+	
+	var cameraTween = get_tree().create_tween().set_parallel(true)
+	cameraTween.set_ease(Tween.EASE_IN_OUT)
+	cameraTween.set_trans(Tween.TRANS_ELASTIC)
+	cameraTween.tween_property(self, "baseZoom", Vector2(newZoom, newZoom), speed)
+	cameraTween.play()
+	
+func _process(delta: float) -> void:
+	Camera.zoom = baseZoom + bumpZoom
 
 ## // OBJECT FUNCTIONS // ##

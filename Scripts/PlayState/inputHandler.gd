@@ -171,7 +171,7 @@ func checkHit(lane):
 		
 		if result != null:
 			
-			if closestNote.Data.l == 0:
+			if not self.conducterObj.util.checkIfLong(closestNote):
 				notes.remove_at(notes.find(closestNote))
 			self.chartHandler.emit_signal("cleanupNoteRequest", closestNote, true)
 			UI.get_node("Score").emit_signal("newScore", result)

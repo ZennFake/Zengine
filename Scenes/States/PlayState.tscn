@@ -31,6 +31,8 @@ script = ExtResource("5_p1gj3")
 [node name="StageHandler" type="Node" parent="Scripts/PlayState"]
 script = ExtResource("6_mghwf")
 
+[node name="EventHandler" type="Node" parent="Scripts/PlayState"]
+
 [node name="Conductor" type="Node" parent="Scripts"]
 script = ExtResource("6_3sxgv")
 
@@ -58,5 +60,6 @@ offset = Vector2(960, 540)
 [connection signal="focusCamSignal" from="Scripts/PlayState/StageHandler" to="Scripts/PlayState/StageHandler" method="FocusCamera"]
 [connection signal="noteEndedSignal" from="Scripts/PlayState/StageHandler" to="Scripts/PlayState/StageHandler" method="noteEnded"]
 [connection signal="noteHitSignal" from="Scripts/PlayState/StageHandler" to="Scripts/PlayState/StageHandler" method="noteHit"]
+[connection signal="zoomCamSignal" from="Scripts/PlayState/StageHandler" to="Scripts/PlayState/StageHandler" method="ZoomCamera"]
 [connection signal="songBegan" from="Scripts/Conductor" to="Scripts/Conductor" method="songStarted"]
 [connection signal="songRequested" from="Scripts/Conductor" to="Scripts/Conductor" method="_on_song_requested"]

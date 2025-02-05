@@ -15,3 +15,11 @@ static func readJson(jsonFile : String):
 	
 	if json_as_dict:
 		return json_as_dict
+		
+static func checkIfLong(noteAsset):
+	if noteAsset.Data.has("l"):
+		if noteAsset.Data["l"] > 0:
+			return true
+	else:
+		return false
+	return false

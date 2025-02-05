@@ -53,10 +53,9 @@ top_level = true
 z_index = 3
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(400, 22)
+position = Vector2(-12.0001, -384)
 rotation = 3.14159
 scale = Vector2(1.095, 1.095)
 sprite_frames = SubResource("SpriteFrames_ee2vr")
 animation = &"Idle"
-centered = false
 flip_v = true

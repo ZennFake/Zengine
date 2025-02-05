@@ -31,6 +31,8 @@ var assetsToMove : Array
 
 var songRunning : bool
 
+var scrollSpeed
+
 var currentSongPosition
 
 var laneToDir = [
@@ -56,9 +58,16 @@ func initiateChart(conducter):
 	# Init Vars
 	self.conducterObj = conducter
 	self.data = conducter.chartData
-		
-	self.noteData = self.data["notes"]
 	
+	if self.conducterObj.songInfo["Difficulty"] != null:
+		self.noteData = self.data["notes"][self.conducterObj.songInfo["Difficulty"]]
+		self.scrollSpeed = self.data["scrollSpeed"][self.conducterObj.songInfo["Difficulty"]]
+	else:
+		self.noteData = self.data["notes"]
+		self.scrollSpeed = self.data["scrollSpeed"]
+	
+	print(self.noteData)
+		
 	self.pMS = 0.45
 	self.inputOffset = 25
 	self.visualOffset = 20
@@ -165,7 +174,7 @@ func handleEnemyNote(noteAssetObject : Dictionary):
 	key.play("PressHit")
 	
 	# Cleanup and unpressing
-	if noteAssetObject.Data.l == 0: # Normal note
+	if not self.conducterObj.util.checkIfLong(noteAssetObject): # Normal note
 		var dir = laneToDir[noteAssetObject.Data.d]
 		stageHandler.emit_signal("noteHitSignal", player, dir)
 		self.assetsToMove.remove_at(self.assetsToMove.find(noteAssetObject))
@@ -196,6 +205,7 @@ func cleanupNote(noteAsset, pressed = false):
 	else:
 		noteAsset.Asset.queue_free()
 
+
 # Goes through all note assets and updates the positions on the screen, ALSO initializes any notes that arent already on screen
 func updateChart(dt : float):
 	# Convert DT to MS
@@ -213,6 +223,7 @@ func updateChart(dt : float):
 			self.noteMade(note)
 			
 			self.noteData.remove_at(self.noteData.find(note)) # Remove note from the data as we dont need it anymore.
+	
 		
 	# Update on screen notes
 	
@@ -224,7 +235,7 @@ func updateChart(dt : float):
 		
 		if note.Data.d > 3 and self.conducterObj.player == 2 or note.Data.d <= 3 and self.conducterObj.player == 1: # In enemy lane
 			if note.Data.t <= self.currentSongPosition and checkIfNoteIsValid(note):
-				if note.Data.l > 0:
+				if self.conducterObj.util.checkIfLong(note):
 					if note.Asset.visible != false: # Long note isnt pressed
 						handleEnemyNote(note)
 				else:
@@ -233,7 +244,7 @@ func updateChart(dt : float):
 			
 		# Go back to note handling
 		
-		if note.Data.l > 0: #Bar note
+		if self.conducterObj.util.checkIfLong(note): #Bar note
 			if not note.BarAsset: # Create a bar for the note
 				note.BarAsset = note.Asset.get_parent().get_parent().get_node("Bar").duplicate() # Get the lane the note is in and copy its bar asset
 				
@@ -267,7 +278,9 @@ func updateChart(dt : float):
 				
 				if event.e == "FocusCamera":
 					stageHandler.emit_signal("focusCamSignal", event.v)
+				if event.e == "ZoomCamera":
+					stageHandler.emit_signal("zoomCamSignal", event.v)
 
 # Calculates the notes Y position
 func getNoteY(timePosition):
-	return (self.pMS * (self.currentSongPosition - timePosition - self.visualOffset) * self.data.scrollSpeed * -1 + 130) / 1080
+	return (self.pMS * (self.currentSongPosition - timePosition - self.visualOffset) * self.scrollSpeed * -1 + 130) / 1080

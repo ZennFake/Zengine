@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ebeivhkqp4vw"
+path="res://.godot/imported/Voices-bf.ogg-9010777fde07530437289e3241b9a58d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Songs/Friday Night Funkin/Tutorial/Voices-bf.ogg"
+dest_files=["res://.godot/imported/Voices-bf.ogg-9010777fde07530437289e3241b9a58d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
