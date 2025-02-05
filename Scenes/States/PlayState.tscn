@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://blt5pbwjnsdek"]
+[gd_scene load_steps=9 format=3 uid="uid://blt5pbwjnsdek"]
 
 [ext_resource type="Script" path="res://Scripts/PlayState/PlayStateSignals.gd" id="2_4l2q2"]
 [ext_resource type="Script" path="res://Scripts/PlayState/chartHandler.gd" id="3_1ijkg"]
@@ -8,14 +8,17 @@
 [ext_resource type="Script" path="res://Scripts/PlayState/stageHandler.gd" id="6_mghwf"]
 [ext_resource type="Script" path="res://Scripts/PlayState/start.gd" id="7_muios"]
 [ext_resource type="Script" path="res://Scripts/util.gd" id="8_ydm25"]
-[ext_resource type="PackedScene" uid="uid://bjq3edcpdjqpw" path="res://Assets/Object Scenes/playstateUI.tscn" id="9_1dueu"]
 
 [node name="MainScene" type="Node2D"]
 position = Vector2(-28.698, -14.348)
 scale = Vector2(1.03, 1.03)
 
-[node name="Scripts" type="Node" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 1
+position = Vector2(27.8621, 13.9301)
+offset = Vector2(960, 540)
+
+[node name="Scripts" type="Node" parent="."]
 
 [node name="PlayState" type="Node" parent="Scripts"]
 process_mode = 1
@@ -51,18 +54,10 @@ script = ExtResource("7_muios")
 [node name="Util" type="Node" parent="Scripts"]
 script = ExtResource("8_ydm25")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-process_mode = 1
-position = Vector2(27.8621, 13.9301)
-offset = Vector2(960, 540)
-
-[node name="UILock" parent="." instance=ExtResource("9_1dueu")]
-
 [connection signal="Beat" from="Scripts/PlayState" to="Scripts/PlayState/StageHandler" method="beatChanged"]
 [connection signal="Initiate" from="Scripts/PlayState" to="Scripts/PlayState/ChartHandler" method="initiateChart"]
 [connection signal="Pause" from="Scripts/PlayState" to="Scripts/PlayState/ChartHandler" method="handlePause"]
 [connection signal="Pause" from="Scripts/PlayState" to="Scripts/PlayState/InputHandler" method="pause"]
-[connection signal="Pause" from="Scripts/PlayState" to="Scripts/Conductor" method="pauseMusic"]
 [connection signal="Start" from="Scripts/PlayState" to="Scripts/PlayState/ChartHandler" method="songBegan"]
 [connection signal="Start" from="Scripts/PlayState" to="Scripts/PlayState/InputHandler" method="initiateInputs"]
 [connection signal="Start" from="Scripts/PlayState" to="Scripts/PlayState/StageHandler" method="startSong"]

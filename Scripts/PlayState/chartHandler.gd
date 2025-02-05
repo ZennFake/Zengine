@@ -47,7 +47,7 @@ var laneToDir = [
 ]
 
 @onready var Root = get_parent().get_parent().get_parent()
-@onready var UI = Root.get_node("UILock").get_node("UI")
+var UI 
 @onready var stageHandler = get_parent().get_node("StageHandler")
 
 ## // FUNCTIONS // ##
@@ -74,6 +74,8 @@ func initiateChart(conducter):
 	
 	self.assetsToMove = []
 	self.currentSongPosition = 0
+	
+	self.UI = Root.get_node("UILock").get_node("UI")
 	
 
 # Start the song

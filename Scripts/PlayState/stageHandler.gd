@@ -18,7 +18,7 @@ signal zoomCamSignal
 ## // VARIABLES // ##
 
 @onready var root = get_parent().get_parent().get_parent()
-@onready var UI = root.get_node("UILock").get_node("UI")
+var UI
 @onready var Camera : Camera2D = root.get_node("Camera2D")
 
 var conductor
@@ -56,6 +56,7 @@ func createPlayer(playerString, characterName):
 # Starts the stage manager
 func startSong(conductorObject):
 	# Init vars
+	self.UI =  root.get_node("UILock").get_node("UI")
 	self.conductor = conductorObject
 	self.metaData = self.conductor["meta"]
 	

@@ -55,7 +55,7 @@ var laneToDir = [
 var rankOffset = 0
 
 @onready var Root = get_parent().get_parent().get_parent()
-@onready var UI = Root.get_node("UILock").get_node("UI")
+var UI
 @onready var chartHandler = get_parent().get_node("ChartHandler")
 @onready var stageHandler = get_parent().get_node("StageHandler")
 
@@ -79,6 +79,7 @@ func initiateInputs(conducter):
 	self.inputOffset = 0
 	self.pressedKeys = []
 	self.playing = true
+	self.UI = Root.get_node("UILock").get_node("UI")
 	
 # Checks if any actions are pressed every frame
 func _process(_delta):

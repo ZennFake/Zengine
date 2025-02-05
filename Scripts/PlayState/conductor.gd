@@ -22,20 +22,22 @@ var msPerBeat : float
 var deltaSinceLastBeat : float
 var majorBeatTime : int
 var songInfo
+var style
 
 var songTracks : Dictionary
 var events : Array
 
 ## // SCRIPTS // ##
+@onready var root = get_parent().get_parent()
 @onready var playState = get_parent().get_node("PlayState")
-@onready var UI = get_parent().get_parent().get_node("UILock").get_node("UI")
+var UI 
 
 @onready var util = get_parent().get_node("Util")
 @onready var chartHandler = playState.get_node("ChartHandler")
 @onready var inputHandler = playState.get_node("InputHandler")
 @onready var stageHandler = playState.get_node("StageHandler")
 
-@onready var timebarHandler = UI.get_node("Timebar")
+var timebarHandler
 
 ## // FUNCTIONS // ##
 
@@ -54,7 +56,16 @@ func _on_song_requested(SongInfo):
 	self.songData = util.readJson(self.songDataPath)
 	self.meta = self.songData["meta"]
 	self.timeline = self.meta["timeline"]
+	self.style = self.meta["style"]
 	
+	# Set style
+	
+	self.UI = updateStyle(self.style).get_node("UI")
+	root.set_meta("Style", self.style)
+	
+	# return
+	
+	self.timebarHandler = UI.get_node("Timebar")
 	self.chartData = util.readJson(self.songData["Chart Data"])
 	self.events = self.chartData["events"] 
 	
@@ -77,8 +88,22 @@ func _on_song_requested(SongInfo):
 	
 ## // OBJECT FUNCTION // ##
 
+# Adds the ui in the style selected
+func updateStyle(style):
+	var path = "res://Assets/Object Scenes/Playstate/Styles/" + style
+	print(path)
+	if false: # MAKE CHECK LATER
+		print("STYLE NOT FOUND")
+		path = "res://Assets/Object Scenes/Playstate/Styles/funkin/"
 	
-
+	var scenePath = path + "/playstateUI.tscn"
+	var scene = load(scenePath)
+	scene = scene.instantiate()
+	scene.name = "UILock"
+	root.add_child(scene)
+	
+	return scene
+	
 # Updates the time of the timebar every frame
 func _process(delta: float):
 	if self.songPlaying:

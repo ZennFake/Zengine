@@ -6,6 +6,7 @@
 		"Voices": "res://Songs/BKDisaster/BKDisaster/Voices.ogg"
 	},
 	"meta": {
+		"style": "funkin",
 		"p1": "Huggy",
 		"p2": "Boyfriend",
 		"stage": "Tutorial/Stage",

@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxbci30agjmay"]
+
+[ext_resource type="Script" path="res://Scripts/PlayState/PlayStateSignals.gd" id="1_5fndw"]
+[ext_resource type="Script" path="res://Scripts/PlayState/chartHandler.gd" id="2_45eoi"]
+[ext_resource type="Script" path="res://Scripts/PlayState/inputHandler.gd" id="3_q4lax"]
+[ext_resource type="Script" path="res://Scripts/PlayState/pauseHandler.gd" id="4_o77ic"]
+[ext_resource type="Script" path="res://Scripts/PlayState/stageHandler.gd" id="5_wg8p2"]
+[ext_resource type="Script" path="res://Scripts/PlayState/conductor.gd" id="6_kiqe3"]
+[ext_resource type="Script" path="res://Scripts/PlayState/start.gd" id="7_qllvj"]
+[ext_resource type="Script" path="res://Scripts/util.gd" id="8_4uepo"]
+
+[node name="Scripts" type="Node"]
+
+[node name="PlayState" type="Node" parent="."]
+process_mode = 1
+script = ExtResource("1_5fndw")
+
+[node name="ChartHandler" type="Node" parent="PlayState"]
+process_mode = 1
+script = ExtResource("2_45eoi")
+
+[node name="InputHandler" type="Node" parent="PlayState"]
+process_mode = 1
+script = ExtResource("3_q4lax")
+
+[node name="PauseHandler" type="Node" parent="PlayState"]
+process_mode = 3
+script = ExtResource("4_o77ic")
+
+[node name="StageHandler" type="Node" parent="PlayState"]
+process_mode = 1
+script = ExtResource("5_wg8p2")
+
+[node name="EventHandler" type="Node" parent="PlayState"]
+process_mode = 1
+
+[node name="Conductor" type="Node" parent="."]
+process_mode = 1
+script = ExtResource("6_kiqe3")
+
+[node name="Start" type="Node" parent="."]
+process_mode = 1
+script = ExtResource("7_qllvj")
+
+[node name="Util" type="Node" parent="."]
+script = ExtResource("8_4uepo")
+
+[connection signal="Beat" from="PlayState" to="PlayState/StageHandler" method="beatChanged"]
+[connection signal="Initiate" from="PlayState" to="PlayState/ChartHandler" method="initiateChart"]
+[connection signal="Pause" from="PlayState" to="PlayState/ChartHandler" method="handlePause"]
+[connection signal="Pause" from="PlayState" to="PlayState/InputHandler" method="pause"]
+[connection signal="Start" from="PlayState" to="PlayState/ChartHandler" method="songBegan"]
+[connection signal="Start" from="PlayState" to="PlayState/InputHandler" method="initiateInputs"]
+[connection signal="Start" from="PlayState" to="PlayState/StageHandler" method="startSong"]
+[connection signal="cleanupNoteRequest" from="PlayState/ChartHandler" to="PlayState/ChartHandler" method="cleanupNote"]
+[connection signal="focusCamSignal" from="PlayState/StageHandler" to="PlayState/StageHandler" method="FocusCamera"]
+[connection signal="noteEndedSignal" from="PlayState/StageHandler" to="PlayState/StageHandler" method="noteEnded"]
+[connection signal="noteHitSignal" from="PlayState/StageHandler" to="PlayState/StageHandler" method="noteHit"]
+[connection signal="zoomCamSignal" from="PlayState/StageHandler" to="PlayState/StageHandler" method="ZoomCamera"]
+[connection signal="songBegan" from="Conductor" to="Conductor" method="songStarted"]
+[connection signal="songRequested" from="Conductor" to="Conductor" method="_on_song_requested"]

@@ -12,6 +12,7 @@ signal newScore
 
 # Objects
 @onready var Spawn = self.get_node("Spawn")
+@onready var root = get_parent().get_parent().get_parent()
 
 # Ranks
 var Ranks = [ # 4 - Sick 3 - Good 2 - Ok, 1 - Shit
@@ -25,7 +26,7 @@ var Ranks = [ # 4 - Sick 3 - Good 2 - Ok, 1 - Shit
 
 # Makes a new score ui
 func scoreNew(scoreRank):
-	var newRankBase = load("res://Assets/Object Scenes/Rank.tscn")
+	var newRankBase = load("res://Assets/Object Scenes/Playstate/Styles/" + root.get_meta("Style") + "/Rank.tscn")
 	newRankBase = newRankBase.instantiate()
 	Spawn.add_child(newRankBase)
 	newRankBase = newRankBase.get_node("RankSpawn")
