@@ -15,34 +15,44 @@ position = Vector2(-28.698, -14.348)
 scale = Vector2(1.03, 1.03)
 
 [node name="Scripts" type="Node" parent="."]
+process_mode = 1
 
 [node name="PlayState" type="Node" parent="Scripts"]
+process_mode = 1
 script = ExtResource("2_4l2q2")
 
 [node name="ChartHandler" type="Node" parent="Scripts/PlayState"]
+process_mode = 1
 script = ExtResource("3_1ijkg")
 
 [node name="InputHandler" type="Node" parent="Scripts/PlayState"]
+process_mode = 1
 script = ExtResource("4_5xmji")
 
 [node name="PauseHandler" type="Node" parent="Scripts/PlayState"]
+process_mode = 3
 script = ExtResource("5_p1gj3")
 
 [node name="StageHandler" type="Node" parent="Scripts/PlayState"]
+process_mode = 1
 script = ExtResource("6_mghwf")
 
 [node name="EventHandler" type="Node" parent="Scripts/PlayState"]
+process_mode = 1
 
 [node name="Conductor" type="Node" parent="Scripts"]
+process_mode = 1
 script = ExtResource("6_3sxgv")
 
 [node name="Start" type="Node" parent="Scripts"]
+process_mode = 1
 script = ExtResource("7_muios")
 
 [node name="Util" type="Node" parent="Scripts"]
 script = ExtResource("8_ydm25")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 1
 position = Vector2(27.8621, 13.9301)
 offset = Vector2(960, 540)
 

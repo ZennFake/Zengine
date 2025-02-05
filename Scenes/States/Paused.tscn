@@ -115,6 +115,7 @@ _data = {
 }
 
 [node name="Paused" type="CanvasLayer"]
+process_mode = 3
 
 [node name="Panel" type="Panel" parent="."]
 z_index = 5
@@ -125,9 +126,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_pe3q7")
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 735.0
-offset_top = 408.705
+offset_top = 420.0
 offset_right = 1160.0
-offset_bottom = 574.705
+offset_bottom = 586.0
 text = "Paused
 "
 label_settings = SubResource("LabelSettings_acfmk")

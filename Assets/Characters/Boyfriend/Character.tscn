@@ -82,6 +82,7 @@ animations = [{
 }]
 
 [node name="Character" type="Node2D"]
+process_mode = 1
 top_level = true
 z_index = 3
 

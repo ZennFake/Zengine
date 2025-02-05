@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/PlayState/scoreUiHandler.gd" id="1_ibtkb"]
 
 [node name="Score" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_ibtkb")
 
 [node name="Spawn" type="Panel" parent="."]

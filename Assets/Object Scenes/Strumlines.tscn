@@ -221,6 +221,7 @@ animations = [{
 }]
 
 [node name="Lane" type="Node2D"]
+process_mode = 1
 
 [node name="Ref" type="Sprite2D" parent="."]
 visible = false

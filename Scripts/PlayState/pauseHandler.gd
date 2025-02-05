@@ -30,6 +30,7 @@ func loadPauseScreen():
 func _process(_delta):
 	if Input.is_action_just_pressed("Pause"):
 		paused = not paused
+		get_tree().paused = paused
 		PlayStateParent.emit_signal("Pause", paused)
 		if paused:
 			loadPauseScreen()

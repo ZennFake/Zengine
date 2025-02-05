@@ -12,6 +12,7 @@ shadow_color = Color(0, 0, 0, 0.286275)
 shadow_offset = Vector2(1, 10.685)
 
 [node name="Stage" type="Node2D"]
+process_mode = 1
 
 [node name="Spawns" type="Node2D" parent="."]
 
