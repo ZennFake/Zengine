@@ -65,8 +65,6 @@ func initiateChart(conducter):
 	else:
 		self.noteData = self.data["notes"]
 		self.scrollSpeed = self.data["scrollSpeed"]
-	
-	print(self.noteData)
 		
 	self.pMS = 0.45
 	self.inputOffset = 25

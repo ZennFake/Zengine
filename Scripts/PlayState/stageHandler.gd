@@ -34,7 +34,6 @@ var baseZoom = Vector2.ONE
 func createPlayer(playerString, characterName):
 	var spawn = self.stage.get_node("Spawns").get_node(playerString)
 	var characterPathString = "res://Assets/Characters/" + characterName + "/Character.tscn"
-	print("res://Assets/Characters/" + characterName + "/Character.tscn")
 	
 	characterPathString = load(characterPathString)
 	var character = characterPathString.instantiate()
@@ -48,7 +47,8 @@ func createPlayer(playerString, characterName):
 	self.characterList[playerString] = {
 		notePressing = false,
 		keysPressing = [],
-		sprite = character
+		sprite = character,
+		timesincePress = Time.get_ticks_msec()
 	}
 	
 
@@ -100,6 +100,8 @@ func beatChanged(beatMajor, beat):
 	for playerString in characterList:
 		if characterList[playerString]["notePressing"]:
 			continue
+		if Time.get_ticks_msec() - characterList[playerString]["timesincePress"] < 300:
+			continue # Beat too close
 		var character = characterList[playerString]["sprite"]
 		character.get_node("Sprite").stop()
 		character.get_node("Sprite").play("Idle")
@@ -114,6 +116,7 @@ func noteHit(player, Direction):
 	
 	characterList[string]["sprite"].get_node("Sprite").stop()
 	characterList[string]["sprite"].get_node("Sprite").play(Direction)
+	characterList[string]["timesincePress"] = Time.get_ticks_msec()
 	characterList[string]["notePressing"] = true
 	characterList[string]["keysPressing"].append(Direction)
 
