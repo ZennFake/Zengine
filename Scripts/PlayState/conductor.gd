@@ -36,6 +36,7 @@ var UI
 @onready var chartHandler = playState.get_node("ChartHandler")
 @onready var inputHandler = playState.get_node("InputHandler")
 @onready var stageHandler = playState.get_node("StageHandler")
+@onready var modchartHolder : Node = playState.get_node("ModChartHolder")
 
 var timebarHandler
 
@@ -44,7 +45,7 @@ var timebarHandler
 # Finds the song in the songs folder and loads the chart and songs
 func _on_song_requested(SongInfo):
 	
-	print("Song request created, initiating conductor")
+	print("Song request created, initiating conductor.")
 	
 	# Init Vars
 	self.songInfo = SongInfo
@@ -63,7 +64,13 @@ func _on_song_requested(SongInfo):
 	self.UI = updateStyle(self.style).get_node("UI")
 	root.set_meta("Style", self.style)
 	
-	# return
+	# Check modchart
+	
+	if self.meta.has("modchart"):
+		modchartHolder.set_script(load(self.meta["modchart"]))
+		modchartHolder.get_script().Loaded(self)
+	
+	# Return to setup
 	
 	self.timebarHandler = UI.get_node("Timebar")
 	self.chartData = util.readJson(self.songData["Chart Data"])
@@ -91,7 +98,6 @@ func _on_song_requested(SongInfo):
 # Adds the ui in the style selected
 func updateStyle(style):
 	var path = "res://Assets/Object Scenes/Playstate/Styles/" + style
-	print(path)
 	if false: # MAKE CHECK LATER
 		print("STYLE NOT FOUND")
 		path = "res://Assets/Object Scenes/Playstate/Styles/funkin/"
@@ -164,5 +170,7 @@ func songStarted():
 	
 	# Initiate play state modules
 	playState.emit_signal("Start", self)
+	if modchartHolder.get_script():
+		modchartHolder.get_script().Started()
 	
 	self.songPlaying = true

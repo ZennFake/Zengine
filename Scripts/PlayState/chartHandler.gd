@@ -66,7 +66,6 @@ func initiateChart(conducter):
 		self.noteData = self.data["notes"]
 		self.scrollSpeed = self.data["scrollSpeed"]
 		
-		print(self.scrollSpeed)
 		
 	self.pMS = 0.45
 	self.inputOffset = 25
@@ -112,7 +111,7 @@ func noteMade(noteData):
 	var lane = GetLane(noteData)
 	
 	if not lane:
-		## NOTE NOT IN A SUPPORTED LANE
+		# NOTE NOT IN A SUPPORTED LANE
 		return false
 		
 	# Clone Asset

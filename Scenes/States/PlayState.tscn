@@ -43,6 +43,8 @@ script = ExtResource("6_mghwf")
 [node name="EventHandler" type="Node" parent="Scripts/PlayState"]
 process_mode = 1
 
+[node name="ModChartHolder" type="Node" parent="Scripts/PlayState"]
+
 [node name="Conductor" type="Node" parent="Scripts"]
 process_mode = 1
 script = ExtResource("6_3sxgv")

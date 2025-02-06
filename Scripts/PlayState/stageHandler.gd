@@ -69,6 +69,8 @@ func startSong(conductorObject):
 	
 	self.stage = packedStageScene.instantiate()
 	
+	self.stage.name = "Stage"
+	
 	root.add_child(self.stage)
 	
 	self.characterList = {}
@@ -93,6 +95,8 @@ func beatChanged(beatMajor, beat):
 	# Camera Beat
 	
 	var cameraTween = get_tree().create_tween()
+	cameraTween.set_ease(Tween.EASE_OUT)
+	cameraTween.set_trans(Tween.TRANS_CUBIC)
 	cameraTween.tween_property(self, "bumpZoom", Vector2(0.05, 0.05), 0)
 	cameraTween.tween_property(self, "bumpZoom", Vector2.ZERO, 1)
 	cameraTween.play()
