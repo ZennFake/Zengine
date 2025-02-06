@@ -21,6 +21,7 @@ var beat : int
 var msPerBeat : float
 var deltaSinceLastBeat : float
 var majorBeatTime : int
+var beatsSinceLastMajorBeat : int
 var songInfo
 var style
 
@@ -81,6 +82,7 @@ func _on_song_requested(SongInfo):
 	self.deltaSinceLastBeat = 0
 	self.majorBeatTime = 4
 	self.beat = 0
+	self.beatsSinceLastMajorBeat = 0
 	
 	self.loadMusic()
 	playState.emit_signal("Initiate", self)
@@ -128,8 +130,11 @@ func _process(delta: float):
 		if self.deltaSinceLastBeat >= self.msPerBeat:
 			self.deltaSinceLastBeat = 0
 			self.beat += 1
+			self.beatsSinceLastMajorBeat += 1
+			self.playState.emit_signal("Beat", self.beatsSinceLastMajorBeat == self.majorBeatTime, self.beat)
 			
-			self.playState.emit_signal("Beat", int(self.beat) % self.majorBeatTime == 0, self.beat)
+			if self.beatsSinceLastMajorBeat == self.majorBeatTime:
+				self.beatsSinceLastMajorBeat = 0
 
 # Runs through the song data and loads them as an AudioStream
 func loadMusic():

@@ -91,13 +91,18 @@ func beatChanged(beatMajor, beat):
 		self.UI.get_node("BumpAnimator").play("BumpIntense")
 	else:
 		self.UI.get_node("BumpAnimator").play("BumpBasic")
-	
+		
 	# Camera Beat
+	
+	var strength = 0.012
+	
+	if beatMajor:
+		strength = 0.03
 	
 	var cameraTween = get_tree().create_tween()
 	cameraTween.set_ease(Tween.EASE_OUT)
 	cameraTween.set_trans(Tween.TRANS_CUBIC)
-	cameraTween.tween_property(self, "bumpZoom", Vector2(0.05, 0.05), 0)
+	cameraTween.tween_property(self, "bumpZoom", Vector2(strength, strength), 0)
 	cameraTween.tween_property(self, "bumpZoom", Vector2.ZERO, 1)
 	cameraTween.play()
 	
