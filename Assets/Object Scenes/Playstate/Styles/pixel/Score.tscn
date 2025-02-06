@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://urods1mds5uo"]
+
+[ext_resource type="Script" path="res://Scripts/PlayState/scoreUiHandler.gd" id="1_38u0c"]
+
+[node name="Score" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_38u0c")
+
+[node name="Spawn" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 353.0
+offset_bottom = 362.0
+
+[connection signal="newScore" from="." to="." method="scoreNew"]

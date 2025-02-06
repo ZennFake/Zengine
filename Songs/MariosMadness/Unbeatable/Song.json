@@ -5,6 +5,7 @@
 		"Inst": "res://Songs/MariosMadness/Unbeatable/Inst.mp3"
 	},
 	"meta": {
+		"style": "funkin",
 		"p2": "Boyfriend",
 		"stage": "Tutorial/Stage",
 		"timeline": [

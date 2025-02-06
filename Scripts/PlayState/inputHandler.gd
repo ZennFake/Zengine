@@ -29,7 +29,7 @@ var pressedKeys : Array
 
 var offsetRank = [ # 4 - Sick 3 - Good 2 - Ok, 1 - Horrible
 	45,
-	90,
+	110,
 	135,
 	160,
 ]

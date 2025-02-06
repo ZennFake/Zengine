@@ -114,7 +114,6 @@ func noteHit(player, Direction):
 	var string = "p" + str(player)
 	
 	if not characterList.has(string):
-		print("CHARACTER NOT FOUND")
 		return
 	
 	characterList[string]["sprite"].get_node("Sprite").stop()

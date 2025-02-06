@@ -5,6 +5,7 @@
 		"Inst": "res://Songs/Breaker_Bundle/Gamebreaker/Inst.ogg"
 	},
 	 "meta": {
+		"style": "pixel",
 		"p2": "Boyfriend",
 		"stage": "Tutorial/Stage",
 		"timeline": [

@@ -7,10 +7,11 @@
 		"gf": "res://Songs/Friday Night Funkin/Tutorial/Voices-gf.ogg"
 	},
 	"meta": {
+		"difficulties": ["easy", "normal", "hard"],
+		"style": "funkin",
 		"p1": "Huggy",
 		"p2": "Boyfriend",
 		"stage": "Tutorial/Stage",
-		"difficulties": ["easy", "normal", "hard"],
 		"timeline": [
 			{
 			   "d": 4, 

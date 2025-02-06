@@ -1,0 +1,144 @@
+[gd_scene load_steps=8 format=3 uid="uid://boqv8flo7dl0u"]
+
+[ext_resource type="Texture2D" uid="uid://dg558ixpmcxx1" path="res://Assets/User Interface/Play/Styles/pixel/Scores/bad.png" id="1_qp7jl"]
+[ext_resource type="Texture2D" uid="uid://csnhtgwdqsnhm" path="res://Assets/User Interface/Play/Styles/pixel/Scores/shit.png" id="2_orocl"]
+[ext_resource type="Texture2D" uid="uid://dy7bth508mmuk" path="res://Assets/User Interface/Play/Styles/pixel/Scores/sick.png" id="3_dfrnl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bl1mu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qp7jl")
+}],
+"loop": true,
+"name": &"Bad",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Good",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_orocl")
+}],
+"loop": true,
+"name": &"Shit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dfrnl")
+}],
+"loop": true,
+"name": &"Sick",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_jlkdv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RankSpawn/BaseRank:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RankSpawn/BaseRank:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(22, 21)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BaseRank:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(178, 100)]
+}
+
+[sub_resource type="Animation" id="Animation_06w0g"]
+resource_name = "Spawn"
+length = 1.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RankSpawn/BaseRank:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.366667, 0.6, 1.03333),
+"transitions": PackedFloat32Array(0.466516, 0.420448, 2.73208, 1),
+"update": 0,
+"values": [Vector2(22, 21), Vector2(22, -10), Vector2(22, -11), Vector2(22, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RankSpawn/BaseRank:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BaseRank:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(178, 100)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yhfjn"]
+_data = {
+"RESET": SubResource("Animation_jlkdv"),
+"Spawn": SubResource("Animation_06w0g")
+}
+
+[node name="Rank" type="Node2D"]
+
+[node name="RankSpawn" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 156.0
+offset_top = 79.0
+offset_right = 196.0
+offset_bottom = 119.0
+
+[node name="BaseRank" type="AnimatedSprite2D" parent="RankSpawn"]
+texture_filter = 3
+position = Vector2(22, 21)
+scale = Vector2(7.38, 7.38)
+sprite_frames = SubResource("SpriteFrames_bl1mu")
+animation = &"Bad"
+
+[node name="ScoreAnimation" type="AnimationPlayer" parent="RankSpawn"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_yhfjn")
+}

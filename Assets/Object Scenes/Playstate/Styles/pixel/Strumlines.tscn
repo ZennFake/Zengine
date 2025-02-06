@@ -1,0 +1,445 @@
+[gd_scene load_steps=36 format=3 uid="uid://dolm002t7psha"]
+
+[ext_resource type="Texture2D" uid="uid://dru0topbugrof" path="res://Assets/Temp Assets/OUw2Vg.png" id="1_wayva"]
+[ext_resource type="Texture2D" uid="uid://crd4pcxyc0n5u" path="res://Assets/User Interface/Play/Styles/pixel/left/left.png" id="2_f3g6s"]
+[ext_resource type="Texture2D" uid="uid://hwxjlvq40xym" path="res://Assets/User Interface/Play/Styles/pixel/left/leftpress.png" id="3_gn6ud"]
+[ext_resource type="Texture2D" uid="uid://dn0oabii2hqbj" path="res://Assets/User Interface/Play/Styles/pixel/left/leftconfirm01.png" id="4_62d8r"]
+[ext_resource type="Texture2D" uid="uid://c62uv0r6nrkbs" path="res://Assets/User Interface/Play/Styles/pixel/left/leftconfirm02.png" id="5_ii51g"]
+[ext_resource type="Texture2D" uid="uid://chcbe2myi25k4" path="res://Assets/User Interface/Play/Styles/pixel/left/purple.png" id="6_sr8lf"]
+[ext_resource type="Texture2D" uid="uid://doqx8017tpedk" path="res://Assets/User Interface/Play/Styles/pixel/down/blue.png" id="7_8btbb"]
+[ext_resource type="Texture2D" uid="uid://7a576xi0dpg6" path="res://Assets/User Interface/Play/Styles/pixel/up/green.png" id="8_7trt4"]
+[ext_resource type="Texture2D" uid="uid://c8bcaaj576k7c" path="res://Assets/User Interface/Play/Styles/pixel/right/red.png" id="9_exilo"]
+[ext_resource type="Texture2D" uid="uid://ct6eo802eaj8j" path="res://Assets/User Interface/Play/Styles/pixel/left/purplehold.png" id="10_pgfcu"]
+[ext_resource type="Texture2D" uid="uid://cxfk4kfn3y6x1" path="res://Assets/User Interface/Play/Styles/pixel/left/purpleholdend.png" id="11_hjwub"]
+[ext_resource type="Texture2D" uid="uid://dr7tkgsmqc3bx" path="res://Assets/User Interface/Play/Styles/pixel/down/down.png" id="12_obi6y"]
+[ext_resource type="Texture2D" uid="uid://b8e88es07u652" path="res://Assets/User Interface/Play/Styles/pixel/down/downpress.png" id="13_f1c10"]
+[ext_resource type="Texture2D" uid="uid://bve6ajbvqn18y" path="res://Assets/User Interface/Play/Styles/pixel/down/downconfirm01.png" id="14_lbt1l"]
+[ext_resource type="Texture2D" uid="uid://dcl8fcjsjdhn2" path="res://Assets/User Interface/Play/Styles/pixel/down/downconfirm02.png" id="15_4dwjc"]
+[ext_resource type="Texture2D" uid="uid://b8ruibtiv5u83" path="res://Assets/User Interface/Play/Styles/pixel/down/bluehold.png" id="16_r86c6"]
+[ext_resource type="Texture2D" uid="uid://ccusdtu36bx8c" path="res://Assets/User Interface/Play/Styles/pixel/down/blueholdend.png" id="17_x8ofo"]
+[ext_resource type="Texture2D" uid="uid://b3pg5tchr4th" path="res://Assets/User Interface/Play/Styles/pixel/up/up.png" id="18_1qdwd"]
+[ext_resource type="Texture2D" uid="uid://bwcka50ir2r4w" path="res://Assets/User Interface/Play/Styles/pixel/up/uppress.png" id="19_vsvkd"]
+[ext_resource type="Texture2D" uid="uid://cnhsoup803jiv" path="res://Assets/User Interface/Play/Styles/pixel/up/upconfirm01.png" id="20_yrf66"]
+[ext_resource type="Texture2D" uid="uid://caqn0wacr463x" path="res://Assets/User Interface/Play/Styles/pixel/up/upconfirm02.png" id="21_6l51e"]
+[ext_resource type="Texture2D" uid="uid://djerrv456tb6d" path="res://Assets/User Interface/Play/Styles/pixel/up/greenhold.png" id="22_2frn6"]
+[ext_resource type="Texture2D" uid="uid://d0q0803cep7fs" path="res://Assets/User Interface/Play/Styles/pixel/up/greenholdend.png" id="23_2eb3h"]
+[ext_resource type="Texture2D" uid="uid://be1xq8dcygmp2" path="res://Assets/User Interface/Play/Styles/pixel/right/right.png" id="24_c4i5x"]
+[ext_resource type="Texture2D" uid="uid://bms1w17d5vkvu" path="res://Assets/User Interface/Play/Styles/pixel/right/rightpress.png" id="25_6a6co"]
+[ext_resource type="Texture2D" uid="uid://1jr78ccis5q" path="res://Assets/User Interface/Play/Styles/pixel/right/rightconfirm01.png" id="26_qbaos"]
+[ext_resource type="Texture2D" uid="uid://bjdsolq6vombu" path="res://Assets/User Interface/Play/Styles/pixel/right/rightconfirm02.png" id="27_3e877"]
+[ext_resource type="Texture2D" uid="uid://cabtaq7iwgm2q" path="res://Assets/User Interface/Play/Styles/pixel/right/redhold.png" id="28_hbcbv"]
+[ext_resource type="Texture2D" uid="uid://bx8xs6apk5046" path="res://Assets/User Interface/Play/Styles/pixel/right/redholdend.png" id="29_jqx0b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6e5kw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f3g6s")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gn6ud")
+}],
+"loop": true,
+"name": &"Press",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_62d8r")
+}, {
+"duration": 3.0,
+"texture": ExtResource("5_ii51g")
+}],
+"loop": true,
+"name": &"PressHit",
+"speed": 24.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w3qfa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_sr8lf")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_8btbb")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_7trt4")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_exilo")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7fa8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bceaq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_obi6y")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_f1c10")
+}],
+"loop": true,
+"name": &"Press",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_lbt1l")
+}, {
+"duration": 3.0,
+"texture": ExtResource("15_4dwjc")
+}],
+"loop": true,
+"name": &"PressHit",
+"speed": 15.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jmj3y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_1qdwd")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_vsvkd")
+}],
+"loop": true,
+"name": &"Press",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_yrf66")
+}, {
+"duration": 3.0,
+"texture": ExtResource("21_6l51e")
+}],
+"loop": true,
+"name": &"PressHit",
+"speed": 24.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sbqki"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_c4i5x")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_6a6co")
+}],
+"loop": true,
+"name": &"Press",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_qbaos")
+}, {
+"duration": 3.0,
+"texture": ExtResource("27_3e877")
+}],
+"loop": true,
+"name": &"PressHit",
+"speed": 24.0
+}]
+
+[node name="Lane" type="Node2D"]
+process_mode = 1
+
+[node name="Ref" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(959.797, 541.75)
+scale = Vector2(2.01955, 2.01955)
+texture = ExtResource("1_wayva")
+
+[node name="0" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_top = -1.0
+offset_right = 170.0
+offset_bottom = 1080.0
+
+[node name="Key" type="AnimatedSprite2D" parent="0"]
+z_index = 3
+texture_filter = 3
+position = Vector2(84, 152)
+scale = Vector2(9.91, 9.91)
+sprite_frames = SubResource("SpriteFrames_6e5kw")
+animation = &"Idle"
+
+[node name="NoteBase" type="AnimatedSprite2D" parent="0"]
+visible = false
+z_index = 1
+texture_filter = 3
+position = Vector2(84, 189.9)
+scale = Vector2(9.815, 9.815)
+sprite_frames = SubResource("SpriteFrames_w3qfa")
+animation = &"0"
+
+[node name="NoteHolder" type="Panel" parent="0"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 3
+layout_mode = 0
+offset_right = 170.0
+offset_bottom = 1081.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d7fa8")
+
+[node name="BarHolder" type="Panel" parent="0"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 2
+clip_contents = true
+layout_mode = 0
+offset_top = 143.42
+offset_right = 170.0
+offset_bottom = 1224.42
+theme_override_styles/panel = SubResource("StyleBoxFlat_d7fa8")
+
+[node name="Bar" type="TextureRect" parent="0"]
+visible = false
+texture_filter = 3
+layout_mode = 0
+offset_left = 52.0
+offset_top = 269.0
+offset_right = 118.0
+offset_bottom = 625.68
+pivot_offset = Vector2(23.68, 0)
+texture = ExtResource("10_pgfcu")
+expand_mode = 1
+
+[node name="BarEnding" type="TextureRect" parent="0/Bar"]
+texture_filter = 3
+layout_mode = 0
+offset_top = 356.0
+offset_right = 66.0
+offset_bottom = 417.0
+texture = ExtResource("11_hjwub")
+
+[node name="1" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 169.85
+offset_top = -1.0
+offset_right = 339.85
+offset_bottom = 1080.0
+
+[node name="NoteHolder" type="Panel" parent="1"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 4
+layout_mode = 0
+offset_right = 170.0
+offset_bottom = 1081.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d7fa8")
+
+[node name="BarHolder" type="Panel" parent="1"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 2
+clip_contents = true
+layout_mode = 0
+offset_top = 143.42
+offset_right = 170.0
+offset_bottom = 1224.42
+theme_override_styles/panel = SubResource("StyleBoxFlat_d7fa8")
+
+[node name="Key" type="AnimatedSprite2D" parent="1"]
+z_index = 3
+texture_filter = 3
+position = Vector2(82.965, 152)
+scale = Vector2(9.91, 9.91)
+sprite_frames = SubResource("SpriteFrames_bceaq")
+animation = &"Idle"
+frame_progress = 0.989366
+
+[node name="NoteBase" type="AnimatedSprite2D" parent="1"]
+visible = false
+z_index = 1
+texture_filter = 3
+position = Vector2(84, 152)
+scale = Vector2(9.815, 9.815)
+sprite_frames = SubResource("SpriteFrames_w3qfa")
+animation = &"0"
+
+[node name="Bar" type="TextureRect" parent="1"]
+visible = false
+texture_filter = 3
+offset_left = 52.0
+offset_top = 269.0
+offset_right = 118.0
+offset_bottom = 625.68
+pivot_offset = Vector2(23.68, 0)
+texture = ExtResource("16_r86c6")
+expand_mode = 1
+
+[node name="BarEnding" type="TextureRect" parent="1/Bar"]
+texture_filter = 3
+layout_mode = 0
+offset_top = 356.0
+offset_right = 66.0
+offset_bottom = 417.0
+texture = ExtResource("17_x8ofo")
+
+[node name="2" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 340.41
+offset_top = -1.0
+offset_right = 510.41
+offset_bottom = 1080.0
+
+[node name="NoteHolder" type="Panel" parent="2"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 3
+layout_mode = 0
+offset_right = 170.0
+offset_bottom = 1081.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d7fa8")
+
+[node name="BarHolder" type="Panel" parent="2"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 2
+clip_contents = true
+layout_mode = 0
+offset_top = 143.42
+offset_right = 170.0
+offset_bottom = 1224.42
+theme_override_styles/panel = SubResource("StyleBoxFlat_d7fa8")
+
+[node name="Key" type="AnimatedSprite2D" parent="2"]
+z_index = 3
+texture_filter = 3
+position = Vector2(81.62, 142)
+scale = Vector2(9.91, 9.91)
+sprite_frames = SubResource("SpriteFrames_jmj3y")
+animation = &"Idle"
+
+[node name="NoteBase" type="AnimatedSprite2D" parent="2"]
+visible = false
+z_index = 1
+texture_filter = 3
+position = Vector2(84, 152)
+scale = Vector2(9.815, 9.815)
+sprite_frames = SubResource("SpriteFrames_w3qfa")
+animation = &"0"
+frame_progress = 0.788078
+
+[node name="Bar" type="TextureRect" parent="2"]
+visible = false
+texture_filter = 3
+offset_left = 51.655
+offset_top = 269.0
+offset_right = 117.655
+offset_bottom = 625.68
+pivot_offset = Vector2(23.68, 0)
+texture = ExtResource("22_2frn6")
+expand_mode = 1
+
+[node name="BarEnding" type="TextureRect" parent="2/Bar"]
+texture_filter = 3
+layout_mode = 0
+offset_top = 356.0
+offset_right = 66.0
+offset_bottom = 417.0
+texture = ExtResource("23_2eb3h")
+
+[node name="3" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 509.085
+offset_top = -1.0
+offset_right = 679.085
+offset_bottom = 1080.0
+
+[node name="NoteHolder" type="Panel" parent="3"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 3
+layout_mode = 0
+offset_right = 170.0
+offset_bottom = 1081.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d7fa8")
+
+[node name="BarHolder" type="Panel" parent="3"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 2
+clip_contents = true
+layout_mode = 0
+offset_top = 143.42
+offset_right = 170.0
+offset_bottom = 1224.42
+theme_override_styles/panel = SubResource("StyleBoxFlat_d7fa8")
+
+[node name="Key" type="AnimatedSprite2D" parent="3"]
+z_index = 3
+texture_filter = 3
+position = Vector2(82, 142)
+scale = Vector2(9.91, 9.91)
+sprite_frames = SubResource("SpriteFrames_sbqki")
+animation = &"Idle"
+
+[node name="NoteBase" type="AnimatedSprite2D" parent="3"]
+visible = false
+z_index = 1
+texture_filter = 3
+position = Vector2(84, 152)
+scale = Vector2(9.815, 9.815)
+sprite_frames = SubResource("SpriteFrames_w3qfa")
+animation = &"0"
+
+[node name="Bar" type="TextureRect" parent="3"]
+visible = false
+texture_filter = 3
+offset_left = 52.0
+offset_top = 269.0
+offset_right = 118.0
+offset_bottom = 625.68
+pivot_offset = Vector2(23.68, 0)
+texture = ExtResource("28_hbcbv")
+expand_mode = 1
+
+[node name="BarEnding" type="TextureRect" parent="3/Bar"]
+texture_filter = 3
+layout_mode = 0
+offset_top = 356.0
+offset_right = 66.0
+offset_bottom = 417.0
+texture = ExtResource("29_jqx0b")

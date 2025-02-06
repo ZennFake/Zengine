@@ -259,7 +259,7 @@ func updateChart(dt : float):
 			if note.BarAsset.get_parent().name == "BarHolder": # Is Pressed
 				note.Asset.position.y += 143.42 # Account for clip offset
 			
-			note.BarAsset.size = Vector2(55, (self.getNoteY(note.Data.t + note.Data.l)  * 1080) - note.Asset.position.y)
+			note.BarAsset.size = Vector2(note.BarAsset.size.x, (self.getNoteY(note.Data.t + note.Data.l)  * 1080) - note.Asset.position.y)
 			note.BarAsset.get_node("BarEnding").position = Vector2(1, note.BarAsset.size.y)
 			
 			if self.getNoteY(note.Data.t + note.Data.l) < -0.1:
