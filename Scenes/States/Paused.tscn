@@ -1,10 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwkqml0yo68qu"]
+[gd_scene load_steps=9 format=3 uid="uid://dwkqml0yo68qu"]
+
+[ext_resource type="FontFile" uid="uid://dl5mra5gopj10" path="res://Assets/Fonts/Phantomuff Difficult Font.ttf" id="1_gy8of"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pe3q7"]
 bg_color = Color(0, 0, 0, 0.356863)
 
-[sub_resource type="LabelSettings" id="LabelSettings_acfmk"]
-font_size = 121
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_agkb4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu363"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_omuqf"]
+font = ExtResource("1_gy8of")
+font_size = 71
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_hl3t2"]
 resource_name = "Paused"
@@ -23,50 +33,50 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Panel/Label:self_modulate")
+tracks/1/path = NodePath("Panel:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.517632, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Panel/Label:position")
+tracks/2/path = NodePath(".:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.535887, 1),
-"update": 0,
-"values": [Vector2(735, 408.705), Vector2(735, 420)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Panel:visible")
+tracks/3/path = NodePath("Panel:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"times": PackedFloat32Array(0.0333333, 1),
+"transitions": PackedFloat32Array(0.203063, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:visible")
+tracks/4/path = NodePath("Panel/ScrollContainer:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.196146, 1),
+"update": 0,
+"values": [Vector2(-500, 506), Vector2(81, 506)]
 }
 
 [sub_resource type="Animation" id="Animation_77o72"]
@@ -86,50 +96,50 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Panel/Label:self_modulate")
+tracks/1/path = NodePath("Panel:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Panel/Label:position")
+tracks/2/path = NodePath(".:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(735, 420)]
+"update": 1,
+"values": [true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Panel:visible")
+tracks/3/path = NodePath("Panel:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:visible")
+tracks/4/path = NodePath("Panel/ScrollContainer:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(81, 506)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kpvlq"]
@@ -147,15 +157,34 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pe3q7")
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+clip_contents = false
 layout_mode = 0
-offset_left = 735.0
-offset_top = 420.0
-offset_right = 1160.0
-offset_bottom = 586.0
-text = "Paused
-"
-label_settings = SubResource("LabelSettings_acfmk")
+offset_left = 80.9994
+offset_top = 506.0
+offset_right = 217.999
+offset_bottom = 509.0
+rotation = -0.436332
+theme_override_styles/panel = SubResource("StyleBoxEmpty_agkb4")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="BoxContainer" type="BoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+vertical = true
+
+[node name="ContentHolderBase" type="Panel" parent="Panel/ScrollContainer/BoxContainer"]
+custom_minimum_size = Vector2(129.565, 135)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qu363")
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/BoxContainer/ContentHolderBase"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+rotation = 0.436332
+text = "Unpause"
+label_settings = SubResource("LabelSettings_omuqf")
 
 [node name="PauseAnimation" type="AnimationPlayer" parent="."]
 libraries = {

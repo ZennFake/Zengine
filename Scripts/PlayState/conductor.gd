@@ -40,6 +40,7 @@ var UI
 @onready var modchartHolder : Node = playState.get_node("ModChartHolder")
 
 var timebarHandler
+var scorebarHandler
 
 ## // FUNCTIONS // ##
 
@@ -83,6 +84,9 @@ func _on_song_requested(SongInfo):
 	self.majorBeatTime = 4
 	self.beat = 0
 	self.beatsSinceLastMajorBeat = 0
+	self.scorebarHandler = self.UI.get_node("Scorebar")
+	
+	self.scorebarHandler.emit_signal("updateScore", "Score", 0)
 	
 	self.loadMusic()
 	playState.emit_signal("Initiate", self)
