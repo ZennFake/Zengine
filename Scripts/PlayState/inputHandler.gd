@@ -27,6 +27,8 @@ var playing : bool
 
 var pressedKeys : Array
 
+var misses = 0
+
 var offsetRank = [ # 4 - Sick 3 - Good 2 - Ok, 1 - Horrible
 	45,
 	110,
@@ -58,6 +60,7 @@ var rankOffset = 0
 var UI
 @onready var chartHandler = get_parent().get_node("ChartHandler")
 @onready var stageHandler = get_parent().get_node("StageHandler")
+var Scorebar
 
 ## // FUNCTIONS // ##
 
@@ -80,6 +83,7 @@ func initiateInputs(conducter):
 	self.pressedKeys = []
 	self.playing = true
 	self.UI = Root.get_node("UILock").get_node("UI")
+	self.Scorebar = self.UI.get_node("Scorebar")
 	
 # Checks if any actions are pressed every frame
 func _process(_delta):

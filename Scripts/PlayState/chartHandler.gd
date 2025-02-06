@@ -34,6 +34,8 @@ var songRunning : bool
 var scrollSpeed
 
 var currentSongPosition
+var Scorebar
+var misses
 
 var laneToDir = [
 	"Left",
@@ -44,6 +46,13 @@ var laneToDir = [
 	"Down",
 	"Up",
 	"Right"
+]
+
+var offsetRank = [ # 4 - Sick 3 - Good 2 - Ok, 1 - Horrible
+	45,
+	110,
+	135,
+	160,
 ]
 
 @onready var Root = get_parent().get_parent().get_parent()
@@ -70,11 +79,13 @@ func initiateChart(conducter):
 	self.pMS = 0.45
 	self.inputOffset = 25
 	self.visualOffset = 20
+	self.misses = 0
 	
 	self.assetsToMove = []
 	self.currentSongPosition = 0
 	
 	self.UI = Root.get_node("UILock").get_node("UI")
+	self.Scorebar = self.UI.get_node("Scorebar")
 	
 
 # Start the song
@@ -266,22 +277,32 @@ func updateChart(dt : float):
 			
 			continue
 		
-		if note.Asset.position.y / 1080 < -0.1:
+		# Check if its a miss or its a miss
+		var maxRank = offsetRank[len(offsetRank) - 1]
+		
+		if note.Data.t + maxRank < self.currentSongPosition: # Note is unpressable
+			self.handleMiss()
+		
+		if note.Asset.position.y / 1080 < -0.1: #Note is out of frame
 			self.cleanupNote(note)
 		
-		# Update events
+	# Update events
 		
-		for event in self.conducterObj.events:
-			if event.t <= currentSongPosition:
-				# Remove event and fire event handler
-				self.conducterObj.events.remove_at(self.conducterObj.events.find(event))
-				
-				# TODO: MAKE AN EVENT MANAGER
-				
-				if event.e == "FocusCamera":
-					stageHandler.emit_signal("focusCamSignal", event.v)
-				if event.e == "ZoomCamera":
-					stageHandler.emit_signal("zoomCamSignal", event.v)
+	for event in self.conducterObj.events:
+		if event.t <= currentSongPosition:
+			# Remove event and fire event handler
+			self.conducterObj.events.remove_at(self.conducterObj.events.find(event))
+			
+			# TODO: MAKE AN EVENT MANAGER
+			
+			if event.e == "FocusCamera":
+				stageHandler.emit_signal("focusCamSignal", event.v)
+			if event.e == "ZoomCamera":
+				stageHandler.emit_signal("zoomCamSignal", event.v)
+
+func handleMiss():
+	self.misses += 1
+	self.Scorebar.emit_signal("updateScore", "Combo Breaks", self.misses)
 
 # Calculates the notes Y position
 func getNoteY(timePosition):
