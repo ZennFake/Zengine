@@ -9,18 +9,18 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_5koqo")
-}],
-"loop": true,
-"name": &"Down",
-"speed": 24.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("2_7jpxr")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"idle",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5koqo")
+}],
+"loop": true,
+"name": &"singDOWN",
 "speed": 24.0
 }, {
 "frames": [{
@@ -28,7 +28,7 @@ animations = [{
 "texture": ExtResource("3_h47fo")
 }],
 "loop": true,
-"name": &"Left",
+"name": &"singLEFT",
 "speed": 24.0
 }, {
 "frames": [{
@@ -36,7 +36,7 @@ animations = [{
 "texture": ExtResource("3_h47fo")
 }],
 "loop": true,
-"name": &"Right",
+"name": &"singRIGHT",
 "speed": 24.0
 }, {
 "frames": [{
@@ -44,7 +44,7 @@ animations = [{
 "texture": ExtResource("4_b1wfv")
 }],
 "loop": true,
-"name": &"Up",
+"name": &"singUP",
 "speed": 24.0
 }]
 
@@ -58,5 +58,5 @@ position = Vector2(-12.0001, -384)
 rotation = 3.14159
 scale = Vector2(1.095, 1.095)
 sprite_frames = SubResource("SpriteFrames_ee2vr")
-animation = &"Idle"
+animation = &"singDOWN"
 flip_v = true

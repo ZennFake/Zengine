@@ -38,14 +38,14 @@ var Scorebar
 var misses
 
 var laneToDir = [
-	"Left",
-	"Down",
-	"Up",
-	"Right",
-	"Left",
-	"Down",
-	"Up",
-	"Right"
+	"singLEFT",
+	"singDOWN",
+	"singUP",
+	"singRIGHT",
+	"singLEFT",
+	"singDOWN",
+	"singUP",
+	"singRIGHT"
 ]
 
 var offsetRank = [ # 4 - Sick 3 - Good 2 - Ok, 1 - Horrible

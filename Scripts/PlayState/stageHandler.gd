@@ -35,6 +35,8 @@ var baseZoom = Vector2.ONE
 func createPlayer(playerString, characterName):
 	var spawn = self.stage.get_node("Spawns").get_node(playerString)
 	var characterPathString = "res://Assets/Characters/" + characterName + "/Character.tscn"
+	var offsetPathString = "res://Assets/Characters/" + characterName + "/offsets.json"
+	
 	
 	characterPathString = load(characterPathString)
 	var character = characterPathString.instantiate()
@@ -49,8 +51,13 @@ func createPlayer(playerString, characterName):
 		notePressing = false,
 		keysPressing = [],
 		sprite = character,
-		timesincePress = Time.get_ticks_msec()
+		timesincePress = Time.get_ticks_msec(),
+		offsets = {},
+		originalPosition = spawn
 	}
+	
+	if FileAccess.file_exists(offsetPathString) == true:
+		self.characterList[playerString].offsets = self.conductor.util.readJson(offsetPathString)
 	
 
 # Starts the stage manager
@@ -115,7 +122,7 @@ func beatChanged(beatMajor, beat):
 			continue # Beat too close
 		var character = characterList[playerString]["sprite"]
 		character.get_node("Sprite").stop()
-		character.get_node("Sprite").play("Idle")
+		playAnimation(characterList[playerString], "idle")
 
 # Makes the player animate based off of the direction hit
 func noteHit(player, Direction):
@@ -126,7 +133,7 @@ func noteHit(player, Direction):
 		return
 	
 	characterList[string]["sprite"].get_node("Sprite").stop()
-	characterList[string]["sprite"].get_node("Sprite").play(Direction)
+	playAnimation(characterList[string], Direction)
 	characterList[string]["timesincePress"] = Time.get_ticks_msec()
 	characterList[string]["notePressing"] = true
 	characterList[string]["keysPressing"].append(Direction)
@@ -179,5 +186,27 @@ func ZoomCamera(v):
 # Updates the camera zoom with the new variables for the zoom.
 func _process(delta: float) -> void:
 	Camera.zoom = baseZoom + bumpZoom
-
+	
+func playAnimation(playerDict,animationName):
+	
+	if playerDict.offsets != {}: # Offsets found
+		var offsetAnimation = playerDict.offsets["animations"]
+		
+		for offset in offsetAnimation:
+			if offset.name == animationName: # Animation found
+				offsetAnimation = offset
+				break
+		
+		if not offsetAnimation:
+			playerDict.sprite.get_node("Sprite").play(animationName)
+			return false
+		else:
+			playerDict.sprite.get_node("Sprite").play(animationName)
+			playerDict.sprite.position = playerDict.originalPosition.position + Vector2(-offsetAnimation.offsets[0], -offsetAnimation.offsets[1])
+			
+			return true
+	else:
+		playerDict.sprite.get_node("Sprite").play(animationName)
+		return false
+	
 ## // OBJECT FUNCTIONS // ##
