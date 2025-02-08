@@ -89,6 +89,9 @@ func startSong(conductorObject):
 	
 	if self.metaData.has("p2"):
 		createPlayer("p2", self.metaData["p2"])
+		
+	if self.metaData.has("gf"):
+		createPlayer("gf", self.metaData["gf"])
 	
 	
 # Resets character idles and makes the screen bump
@@ -117,7 +120,7 @@ func beatChanged(beatMajor, beat, beatSinceMajor):
 	# Character Bot
 	
 	for playerString in characterList:
-		characterList[playerString]["sprite"].get_node("Sprite").speed_scale = self.conductor.bpm / 100
+		characterList[playerString]["sprite"].get_node("Sprite").speed_scale = 1 + abs((self.conductor.bpm / 64) - 1)
 		if characterList[playerString]["notePressing"]:
 			continue
 		if Time.get_ticks_msec() - characterList[playerString]["timesincePress"] < 300:

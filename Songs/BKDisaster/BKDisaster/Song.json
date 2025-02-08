@@ -10,7 +10,8 @@
 		"style": "funkin",
 		"p1": "Huggy",
 		"p2": "Boyfriend",
-		"stage": "Tutorial/Stage",
+		"gf": "Girlfriend",
+		"stage": "Week1/Stage",
 		"timeline": [
 		  {
 			  "t": 0,
