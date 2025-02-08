@@ -19,12 +19,12 @@
 	{
 	  "name": "singDOWN",
 	  "prefix": "BF NOTE DOWN0",
-	  "offsets": [-5, -3]
+	  "offsets": [18, 2]
 	},
 	{
 	  "name": "singUP",
 	  "prefix": "BF NOTE UP0",
-	  "offsets": [-40, 3]
+	  "offsets": [0, 0]
 	},
 	{
 	  "name": "singRIGHT",

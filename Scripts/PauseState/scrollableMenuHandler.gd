@@ -11,8 +11,8 @@ signal openMenuS
 
 var pauseOptions = {
 	"RESUME" = Unpause,
-	"RESTART SONG" = nothing,
-	"CHANGE DIFFICULTY" = nothing,
+	"RESTART SONG" = reset,
+	"seong gi hun" = seong,
 	"SETTINGS" = nothing,
 	"EXIT TO MENU" = Exit
 }
@@ -69,6 +69,9 @@ func createButton(option):
 	
 	items.append([pauseOptions[option], newContainer])
 
+func seong():
+	$seonggihun.stop()
+	$seonggihun.play("boo")
 
 func Initiate(pauseHandlerrea):
 	
@@ -97,6 +100,12 @@ func Exit():
 	menuOpen = false
 	pauseHandler.emit_signal("Unpause")
 	pauseHandler.get_parent().get_parent().get_node("Conductor").emit_signal("songEnded")
+
+func reset():
+	playBack()
+	menuOpen = false
+	pauseHandler.emit_signal("Unpause", true)
+	pauseHandler.get_parent().get_parent().get_node("Conductor").emit_signal("restartSong")
 
 func nothing():
 	pass

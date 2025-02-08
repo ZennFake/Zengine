@@ -6,6 +6,7 @@ extends Node
 signal songRequested
 signal songBegan
 signal songEnded
+signal restartSong
 
 ## // VARIABLES // ##
 
@@ -95,11 +96,42 @@ func _on_song_requested(SongInfo):
 	
 	self.emit_signal("songBegan")
 	
-	await self.songTracks.values()[0].finished
+	var stream : AudioStreamPlayer2D = self.songTracks.values()[0]
 	
-	$".".emit_signal("songEnded")
+	stream.connect("finished", songEndedFunc)
 	
 ## // OBJECT FUNCTION // ##
+
+# Handles the song ending
+func songEndedFunc():
+	$".".emit_signal("songEnded")
+	
+func handleRestart(newDifficulty = null):
+	# Disconnect song ending function
+	var stream : AudioStreamPlayer2D = self.songTracks.values()[0]
+	stream.disconnect("finished", songEndedFunc)
+	
+	# Get vars
+	
+	var songSetup = Dictionary(self.songInfo)
+	if newDifficulty:
+		songSetup["Difficulty"] = newDifficulty
+	
+	playState.emit_signal("Reset")
+	
+	# Reload Scene
+	
+	for trackName in self.songTracks:
+		var songObject : AudioStreamPlayer2D = self.songTracks[trackName]
+		
+		songObject.queue_free()
+	root.get_node("UILock").reparent(root.get_parent())
+	root.get_node("Stage").reparent(root.get_parent())
+	
+	root.get_parent().get_node("UILock").queue_free()
+	root.get_parent().get_node("Stage").queue_free()
+	
+	_on_song_requested(songSetup)
 
 # Adds the ui in the style selected
 func updateStyle(style):

@@ -54,8 +54,13 @@ func createPlayer(playerString, characterName):
 		timesincePress = Time.get_ticks_msec(),
 		offsets = {},
 		originalPosition = spawn,
-		last = 0
+		last = 0,
+		player = int(playerString.substr(1, 1)),
+		flipX = false
 	}
+	
+	if not character.get_node("Sprite").flip_h: # Flip Animations
+		self.characterList[playerString].flipX = true
 	
 	if FileAccess.file_exists(offsetPathString) == true:
 		self.characterList[playerString].offsets = self.conductor.util.readJson(offsetPathString)
@@ -120,7 +125,6 @@ func beatChanged(beatMajor, beat, beatSinceMajor):
 	# Character Bot
 	
 	for playerString in characterList:
-		characterList[playerString]["sprite"].get_node("Sprite").speed_scale = 1 + abs((self.conductor.bpm / 64) - 1)
 		if characterList[playerString]["notePressing"]:
 			continue
 		if Time.get_ticks_msec() - characterList[playerString]["timesincePress"] < 300:
@@ -128,6 +132,7 @@ func beatChanged(beatMajor, beat, beatSinceMajor):
 		var character = characterList[playerString]["sprite"]
 		var sprite : AnimatedSprite2D = character.get_node("Sprite")
 		var beatsPerReset = character.get_meta("BeatsPerReset")
+		characterList[playerString]["sprite"].get_node("Sprite").speed_scale = 1 + abs((self.conductor.bpm / (32 * (4 - beatsPerReset)) - 1))
 		if characterList[playerString].last != beatSinceMajor / beatsPerReset:
 			character.get_node("Sprite").stop()
 			characterList[playerString].last = beatSinceMajor / beatsPerReset
@@ -198,6 +203,13 @@ func _process(delta: float) -> void:
 	
 func playAnimation(playerDict,animationName):
 	
+	# Handle flip
+	
+	if animationName == "singLEFT" and playerDict.flipX:
+		animationName = "singRIGHT"
+	elif animationName == "singRIGHT" and playerDict.flipX:
+		animationName = "singLEFT"
+	
 	if playerDict.offsets != {}: # Offsets found
 		var offsetAnimation = playerDict.offsets["animations"]
 		
@@ -211,7 +223,10 @@ func playAnimation(playerDict,animationName):
 			return false
 		else:
 			playerDict.sprite.get_node("Sprite").play(animationName)
-			playerDict.sprite.position = playerDict.originalPosition.position + Vector2(-offsetAnimation.offsets[0], -offsetAnimation.offsets[1])
+			if playerDict.player == 1:
+				playerDict.sprite.position = playerDict.originalPosition.position + Vector2(offsetAnimation.offsets[0], -offsetAnimation.offsets[1])
+			else:
+				playerDict.sprite.position = playerDict.originalPosition.position + Vector2(-offsetAnimation.offsets[0], -offsetAnimation.offsets[1])
 			
 			return true
 	else:

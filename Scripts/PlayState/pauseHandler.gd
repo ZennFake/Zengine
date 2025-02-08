@@ -32,9 +32,10 @@ func loadPauseScreen():
 	currentLoading = scene
 	currentLoading.get_node("Scrollable").emit_signal("openMenuS", self)
 
-func unpauseS():
+func unpauseS(isReset = false):
 	paused = false
-	PlayStateParent.emit_signal("Pause", paused)
+	if not isReset:
+		PlayStateParent.emit_signal("Pause", paused)
 	get_tree().paused = paused
 	var animator : AnimationPlayer = currentLoading.get_node("PauseAnimation")
 	

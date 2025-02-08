@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwkqml0yo68qu"]
+[gd_scene load_steps=18 format=3 uid="uid://dwkqml0yo68qu"]
 
 [ext_resource type="Script" path="res://Scripts/PauseState/scrollableMenuHandler.gd" id="1_g5836"]
 [ext_resource type="AudioStream" uid="uid://b2ey2i7swdy4m" path="res://Assets/Sounds/PauseState/cancelMenu.ogg" id="2_qr5fr"]
 [ext_resource type="FontFile" uid="uid://dx04f21fbopr7" path="res://Assets/Fonts/SmallFNF.ttf" id="2_u2idh"]
 [ext_resource type="AudioStream" uid="uid://bxwt7md00346g" path="res://Assets/Sounds/PauseState/scrollMenu.ogg" id="3_gpu23"]
+[ext_resource type="AudioStream" uid="uid://chjqw6lhtvnx3" path="res://Assets/Temp Assets/ES_Horror, Impact, Nightmare 03 - Epidemic Sound.mp3" id="5_nyg8m"]
+[ext_resource type="Texture2D" uid="uid://1pi74rh3edml" path="res://Assets/Temp Assets/Seong_Gi-hun_2024-removebg-preview.png" id="6_ge5b5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pe3q7"]
 bg_color = Color(0, 0, 0, 0.356863)
@@ -20,6 +22,138 @@ outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 11
 shadow_offset = Vector2(2.8, 1)
+
+[sub_resource type="Animation" id="Animation_rbl3j"]
+resource_name = "boo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:layout_direction")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.0507658, 1),
+"update": 0,
+"values": [Vector2(251, 1110), Vector2(251, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.41, 1),
+"transitions": PackedFloat32Array(0.03983, 2.46229, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Scrollable/EsHorror,Impact,Nightmare03-EpidemicSound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_v2reo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:layout_direction")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(251, 1110)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Scrollable/EsHorror,Impact,Nightmare03-EpidemicSound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6cnwt"]
+_data = {
+"RESET": SubResource("Animation_v2reo"),
+"boo": SubResource("Animation_rbl3j")
+}
 
 [sub_resource type="Animation" id="Animation_hl3t2"]
 resource_name = "Paused"
@@ -266,15 +400,35 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_qu363")
 
 [node name="Text" type="Label" parent="Scrollable/ScrollContainer/BoxContainer/ContentHolderBase"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 1840.0
+offset_bottom = 99.0
 rotation = 0.436332
 text = "UNPAUSE"
 label_settings = SubResource("LabelSettings_omuqf")
+
+[node name="seonggihun" type="AnimationPlayer" parent="Scrollable"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_6cnwt")
+}
+
+[node name="EsHorror,Impact,Nightmare03-EpidemicSound" type="AudioStreamPlayer2D" parent="Scrollable"]
+position = Vector2(919, 529)
+stream = ExtResource("5_nyg8m")
+panning_strength = 0.0
 
 [node name="PauseAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_kpvlq")
 }
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+z_index = 6
+offset_left = 251.0
+offset_top = 1110.0
+offset_right = 1591.0
+offset_bottom = 2179.0
+texture = ExtResource("6_ge5b5")
 
 [connection signal="openMenuS" from="Scrollable" to="Scrollable" method="Initiate"]
