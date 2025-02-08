@@ -1,0 +1,235 @@
+[gd_scene load_steps=48 format=3 uid="uid://bcugu6h4jv12c"]
+
+[ext_resource type="Texture2D" uid="uid://1w7lqjlhp6wd" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0000-0.png" id="1_ml5la"]
+[ext_resource type="Texture2D" uid="uid://bfim6vo4lmbfr" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0001-1.png" id="2_8mr5w"]
+[ext_resource type="Texture2D" uid="uid://b1ck3uqachqtk" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0002-2.png" id="3_8rnau"]
+[ext_resource type="Texture2D" uid="uid://2rsom2li2ear" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0003-3.png" id="4_ptg56"]
+[ext_resource type="Texture2D" uid="uid://60q860lrwepx" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0004-4.png" id="5_w64g2"]
+[ext_resource type="Texture2D" uid="uid://cgjubllm7sg5v" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0005-5.png" id="6_2jre5"]
+[ext_resource type="Texture2D" uid="uid://hsw6xrpxw6hr" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0006-6.png" id="7_h4hf2"]
+[ext_resource type="Texture2D" uid="uid://x2wrrj6lacja" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0007-7.png" id="8_7hg6u"]
+[ext_resource type="Texture2D" uid="uid://6824aul5bd4e" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0010-10.png" id="9_j4xo7"]
+[ext_resource type="Texture2D" uid="uid://dwtmq414153ac" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0013-13.png" id="10_0k085"]
+[ext_resource type="Texture2D" uid="uid://blq6hjoc4vm8u" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0015-15.png" id="11_15gfn"]
+[ext_resource type="Texture2D" uid="uid://dvlepb4qivf5h" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0016-16.png" id="12_6oe5l"]
+[ext_resource type="Texture2D" uid="uid://b8ivs8pggmaf5" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0017-17.png" id="13_5vlqk"]
+[ext_resource type="Texture2D" uid="uid://b6qmghonbyh68" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0018-18.png" id="14_mm5a2"]
+[ext_resource type="Texture2D" uid="uid://bv3bhlsnvvsv4" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0019-19.png" id="15_cq381"]
+[ext_resource type="Texture2D" uid="uid://d23x2yph2cc4s" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0020-20.png" id="16_jyrj5"]
+[ext_resource type="Texture2D" uid="uid://brrqv8xloeajn" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0021-21.png" id="17_ogdeh"]
+[ext_resource type="Texture2D" uid="uid://1jao42i40s3j" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0022-22.png" id="18_xtd7a"]
+[ext_resource type="Texture2D" uid="uid://6hopdnqbyqkb" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0025-25.png" id="19_vevxm"]
+[ext_resource type="Texture2D" uid="uid://bb8me2sxhs6dy" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Dancing Beat0028-28.png" id="20_fdjv7"]
+[ext_resource type="Texture2D" uid="uid://dgxdvgss47l3r" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Down Note0000-30.png" id="21_4a2jn"]
+[ext_resource type="Texture2D" uid="uid://cx088hqhac6v1" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Down Note0001-31.png" id="22_mt1ss"]
+[ext_resource type="Texture2D" uid="uid://527i48f0udj2" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Down Note0002-32.png" id="23_gft80"]
+[ext_resource type="Texture2D" uid="uid://b1f2g0km01u4u" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Down Note0003-33.png" id="24_8ai8j"]
+[ext_resource type="Texture2D" uid="uid://ckdgh20lwsvl5" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Down Note0004-34.png" id="25_ofy7s"]
+[ext_resource type="Texture2D" uid="uid://bjjtuxdk2i50s" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF left note0000-72.png" id="26_wtc5t"]
+[ext_resource type="Texture2D" uid="uid://br8tcwxrumfjq" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF left note0001-73.png" id="27_bfpjk"]
+[ext_resource type="Texture2D" uid="uid://0p8fhgtudvct" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF left note0002-74.png" id="28_63qih"]
+[ext_resource type="Texture2D" uid="uid://egevfh0g262v" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF left note0003-75.png" id="29_agxoh"]
+[ext_resource type="Texture2D" uid="uid://ccuddmow1y4m" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF left note0004-76.png" id="30_2olhg"]
+[ext_resource type="Texture2D" uid="uid://cwb4k7pio2si4" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF left note0005-77.png" id="31_itslv"]
+[ext_resource type="Texture2D" uid="uid://d2hj21gu3r3s" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF left note0006-78.png" id="32_gsq2a"]
+[ext_resource type="Texture2D" uid="uid://cxvh1vfpdsnxa" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF left note0008-80.png" id="33_36fkl"]
+[ext_resource type="Texture2D" uid="uid://c675qgy8ib1a4" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Right Note0000-50.png" id="34_yrxqg"]
+[ext_resource type="Texture2D" uid="uid://cnphh8xiu8b4l" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Right Note0001-51.png" id="35_l4uhk"]
+[ext_resource type="Texture2D" uid="uid://camfghms8pkx1" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Right Note0002-52.png" id="36_vsw3h"]
+[ext_resource type="Texture2D" uid="uid://bo5ardesojgbu" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Right Note0003-53.png" id="37_28lr7"]
+[ext_resource type="Texture2D" uid="uid://dioicfw01cvar" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Right Note0004-54.png" id="38_vw5le"]
+[ext_resource type="Texture2D" uid="uid://5nnnmc2bo4pk" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Right Note0005-55.png" id="39_nnck2"]
+[ext_resource type="Texture2D" uid="uid://d4bdebk6sl3s7" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Right Note0006-56.png" id="40_6fwk8"]
+[ext_resource type="Texture2D" uid="uid://bo7jd2h14lb2a" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Right Note0008-58.png" id="41_3wxht"]
+[ext_resource type="Texture2D" uid="uid://uajp7ppmicin" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Up Note0000-65.png" id="42_njnvc"]
+[ext_resource type="Texture2D" uid="uid://mhrxa21s5a8x" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Up Note0001-66.png" id="43_bwn7w"]
+[ext_resource type="Texture2D" uid="uid://dhw20vcq7e483" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Up Note0002-67.png" id="44_0j5sp"]
+[ext_resource type="Texture2D" uid="uid://bmff3hnanfxpo" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Up Note0003-68.png" id="45_hbm1y"]
+[ext_resource type="Texture2D" uid="uid://d0fr6xuffaln8" path="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF Up Note0004-69.png" id="46_8ffhd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ee2vr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ml5la")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8mr5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8rnau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ptg56")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_w64g2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2jre5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_h4hf2")
+}, {
+"duration": 3.0,
+"texture": ExtResource("8_7hg6u")
+}, {
+"duration": 3.0,
+"texture": ExtResource("9_j4xo7")
+}, {
+"duration": 2.0,
+"texture": ExtResource("10_0k085")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_15gfn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6oe5l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_5vlqk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_mm5a2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_cq381")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_jyrj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ogdeh")
+}, {
+"duration": 3.0,
+"texture": ExtResource("18_xtd7a")
+}, {
+"duration": 3.0,
+"texture": ExtResource("19_vevxm")
+}, {
+"duration": 2.0,
+"texture": ExtResource("20_fdjv7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_4a2jn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_mt1ss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_gft80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_8ai8j")
+}, {
+"duration": 16.0,
+"texture": ExtResource("25_ofy7s")
+}],
+"loop": true,
+"name": &"singDOWN",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_wtc5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_bfpjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_63qih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_agxoh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_2olhg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_itslv")
+}, {
+"duration": 2.0,
+"texture": ExtResource("32_gsq2a")
+}, {
+"duration": 7.0,
+"texture": ExtResource("33_36fkl")
+}],
+"loop": true,
+"name": &"singLEFT",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_yrxqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_l4uhk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_vsw3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_28lr7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_vw5le")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_nnck2")
+}, {
+"duration": 2.0,
+"texture": ExtResource("40_6fwk8")
+}, {
+"duration": 7.0,
+"texture": ExtResource("41_3wxht")
+}],
+"loop": true,
+"name": &"singRIGHT",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("42_njnvc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_bwn7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_0j5sp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_hbm1y")
+}, {
+"duration": 14.0,
+"texture": ExtResource("46_8ffhd")
+}],
+"loop": true,
+"name": &"singUP",
+"speed": 24.0
+}]
+
+[node name="Character" type="Node2D"]
+process_mode = 1
+top_level = true
+z_index = 2
+metadata/BeatsPerReset = 2
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(511, -6)
+rotation = 3.14159
+scale = Vector2(1.46686, 1.46686)
+sprite_frames = SubResource("SpriteFrames_ee2vr")
+animation = &"idle"
+frame = 9
+frame_progress = 0.307401
+centered = false
+flip_h = true
+flip_v = true
+
+[node name="Focus" type="Node2D" parent="."]
+position = Vector2(0, -723.895)

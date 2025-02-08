@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3j3yo7d0smyv"
-path="res://.godot/imported/stagefront.png-597a1f7418a079e7e0d31921dfdfc426.ctex"
+uid="uid://bjjtuxdk2i50s"
+path="res://.godot/imported/gf-ass-ets-GF left note0000-72.png-598aaa4dcab682e08134fe7dd48eead0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Stages/Tutorial/Assets/Images/stagefront.png"
-dest_files=["res://.godot/imported/stagefront.png-597a1f7418a079e7e0d31921dfdfc426.ctex"]
+source_file="res://Assets/Characters/Girlfriend/ImageAssets/gf-ass-ets-GF left note0000-72.png"
+dest_files=["res://.godot/imported/gf-ass-ets-GF left note0000-72.png-598aaa4dcab682e08134fe7dd48eead0.ctex"]
 
 [params]
 

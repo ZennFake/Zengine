@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://bvi5a5anqvl7c" path="res://Assets/Fonts/pixel-latin.ttf" id="3_7dg56"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nn3ie"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0, 0, 0, 1)
 border_color = Color(1, 1, 1, 1)
 shadow_color = Color(0, 0, 0, 1)
 
@@ -24,22 +24,23 @@ font = ExtResource("3_7dg56")
 script = ExtResource("1_h3i04")
 
 [node name="ScorebarMain" type="Panel" parent="."]
+offset_top = 13.0
 offset_right = 1141.0
 offset_bottom = 44.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_nn3ie")
 
 [node name="p1" type="Panel" parent="ScorebarMain"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 1138.0
-offset_bottom = 41.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 1134.0
+offset_bottom = 25.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rxlwt")
 
 [node name="p2" type="Panel" parent="ScorebarMain/p1"]
 layout_mode = 0
 offset_right = 567.0
-offset_bottom = 38.0
+offset_bottom = 19.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_d7meb")
 
 [node name="Label" type="Label" parent="."]

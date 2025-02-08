@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8roui2iksbxy"]
+[gd_scene load_steps=10 format=3 uid="uid://b8roui2iksbxy"]
 
 [ext_resource type="PackedScene" uid="uid://dolm002t7psha" path="res://Assets/Object Scenes/Playstate/Styles/pixel/Strumlines.tscn" id="1_scase"]
 [ext_resource type="PackedScene" uid="uid://dsuei2c586evd" path="res://Assets/Object Scenes/Playstate/Styles/funkin/Timebar.tscn" id="2_ljftv"]
 [ext_resource type="PackedScene" uid="uid://drvlfp24yywk" path="res://Assets/Object Scenes/Playstate/Styles/funkin/Score.tscn" id="3_ja1d1"]
+[ext_resource type="PackedScene" uid="uid://dyky81sgdx4u" path="res://Assets/Object Scenes/Playstate/Styles/funkin/Scorebar.tscn" id="4_cctcr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2qag"]
 bg_color = Color(0.0640862, 0.0650654, 0.100761, 1)
@@ -99,8 +100,6 @@ _data = {
 
 [node name="UI" type="CanvasGroup" parent="."]
 self_modulate = Color(1, 1, 1, 0)
-position = Vector2(-16.74, -8.37)
-scale = Vector2(1.018, 1.018)
 
 [node name="EnemyLanes" parent="UI" instance=ExtResource("1_scase")]
 z_index = 2
@@ -132,3 +131,8 @@ libraries = {
 [node name="Score" parent="UI" instance=ExtResource("3_ja1d1")]
 z_index = 1
 position = Vector2(899, 309)
+
+[node name="Scorebar" parent="UI" instance=ExtResource("4_cctcr")]
+z_index = 8
+position = Vector2(428.377, 972.859)
+scale = Vector2(0.982318, 0.982318)

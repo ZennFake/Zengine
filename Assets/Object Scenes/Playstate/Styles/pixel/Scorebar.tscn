@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://dq3ys0nwwiqc8"]
+
+[ext_resource type="Script" path="res://Scripts/PlayState/scoreBarHandler.gd" id="1_ds18a"]
+[ext_resource type="FontFile" uid="uid://bvi5a5anqvl7c" path="res://Assets/Fonts/pixel-latin.ttf" id="2_41lg0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nn3ie"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(1, 1, 1, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rxlwt"]
+bg_color = Color(0.129412, 0.745098, 1, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7meb"]
+bg_color = Color(0.466431, 0.121616, 1, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_67bcl"]
+font = ExtResource("2_41lg0")
+
+[node name="Scorebar" type="Node2D"]
+script = ExtResource("1_ds18a")
+
+[node name="ScorebarMain" type="Panel" parent="."]
+offset_top = 13.0
+offset_right = 1141.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nn3ie")
+
+[node name="p1" type="Panel" parent="ScorebarMain"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 1134.0
+offset_bottom = 25.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rxlwt")
+
+[node name="p2" type="Panel" parent="ScorebarMain/p1"]
+layout_mode = 0
+offset_right = 567.0
+offset_bottom = 19.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d7meb")
+
+[node name="Label" type="Label" parent="."]
+offset_top = 55.0
+offset_right = 1142.0
+offset_bottom = 88.0
+text = "Score: 0 | Combo Breaks: 0 |"
+label_settings = SubResource("LabelSettings_67bcl")
+horizontal_alignment = 1
+
+[connection signal="updateScore" from="." to="." method="updateScoreF"]

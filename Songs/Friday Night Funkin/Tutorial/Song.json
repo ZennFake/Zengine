@@ -9,9 +9,9 @@
 	"meta": {
 		"difficulties": ["easy", "normal", "hard"],
 		"style": "funkin",
-		"p1": "Huggy",
+		"p1": "Girlfriend",
 		"p2": "Boyfriend",
-		"stage": "Tutorial/Stage",
+		"stage": "Week1/Tutorial",
 		"timeline": [
 			{
 			   "d": 4, 

@@ -31,7 +31,7 @@ var misses = 0
 
 var offsetRank = [ # 4 - Sick 3 - Good 2 - Ok, 1 - Horrible
 	45,
-	110,
+	95,
 	135,
 	160,
 ]
@@ -54,7 +54,7 @@ var laneToDir = [
 	"singRIGHT"
 ]
 
-var rankOffset = 0
+var rankOffset = 10
 
 @onready var Root = get_parent().get_parent().get_parent()
 var UI

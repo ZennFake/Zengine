@@ -53,8 +53,14 @@ func createPlayer(playerString, characterName):
 		sprite = character,
 		timesincePress = Time.get_ticks_msec(),
 		offsets = {},
-		originalPosition = spawn
+		originalPosition = spawn,
+		last = 0,
+		player = int(playerString.substr(1, 1)),
+		flipX = false
 	}
+	
+	if not character.get_node("Sprite").flip_h: # Flip Animations
+		self.characterList[playerString].flipX = true
 	
 	if FileAccess.file_exists(offsetPathString) == true:
 		self.characterList[playerString].offsets = self.conductor.util.readJson(offsetPathString)
@@ -88,10 +94,13 @@ func startSong(conductorObject):
 	
 	if self.metaData.has("p2"):
 		createPlayer("p2", self.metaData["p2"])
+		
+	if self.metaData.has("gf"):
+		createPlayer("gf", self.metaData["gf"])
 	
 	
 # Resets character idles and makes the screen bump
-func beatChanged(beatMajor, beat):
+func beatChanged(beatMajor, beat, beatSinceMajor):
 	# UI Beat
 	self.UI.get_node("BumpAnimator").stop()
 	if beatMajor:
@@ -121,8 +130,13 @@ func beatChanged(beatMajor, beat):
 		if Time.get_ticks_msec() - characterList[playerString]["timesincePress"] < 300:
 			continue # Beat too close
 		var character = characterList[playerString]["sprite"]
-		character.get_node("Sprite").stop()
-		playAnimation(characterList[playerString], "idle")
+		var sprite : AnimatedSprite2D = character.get_node("Sprite")
+		var beatsPerReset = character.get_meta("BeatsPerReset")
+		characterList[playerString]["sprite"].get_node("Sprite").speed_scale = 1 + abs((self.conductor.bpm / (32 * (4 - beatsPerReset)) - 1))
+		if characterList[playerString].last != beatSinceMajor / beatsPerReset:
+			character.get_node("Sprite").stop()
+			characterList[playerString].last = beatSinceMajor / beatsPerReset
+			playAnimation(characterList[playerString], "idle")
 
 # Makes the player animate based off of the direction hit
 func noteHit(player, Direction):
@@ -168,7 +182,7 @@ func FocusCamera(v):
 	var cameraTween = get_tree().create_tween()
 	cameraTween.set_ease(Tween.EASE_OUT)
 	cameraTween.set_trans(Tween.TRANS_EXPO)
-	cameraTween.tween_property(Camera, "offset", characterAsset.position - Vector2(0, 300), 2)
+	cameraTween.tween_property(Camera, "offset", characterAsset.position + characterAsset.get_node("Focus").position, 2)
 	cameraTween.play()
 
 # Zooms the camera in based off of the event
@@ -178,7 +192,7 @@ func ZoomCamera(v):
 	var ease = v["ease"]
 	
 	var cameraTween = get_tree().create_tween().set_parallel(true)
-	cameraTween.set_ease(Tween.EASE_IN_OUT)
+	cameraTween.set_ease(Tween.EASE_OUT)
 	cameraTween.set_trans(Tween.TRANS_ELASTIC)
 	cameraTween.tween_property(self, "baseZoom", Vector2(newZoom, newZoom), speed)
 	cameraTween.play()
@@ -188,6 +202,13 @@ func _process(delta: float) -> void:
 	Camera.zoom = baseZoom + bumpZoom
 	
 func playAnimation(playerDict,animationName):
+	
+	# Handle flip
+	
+	if animationName == "singLEFT" and playerDict.flipX:
+		animationName = "singRIGHT"
+	elif animationName == "singRIGHT" and playerDict.flipX:
+		animationName = "singLEFT"
 	
 	if playerDict.offsets != {}: # Offsets found
 		var offsetAnimation = playerDict.offsets["animations"]
@@ -202,7 +223,10 @@ func playAnimation(playerDict,animationName):
 			return false
 		else:
 			playerDict.sprite.get_node("Sprite").play(animationName)
-			playerDict.sprite.position = playerDict.originalPosition.position + Vector2(-offsetAnimation.offsets[0], -offsetAnimation.offsets[1])
+			if playerDict.player == 1:
+				playerDict.sprite.position = playerDict.originalPosition.position + Vector2(offsetAnimation.offsets[0], -offsetAnimation.offsets[1])
+			else:
+				playerDict.sprite.position = playerDict.originalPosition.position + Vector2(-offsetAnimation.offsets[0], -offsetAnimation.offsets[1])
 			
 			return true
 	else:

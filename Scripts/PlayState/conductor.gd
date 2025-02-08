@@ -6,6 +6,7 @@ extends Node
 signal songRequested
 signal songBegan
 signal songEnded
+signal restartSong
 
 ## // VARIABLES // ##
 
@@ -95,11 +96,42 @@ func _on_song_requested(SongInfo):
 	
 	self.emit_signal("songBegan")
 	
-	await self.songTracks.values()[0].finished
+	var stream : AudioStreamPlayer2D = self.songTracks.values()[0]
 	
-	$".".emit_signal("songEnded")
+	stream.connect("finished", songEndedFunc)
 	
 ## // OBJECT FUNCTION // ##
+
+# Handles the song ending
+func songEndedFunc():
+	$".".emit_signal("songEnded")
+	
+func handleRestart(newDifficulty = null):
+	# Disconnect song ending function
+	var stream : AudioStreamPlayer2D = self.songTracks.values()[0]
+	stream.disconnect("finished", songEndedFunc)
+	
+	# Get vars
+	
+	var songSetup = Dictionary(self.songInfo)
+	if newDifficulty:
+		songSetup["Difficulty"] = newDifficulty
+	
+	playState.emit_signal("Reset")
+	
+	# Reload Scene
+	
+	for trackName in self.songTracks:
+		var songObject : AudioStreamPlayer2D = self.songTracks[trackName]
+		
+		songObject.queue_free()
+	root.get_node("UILock").reparent(root.get_parent())
+	root.get_node("Stage").reparent(root.get_parent())
+	
+	root.get_parent().get_node("UILock").queue_free()
+	root.get_parent().get_node("Stage").queue_free()
+	
+	_on_song_requested(songSetup)
 
 # Adds the ui in the style selected
 func updateStyle(style):
@@ -132,13 +164,13 @@ func _process(delta: float):
 				
 		self.deltaSinceLastBeat += delta * 1000
 		if self.deltaSinceLastBeat >= self.msPerBeat:
-			self.deltaSinceLastBeat = 0
+			self.deltaSinceLastBeat = self.deltaSinceLastBeat - self.msPerBeat
 			self.beat += 1
 			self.beatsSinceLastMajorBeat += 1
-			self.playState.emit_signal("Beat", self.beatsSinceLastMajorBeat == self.majorBeatTime, self.beat)
+			self.playState.emit_signal("Beat", self.beatsSinceLastMajorBeat == self.majorBeatTime, self.beat, self.beatsSinceLastMajorBeat)
 			
-			if self.beatsSinceLastMajorBeat == self.majorBeatTime:
-				self.beatsSinceLastMajorBeat = 0
+			if self.beatsSinceLastMajorBeat == self.majorBeatTime + 1:
+				self.beatsSinceLastMajorBeat = 1
 
 # Runs through the song data and loads them as an AudioStream
 func loadMusic():
@@ -154,6 +186,7 @@ func loadMusic():
 		songObject.stream = songData
 		songObject.panning_strength = 0
 		songObject.max_distance = 999999
+		songObject.process_mode = Node.PROCESS_MODE_ALWAYS
 		add_child(songObject)
 		
 		self.songTracks[trackName] = songObject
@@ -181,5 +214,7 @@ func songStarted():
 	playState.emit_signal("Start", self)
 	if modchartHolder.get_script():
 		modchartHolder.get_script().Started()
+		
+	self.deltaSinceLastBeat = 0
 	
 	self.songPlaying = true

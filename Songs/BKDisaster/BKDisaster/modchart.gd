@@ -23,6 +23,6 @@ static func Started():
 	
 	stage = Root.get_node("Stage")
 	
-static func Beat(beatBig, Beat):
+static func Beat(beatBig, Beat, _c):
 	pass
 	
