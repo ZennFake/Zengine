@@ -10,8 +10,11 @@ signal openMenuS
 ## // VARIABLES // ##
 
 var pauseOptions = {
-	"Unpause" = Unpause,
-	"Exit" = Exit
+	"RESUME" = Unpause,
+	"RESTART SONG" = nothing,
+	"CHANGE DIFFICULTY" = nothing,
+	"SETTINGS" = nothing,
+	"EXIT TO MEU" = Exit
 }
 var items = [
 	
@@ -94,3 +97,6 @@ func Exit():
 	menuOpen = false
 	pauseHandler.emit_signal("Unpause")
 	pauseHandler.get_parent().get_parent().get_node("Conductor").emit_signal("songEnded")
+
+func nothing():
+	pass

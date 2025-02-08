@@ -15,7 +15,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_omuqf"]
 font = ExtResource("2_u2idh")
-font_size = 71
+font_size = 101
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 11
@@ -260,7 +260,7 @@ vertical = true
 
 [node name="ContentHolderBase" type="Panel" parent="Scrollable/ScrollContainer/BoxContainer"]
 visible = false
-custom_minimum_size = Vector2(129.565, 135)
+custom_minimum_size = Vector2(129.565, 249.955)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qu363")
 
