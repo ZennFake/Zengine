@@ -60,6 +60,7 @@ script = ExtResource("8_ydm25")
 [connection signal="Initiate" from="Scripts/PlayState" to="Scripts/PlayState/ChartHandler" method="initiateChart"]
 [connection signal="Pause" from="Scripts/PlayState" to="Scripts/PlayState/ChartHandler" method="handlePause"]
 [connection signal="Pause" from="Scripts/PlayState" to="Scripts/PlayState/InputHandler" method="pause"]
+[connection signal="Pause" from="Scripts/PlayState" to="Scripts/Conductor" method="pauseMusic"]
 [connection signal="Start" from="Scripts/PlayState" to="Scripts/PlayState/ChartHandler" method="songBegan"]
 [connection signal="Start" from="Scripts/PlayState" to="Scripts/PlayState/InputHandler" method="initiateInputs"]
 [connection signal="Start" from="Scripts/PlayState" to="Scripts/PlayState/StageHandler" method="startSong"]

@@ -154,6 +154,7 @@ func loadMusic():
 		songObject.stream = songData
 		songObject.panning_strength = 0
 		songObject.max_distance = 999999
+		songObject.process_mode = Node.PROCESS_MODE_ALWAYS
 		add_child(songObject)
 		
 		self.songTracks[trackName] = songObject
@@ -181,5 +182,7 @@ func songStarted():
 	playState.emit_signal("Start", self)
 	if modchartHolder.get_script():
 		modchartHolder.get_script().Started()
+		
+	self.deltaSinceLastBeat = 0
 	
 	self.songPlaying = true
