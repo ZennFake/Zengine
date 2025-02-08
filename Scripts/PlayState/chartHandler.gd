@@ -145,7 +145,8 @@ func noteMade(noteData):
 	self.assetsToMove.append({
 		Data = noteData,
 		Asset = noteBase,
-		BarAsset = null
+		BarAsset = null,
+		Missed = false
 	})
 
 # Checks if a note is valid and on screen
@@ -280,7 +281,9 @@ func updateChart(dt : float):
 		# Check if its a miss or its a miss
 		var maxRank = offsetRank[len(offsetRank) - 1]
 		
-		if note.Data.t + maxRank < self.currentSongPosition: # Note is unpressable
+		if note.Data.t + maxRank < self.currentSongPosition and not note.Missed: # Note is unpressable
+			
+			note.Missed = true
 			self.handleMiss()
 		
 		if note.Asset.position.y / 1080 < -0.1: #Note is out of frame
