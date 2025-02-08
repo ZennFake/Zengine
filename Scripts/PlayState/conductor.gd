@@ -132,13 +132,13 @@ func _process(delta: float):
 				
 		self.deltaSinceLastBeat += delta * 1000
 		if self.deltaSinceLastBeat >= self.msPerBeat:
-			self.deltaSinceLastBeat = 0
+			self.deltaSinceLastBeat = self.deltaSinceLastBeat - self.msPerBeat
 			self.beat += 1
 			self.beatsSinceLastMajorBeat += 1
-			self.playState.emit_signal("Beat", self.beatsSinceLastMajorBeat == self.majorBeatTime, self.beat)
+			self.playState.emit_signal("Beat", self.beatsSinceLastMajorBeat == self.majorBeatTime, self.beat, self.beatsSinceLastMajorBeat)
 			
-			if self.beatsSinceLastMajorBeat == self.majorBeatTime:
-				self.beatsSinceLastMajorBeat = 0
+			if self.beatsSinceLastMajorBeat == self.majorBeatTime + 1:
+				self.beatsSinceLastMajorBeat = 1
 
 # Runs through the song data and loads them as an AudioStream
 func loadMusic():

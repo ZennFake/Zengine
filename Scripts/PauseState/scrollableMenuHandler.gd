@@ -14,7 +14,7 @@ var pauseOptions = {
 	"RESTART SONG" = nothing,
 	"CHANGE DIFFICULTY" = nothing,
 	"SETTINGS" = nothing,
-	"EXIT TO MEU" = Exit
+	"EXIT TO MENU" = Exit
 }
 var items = [
 	

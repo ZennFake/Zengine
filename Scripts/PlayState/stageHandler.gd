@@ -53,7 +53,8 @@ func createPlayer(playerString, characterName):
 		sprite = character,
 		timesincePress = Time.get_ticks_msec(),
 		offsets = {},
-		originalPosition = spawn
+		originalPosition = spawn,
+		last = 0
 	}
 	
 	if FileAccess.file_exists(offsetPathString) == true:
@@ -91,7 +92,7 @@ func startSong(conductorObject):
 	
 	
 # Resets character idles and makes the screen bump
-func beatChanged(beatMajor, beat):
+func beatChanged(beatMajor, beat, beatSinceMajor):
 	# UI Beat
 	self.UI.get_node("BumpAnimator").stop()
 	if beatMajor:
@@ -116,13 +117,18 @@ func beatChanged(beatMajor, beat):
 	# Character Bot
 	
 	for playerString in characterList:
+		characterList[playerString]["sprite"].get_node("Sprite").speed_scale = self.conductor.bpm / 100
 		if characterList[playerString]["notePressing"]:
 			continue
 		if Time.get_ticks_msec() - characterList[playerString]["timesincePress"] < 300:
 			continue # Beat too close
 		var character = characterList[playerString]["sprite"]
-		character.get_node("Sprite").stop()
-		playAnimation(characterList[playerString], "idle")
+		var sprite : AnimatedSprite2D = character.get_node("Sprite")
+		var beatsPerReset = character.get_meta("BeatsPerReset")
+		if characterList[playerString].last != beatSinceMajor / beatsPerReset:
+			character.get_node("Sprite").stop()
+			characterList[playerString].last = beatSinceMajor / beatsPerReset
+			playAnimation(characterList[playerString], "idle")
 
 # Makes the player animate based off of the direction hit
 func noteHit(player, Direction):
@@ -168,7 +174,7 @@ func FocusCamera(v):
 	var cameraTween = get_tree().create_tween()
 	cameraTween.set_ease(Tween.EASE_OUT)
 	cameraTween.set_trans(Tween.TRANS_EXPO)
-	cameraTween.tween_property(Camera, "offset", characterAsset.position - Vector2(0, 300), 2)
+	cameraTween.tween_property(Camera, "offset", characterAsset.position + characterAsset.get_node("Focus").position, 2)
 	cameraTween.play()
 
 # Zooms the camera in based off of the event
@@ -178,7 +184,7 @@ func ZoomCamera(v):
 	var ease = v["ease"]
 	
 	var cameraTween = get_tree().create_tween().set_parallel(true)
-	cameraTween.set_ease(Tween.EASE_IN_OUT)
+	cameraTween.set_ease(Tween.EASE_OUT)
 	cameraTween.set_trans(Tween.TRANS_ELASTIC)
 	cameraTween.tween_property(self, "baseZoom", Vector2(newZoom, newZoom), speed)
 	cameraTween.play()
