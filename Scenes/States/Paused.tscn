@@ -1,6 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwkqml0yo68qu"]
+[gd_scene load_steps=13 format=3 uid="uid://dwkqml0yo68qu"]
 
-[ext_resource type="FontFile" uid="uid://dl5mra5gopj10" path="res://Assets/Fonts/Phantomuff Difficult Font.ttf" id="1_gy8of"]
+[ext_resource type="Script" path="res://Scripts/PauseState/scrollableMenuHandler.gd" id="1_g5836"]
+[ext_resource type="AudioStream" uid="uid://b2ey2i7swdy4m" path="res://Assets/Sounds/PauseState/cancelMenu.ogg" id="2_qr5fr"]
+[ext_resource type="FontFile" uid="uid://dx04f21fbopr7" path="res://Assets/Fonts/SmallFNF.ttf" id="2_u2idh"]
+[ext_resource type="AudioStream" uid="uid://bxwt7md00346g" path="res://Assets/Sounds/PauseState/scrollMenu.ogg" id="3_gpu23"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pe3q7"]
 bg_color = Color(0, 0, 0, 0.356863)
@@ -11,17 +14,19 @@ bg_color = Color(0, 0, 0, 0.356863)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_omuqf"]
-font = ExtResource("1_gy8of")
+font = ExtResource("2_u2idh")
 font_size = 71
-outline_size = 12
+outline_size = 10
 outline_color = Color(0, 0, 0, 1)
+shadow_size = 11
+shadow_offset = Vector2(2.8, 1)
 
 [sub_resource type="Animation" id="Animation_hl3t2"]
 resource_name = "Paused"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/0/path = NodePath("Scrollable:theme_override_styles/panel:bg_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -33,7 +38,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Panel:visible")
+tracks/1/path = NodePath("Scrollable:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -57,7 +62,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Panel:modulate")
+tracks/3/path = NodePath("Scrollable:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -69,7 +74,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Panel/ScrollContainer:position")
+tracks/4/path = NodePath("Scrollable/ScrollContainer:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -84,7 +89,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/0/path = NodePath("Scrollable:theme_override_styles/panel:bg_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -96,7 +101,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Panel:visible")
+tracks/1/path = NodePath("Scrollable:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -120,7 +125,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Panel:modulate")
+tracks/3/path = NodePath("Scrollable:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -132,7 +137,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Panel/ScrollContainer:position")
+tracks/4/path = NodePath("Scrollable/ScrollContainer:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -142,51 +147,134 @@ tracks/4/keys = {
 "values": [Vector2(81, 506)]
 }
 
+[sub_resource type="Animation" id="Animation_ouqav"]
+resource_name = "Unpause"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scrollable:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.356863)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scrollable:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scrollable:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.0301855, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Scrollable/ScrollContainer:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(81, 506), Vector2(-262.7, 506)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kpvlq"]
 _data = {
 "Paused": SubResource("Animation_hl3t2"),
-"RESET": SubResource("Animation_77o72")
+"RESET": SubResource("Animation_77o72"),
+"Unpause": SubResource("Animation_ouqav")
 }
 
 [node name="Paused" type="CanvasLayer"]
 process_mode = 3
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Scrollable" type="Panel" parent="."]
+process_mode = 3
 z_index = 5
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pe3q7")
+script = ExtResource("1_g5836")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+[node name="CancelMenu" type="AudioStreamPlayer2D" parent="Scrollable"]
+position = Vector2(-6, 307)
+stream = ExtResource("2_qr5fr")
+attenuation = 0.0647042
+panning_strength = 0.0
+
+[node name="ScrollMenu" type="AudioStreamPlayer2D" parent="Scrollable"]
+position = Vector2(13, 378)
+stream = ExtResource("3_gpu23")
+attenuation = 0.0647042
+panning_strength = 0.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Scrollable"]
+process_mode = 3
 clip_contents = false
 layout_mode = 0
-offset_left = 80.9994
+offset_left = 81.0
 offset_top = 506.0
-offset_right = 217.999
+offset_right = 218.0
 offset_bottom = 509.0
 rotation = -0.436332
 theme_override_styles/panel = SubResource("StyleBoxEmpty_agkb4")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="BoxContainer" type="BoxContainer" parent="Panel/ScrollContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="Scrollable/ScrollContainer"]
 layout_mode = 2
 vertical = true
 
-[node name="ContentHolderBase" type="Panel" parent="Panel/ScrollContainer/BoxContainer"]
+[node name="ContentHolderBase" type="Panel" parent="Scrollable/ScrollContainer/BoxContainer"]
+visible = false
 custom_minimum_size = Vector2(129.565, 135)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qu363")
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/BoxContainer/ContentHolderBase"]
+[node name="Text" type="Label" parent="Scrollable/ScrollContainer/BoxContainer/ContentHolderBase"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 rotation = 0.436332
-text = "Unpause"
+text = "UNPAUSE"
 label_settings = SubResource("LabelSettings_omuqf")
 
 [node name="PauseAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_kpvlq")
 }
+
+[connection signal="openMenuS" from="Scrollable" to="Scrollable" method="Initiate"]

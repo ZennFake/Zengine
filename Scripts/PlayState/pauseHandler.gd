@@ -4,6 +4,7 @@ extends Node
 ## // SIGNALS // ##
 
 signal songBegan
+signal Unpause
 
 ## // TYPES // ##
 
@@ -13,6 +14,7 @@ signal songBegan
 
 var paused = false
 var currentLoading : CanvasLayer
+var debounce = false
 
 ## // FUNCTIONS // ##
 
@@ -28,16 +30,27 @@ func loadPauseScreen():
 	
 	animator.play("Paused")
 	currentLoading = scene
+	currentLoading.get_node("Scrollable").emit_signal("openMenuS", self)
 
+func unpauseS():
+	paused = false
+	PlayStateParent.emit_signal("Pause", paused)
+	get_tree().paused = paused
+	var animator : AnimationPlayer = currentLoading.get_node("PauseAnimation")
+	
+	animator.play("Unpause")
+	await animator.animation_finished
+	debounce = false
+	currentLoading.queue_free()
+	
 # Checks if pause was pressed
 func _process(_delta):
 	if Input.is_action_just_pressed("Pause"):
-		paused = not paused
-		get_tree().paused = paused
-		PlayStateParent.emit_signal("Pause", paused)
-		if paused:
+		if paused == false and not debounce:
+			paused = true
+			debounce = true
+			get_tree().paused = paused
+			PlayStateParent.emit_signal("Pause", paused)
 			loadPauseScreen()
-		else:
-			currentLoading.queue_free()
 
 ## // OBJECT FUNCTIONS // ##
