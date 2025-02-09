@@ -12,13 +12,13 @@ process_mode = 1
 
 [node name="p2" type="Node2D" parent="Spawns"]
 z_index = 1
-position = Vector2(1221.2, 889.285)
+position = Vector2(1384.45, 889.285)
 
 [node name="gf" type="Node2D" parent="Spawns"]
-position = Vector2(857.875, 822.375)
+position = Vector2(1113.6, 822.375)
 
 [node name="p1" type="Node2D" parent="Spawns"]
-position = Vector2(491.26, 889.285)
+position = Vector2(565, 889.285)
 
 [node name="StageAssets" type="Node2D" parent="."]
 

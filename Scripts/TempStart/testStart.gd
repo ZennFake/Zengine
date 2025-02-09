@@ -118,7 +118,8 @@ func checkIfValid(_a):
 				baseClone.visible = true
 				$"Difficulty/Holder".add_child(baseClone)
 				buttonHandler(baseClone)
-					
+				
+				currentDifficulty = difficulty
 		else:
 			
 			$"Difficulty/Waiting".visible = true
