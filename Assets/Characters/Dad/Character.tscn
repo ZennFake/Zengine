@@ -1,0 +1,117 @@
+[gd_scene load_steps=19 format=3 uid="uid://chf0k6fx3ealr"]
+
+[ext_resource type="Texture2D" uid="uid://bp8mfen5d4eg7" path="res://Assets/Characters/Dad/ImageAssets/daddyDearest-idle0001-0.png" id="1_v30ff"]
+[ext_resource type="Texture2D" uid="uid://dvwlhtg0p0cwn" path="res://Assets/Characters/Dad/ImageAssets/daddyDearest-idle0003-2.png" id="2_g6phb"]
+[ext_resource type="Texture2D" uid="uid://v5uiia1gftim" path="res://Assets/Characters/Dad/ImageAssets/daddyDearest-idle0005-4.png" id="3_21spd"]
+[ext_resource type="Texture2D" uid="uid://d3qdh62v4w3fn" path="res://Assets/Characters/Dad/ImageAssets/daddyDearest-idle0007-6.png" id="4_2e08a"]
+[ext_resource type="Texture2D" uid="uid://1yg73j2u0xme" path="res://Assets/Characters/Dad/ImageAssets/daddyDearest-idle0009-8.png" id="5_k54k5"]
+[ext_resource type="Texture2D" uid="uid://cf10lv6jb8cqo" path="res://Assets/Characters/Dad/ImageAssets/daddyDearest-idle0011-10.png" id="6_dlvk2"]
+[ext_resource type="Texture2D" uid="uid://dy8beo4cp3423" path="res://Assets/Characters/Dad/ImageAssets/daddyDearest-singDOWN0001-13.png" id="7_jhokn"]
+[ext_resource type="Texture2D" uid="uid://bj50mqdunmj3r" path="res://Assets/Characters/Dad/ImageAssets/daddyDearest-singDOWN0003-15.png" id="8_m1rnj"]
+[ext_resource type="Texture2D" uid="uid://5furvmwtd7fr" path="res://Assets/Characters/Dad/ImageAssets/daddyDearest-singLEFT0001-29.png" id="9_aeigb"]
+[ext_resource type="Texture2D" uid="uid://by422kh38f75m" path="res://Assets/Characters/Dad/ImageAssets/daddyDearest-singLEFT0003-31.png" id="10_l7kf6"]
+[ext_resource type="Texture2D" uid="uid://c5iubrxslk44j" path="res://Assets/Characters/Dad/ImageAssets/daddyDearest-singLEFT0005-33.png" id="11_rmlkj"]
+[ext_resource type="Texture2D" uid="uid://bl0pgf6px4gre" path="res://Assets/Characters/Dad/ImageAssets/daddyDearest-singRIGHT0001-45.png" id="12_25l4f"]
+[ext_resource type="Texture2D" uid="uid://oiet5uf024fy" path="res://Assets/Characters/Dad/ImageAssets/daddyDearest-singRIGHT0003-47.png" id="13_ek1sa"]
+[ext_resource type="Texture2D" uid="uid://dkxvre3bg046t" path="res://Assets/Characters/Dad/ImageAssets/daddyDearest-singRIGHT0005-49.png" id="14_tnsqt"]
+[ext_resource type="Texture2D" uid="uid://4v3smb667q8m" path="res://Assets/Characters/Dad/ImageAssets/daddyDearest-singUP0001-61.png" id="15_r8v4q"]
+[ext_resource type="Texture2D" uid="uid://dfgc3m5ke4ttr" path="res://Assets/Characters/Dad/ImageAssets/daddyDearest-singUP0003-63.png" id="16_ffa0i"]
+[ext_resource type="Texture2D" uid="uid://cbrdvc4t2g67m" path="res://Assets/Characters/Dad/ImageAssets/daddyDearest-singUP0005-65.png" id="17_dru1q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ee2vr"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("1_v30ff")
+}, {
+"duration": 2.0,
+"texture": ExtResource("2_g6phb")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_21spd")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_2e08a")
+}, {
+"duration": 2.0,
+"texture": ExtResource("5_k54k5")
+}, {
+"duration": 2.0,
+"texture": ExtResource("6_dlvk2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("7_jhokn")
+}, {
+"duration": 14.0,
+"texture": ExtResource("8_m1rnj")
+}],
+"loop": true,
+"name": &"singDOWN",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("9_aeigb")
+}, {
+"duration": 9.0,
+"texture": ExtResource("10_l7kf6")
+}, {
+"duration": 8.0,
+"texture": ExtResource("11_rmlkj")
+}],
+"loop": true,
+"name": &"singLEFT",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("12_25l4f")
+}, {
+"duration": 9.0,
+"texture": ExtResource("13_ek1sa")
+}, {
+"duration": 8.0,
+"texture": ExtResource("14_tnsqt")
+}],
+"loop": true,
+"name": &"singRIGHT",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("15_r8v4q")
+}, {
+"duration": 30.0,
+"texture": ExtResource("16_ffa0i")
+}, {
+"duration": 28.0,
+"texture": ExtResource("17_dru1q")
+}],
+"loop": true,
+"name": &"singUP",
+"speed": 24.0
+}]
+
+[node name="Character" type="Node2D"]
+process_mode = 1
+top_level = true
+z_index = 3
+metadata/BeatsPerReset = 1
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(40, -576)
+rotation = 3.14159
+scale = Vector2(1.50075, 1.50075)
+sprite_frames = SubResource("SpriteFrames_ee2vr")
+animation = &"singUP"
+frame_progress = 0.364064
+flip_h = true
+flip_v = true
+
+[node name="Focus" type="Node2D" parent="."]
+position = Vector2(0, -889.02)

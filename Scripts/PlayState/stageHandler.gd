@@ -167,7 +167,10 @@ func noteEnded(player, Direction):
 
 # Focuses the camera based off of the event value
 func FocusCamera(v):
-	v = v["char"]
+	if typeof(v) == TYPE_FLOAT:
+		v = v
+	else:
+		v = v["char"]
 	var characterString = "p"
 	if v == 0:
 		characterString += "2"
