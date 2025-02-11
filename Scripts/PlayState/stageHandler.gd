@@ -4,13 +4,9 @@ extends Node
 
 ## // SIGNALS // ##
 
-@warning_ignore("unused_signal")
 signal noteHitSignal
-@warning_ignore("unused_signal")
 signal noteEndedSignal
-@warning_ignore("unused_signal")
 signal focusCamSignal
-@warning_ignore("unused_signal")
 signal zoomCamSignal
 
 ## // TYPES // ##
@@ -51,7 +47,8 @@ func createPlayer(playerString, characterName):
 		notePressing = false,
 		keysPressing = [],
 		sprite = character,
-		timesincePress = Time.get_ticks_msec(),
+		beatsSincePressed = 0,
+		timesincePress = 0,
 		offsets = {},
 		originalPosition = spawn,
 		last = 0,
@@ -122,13 +119,16 @@ func beatChanged(beatMajor, beat, beatSinceMajor):
 	cameraTween.tween_property(self, "bumpZoom", Vector2.ZERO, 1)
 	cameraTween.play()
 	
-	# Character Bot
+	# Character Bop
 	
 	for playerString in characterList:
 		if characterList[playerString]["notePressing"]:
+			characterList[playerString].beatsSincePressed = 0
 			continue
-		if Time.get_ticks_msec() - characterList[playerString]["timesincePress"] < 300:
-			continue # Beat too close
+		if Time.get_ticks_msec() - characterList[playerString]["timesincePress"] < 300 or characterList[playerString].beatsSincePressed < 1: # Update beats
+			characterList[playerString].beatsSincePressed += 1
+			continue # Beat too close:
+
 		var character = characterList[playerString]["sprite"]
 		var sprite : AnimatedSprite2D = character.get_node("Sprite")
 		var beatsPerReset = character.get_meta("BeatsPerReset")
@@ -148,6 +148,7 @@ func noteHit(player, Direction):
 	
 	characterList[string]["sprite"].get_node("Sprite").stop()
 	playAnimation(characterList[string], Direction)
+	characterList[string].beatsSincePressed = 0
 	characterList[string]["timesincePress"] = Time.get_ticks_msec()
 	characterList[string]["notePressing"] = true
 	characterList[string]["keysPressing"].append(Direction)
