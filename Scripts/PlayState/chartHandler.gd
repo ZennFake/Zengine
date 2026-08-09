@@ -106,6 +106,8 @@ func handlePause(paused):
 ## Gets the lane of the note with the given note data
 func GetLane(noteData):
 	
+	noteData.d = int(noteData.d)
+	
 	var lane = UI.get_node("PlayerLanes").has_node(str(noteData.d))
 	
 	if not lane:

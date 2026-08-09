@@ -7,7 +7,7 @@
 	},
 	"meta": {
 		"modchart": "res://Songs/BKDisaster/BKDisaster/modchart.gd",
-		"style": "funkin",
+		"style": "pixel",
 		"p1": "Huggy",
 		"p2": "Boyfriend",
 		"gf": "Girlfriend",

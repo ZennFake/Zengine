@@ -16,16 +16,16 @@ func newTime(timeMS : float, songLength):
 	var songLengthMinutes = floor(songLengthSeconds / 60)
 	songLengthSeconds -= songLengthMinutes * 60
 	
-	var finalLabel = str(minutes)
+	var finalLabel = str(int(minutes))
 	if timeSeconds < 10:
-		finalLabel += ":0" + str(timeSeconds)
+		finalLabel += ":0" + str(int(timeSeconds))
 	else :
-		finalLabel += ":" + str(timeSeconds)
-	finalLabel += "/" + str(songLengthMinutes)
+		finalLabel += ":" + str(int(timeSeconds))
+	finalLabel += "/" + str(int(songLengthMinutes))
 	if songLengthSeconds < 10:
-		finalLabel += ":0" + str(songLengthSeconds)
+		finalLabel += ":0" + str(int(songLengthSeconds))
 	else :
-		finalLabel += ":" + str(songLengthSeconds)
+		finalLabel += ":" + str(int(songLengthSeconds))
 	
 	var ratio = timeMS / songLength
 	
